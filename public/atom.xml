@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[rohan's soapbox]]></title>
+  <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
+  <link href="http://www.rohanradio.com/"/>
+  <updated>2011-11-30T14:43:16-08:00</updated>
+  <id>http://www.rohanradio.com/</id>
+  <author>
+    <name><![CDATA[Rohan Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Optimism]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/07/25/optimism/"/>
+    <updated>2011-07-25T17:03:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/07/25/optimism</id>
+    <content type="html"><![CDATA[<p>Software engineers are some of the most optimistic people I know.</p>
+
+<p>Case in point:</p>
+
+<p><img src="http://www.rohanradio.com/images/blog/clint-optimism.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Don't Break the Back Button]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button/"/>
+    <updated>2011-06-24T21:42:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button</id>
+    <content type="html"><![CDATA[<p>Recently, I&#8217;ve worked on/with or used a few Android applications that &#8220;disable&#8221;
+the back button in some cases.</p>
+
+<p>If you haven&#8217;t used Android, the back button is a prominent feature. Nearly
+every Android device has a hardware back button. The system maintains a stack of
+all the activities the user has navigated to, and when the user presses the back
+button, <a href="http://developer.android.com/guide/practices/ui_guidelines/activity_task_design.html#taking_over_back_key">it takes the user to the previous activity</a>.</p>
+
+<p>This works both inside individual apps and also across process boundaries. For
+example, when I&#8217;m reading an email and push the back button, I end up back at my
+inbox. If I push the back button again, I&#8217;ll end up at whatever app I was in
+before I opened Gmail.</p>
+
+<p>This functionality is all provided by the OS, so all you have to do to get it
+right is to not break anything.</p>
+
+<p>Nonetheless, many developers have taken it upon themselves to intercept the back
+button and swallow it. Here&#8217;s what this is like when you intercept the back
+button on the web:</p>
+
+<p><img src="http://www.rohanradio.com/images/blog/broken-back-button.png"></p>
+
+<p>In other words, it&#8217;s completely obnoxious and unacceptable. Unfortunately, it
+seems that which we know to be obviously true in web development, is quickly
+forgotten when it comes to a mobile device.</p>
+
+<p>I remember reading about
+<a href="http://www.mendeley.com/research/portable-eyetracking-a-study-of-natural-eye-movements/">a study at the Rochester Institute of
+Technology</a>
+a few years ago, wherein researchers mounted eye-tracking devices on subjects
+who were washing their hands. A very simple task: washing your hands.</p>
+
+<p>What the study found was a new type of eye movement, the &#8220;planful&#8221; movement. In
+short, before interacting with any object, we build a model of that interaction
+in our minds and look at the object, without being consciously aware that we are
+doing so. For example, your eyes and your brain are glancing at and scouting out
+the paper towel dispenser while you are still rinsing your hands.</p>
+
+<p>The same concept that applies to navigating your bathroom sink applies to
+navigating a mobile operating system. Your app may only be displaying one
+specific activity on the screen, but you can be sure that the user has
+constructed a mental model of how they are going to navigate through your app,
+through their device, to accomplish whatever they need to accomplish today.</p>
+
+<p>Most of the time, these mental models aren&#8217;t fully conscious or completely
+articulated. Ask someone how they would get from Angry Birds to Gmail, and
+you&#8217;ll hear something along the lines of, &#8220;I&#8217;ll save and back out of the game
+and then open up Gmail.&#8221; Their mental machinery has abstracted away the minutiae
+of what they would specifically push or click on.</p>
+
+<p>Instead, users just rely on their intuitive experience of how to navigate a
+system. That intuitive experience makes certain assumptions regarding how this
+virtual world is structured. These assumptions are often as strong as your
+assumptions regarding the physical world — up is up, down is down, and if you
+retrace the way you came, you&#8217;ll always end up where you started.</p>
+
+<p>When you break these unconscious and conscious assumptions regarding how things
+work, you are basically giving your users a <a href="http://xkcd.com/371/">mental segfault</a>:</p>
+
+<p><img src="http://imgs.xkcd.com/comics/compiler_complaint.png" title="'XKCD comic #371'" ></p>
+
+<p>Don&#8217;t break the back button.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Getting ASP.NET to play nice with Opera &amp; wget]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/"/>
+    <updated>2011-03-28T15:43:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget</id>
+    <content type="html"><![CDATA[<p>A few weeks ago we noticed an issue with some crawlers and search engines being
+unable to crawl <a href="http://www.starbucks.com">Starbucks.com</a>. Around the same time,
+<a href="http://my.opera.com/karlcow/">Karl Dubost</a> from Opera discovered that
+<a href="http://my.opera.com/karlcow/blog/2011/03/03/wrong-to-be-right-with-xhtml">visitors using Opera were getting a parse error</a>.
+In fact, a number of high-profile ASP.NET sites seem to be impacted by the latter issue.</p>
+
+<p>If you&#8217;re just looking for the quick fix, skip ahead to the bottom of this post.</p>
+
+<p>To sum up the issue, our server was responding with a <code>Content-Type</code> header of
+<code>application/xhtml+xml</code> to both Opera and <code>wget</code>. In Opera, this triggers an XML
+parser, which would fail since our content is actually <code>text/html</code>.</p>
+
+<p>Of course, nowhere in our code were explicitly setting the <code>Content-Type</code> header
+to anything other than <code>text/html</code>, so the behavior was puzzling. Additionally,
+the server was responding with an <code>application/xhtml+xml</code> type even when the
+Accept header from the browser specified <code>*/*</code>. This made no sense at all, since
+if the browser was willing to accept anything, we should be sending the content
+in its default <code>text/html</code>.</p>
+
+<h2>ASP.NET Browser Detection</h2>
+
+<p>As it turns out, ASP.NET has a somewhat questionable
+<a href="http://msdn.microsoft.com/en-us/library/3yekbd5b.aspx">feature that allows you detect browser types and capabilities</a>,
+largely based on the browser&#8217;s request headers. This is mediated through a
+<a href="http://msdn.microsoft.com/en-us/library/ms228122.aspx">browser definition file</a>
+(*.browser), which is just a bunch of XML that matches up request header
+patterns to browser types and know capabilities. This file lives in your
+ASP.NET applicaiton&#8217;s App_Browsers folder.</p>
+
+<p>The known capabilities for the current user agent are all available through the
+<code>HttpContext.Request.Browser</code> object.</p>
+
+<p>As I said, all very questionable. The idea of having a giant database of
+browsers and what they are like just rubs me wrong and strikes me as
+unmaintainable. In fact, we only tried out the whole browser definition file as
+part of a proof-of-concept for some mobile pages. The feature never quite worked
+correctly, so we abandoned it and thought that was the end of that.</p>
+
+<h2>The insidious preferredRenderingMime</h2>
+
+<p>Of course, that wasn&#8217;t the end of that. For each browser definition in a browser
+definition file, you can define a <code>preferredRenderingMime</code> value for a browser.
+For example:</p>
+
+<pre><code>&lt;capabilities&gt;
+  &lt;capability name="preferredRenderingMime" value="application/xhtml+xml" /&gt;
+&lt;/capabilities&gt;
+</code></pre>
+
+<p>Most of the larger *.browser file compilations floating around the Web have
+Opera set to preferring a MIME type of <code>application/xhtml+xml</code>. A lot of files
+will default to a preferred type of <code>application/xhtml+xml</code> for all browsers that
+pass an Accept: <em>/</em> request header.</p>
+
+<p>And even though we use ASP.NET MVC and no longer are using any of the browser
+detection stuff at all, the System.Web.UI.Page class has this fun code that runs
+when the page is processed:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">SetIntrinsics</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">allowAsync</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">HttpCapabilitiesBase</span> <span class="n">browser</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">_request</span><span class="p">.</span><span class="n">Browser</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="n">_response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">PreferredRenderingMime</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Brilliant, right? Since Opera prefers XHTML, this code does you the favor of
+automatically setting your response content type to <code>application/xhtml+xml</code>. Of
+course, since your actual content is still HTML, this causes an XML parse error
+and all your Opera visitors are hosed.</p>
+
+<p>This might make sense if you are doing the classic ASP.NET Web Forms thing with
+server controls that adapt their rendering based on the browser&#8217;s preferred
+MIME. But even if you are using ASP.NET MVC, your .aspx views are still
+essentially pages, and this old code will still run.</p>
+
+<h2>Broken <code>wget</code></h2>
+
+<p>Unfortunately, this <code>SetIntrinsics</code> code has another nasty side effect. If your
+application has already sent out response headers or content, it will just throw
+an exception since <code>Response.ContentType</code> can&#8217;t be set after response headers have
+already been sent.</p>
+
+<p>In the case of Starbucks.com, this meant that issue wasn&#8217;t just that Opera
+visitors experienced a parse error, but that an exception would be thrown for
+any browser for which ASP.NET tried to switch the <code>Response.ContentType</code>. This
+would result in absolutely no content being served, resulting in a blank page
+for Opera visitors.</p>
+
+<p>Furthermore, a large percentage of crawlers and search engines use <code>wget</code> to
+grab pages. <code>wget</code> sends an <code>Accept</code> header of <code>*/*</code>, and runs into the same
+no-content issue. A fine mess all around.</p>
+
+<h2>The fix</h2>
+
+<p>The simplest fix, of course, is to get rid of any *.browser files you may be
+using in your application. I understand redirecting to a mobile version of your
+site for mobile browsers or the like, but basing any major functionality on
+guesses about the user&#8217;s browser is a great path to future pain.</p>
+
+<p>If, however, you want to keep your browser definition files around, consider
+removing any uses of the <code>preferrendRenderingMime</code> capability. Here&#8217;s a regex that
+should be able to find those instances for you:</p>
+
+<pre><code>^.+"preferredRenderingMime".+$
+</code></pre>
+
+<p>Just do a find &amp; replace on that and you should be good to go. This is what we
+ended up doing for <a href="http://www.starbucks.com">Starbucks.com</a> and
+<a href="http://starbucks.co.uk">Starbucks.co.uk</a>, which I&#8217;m happy to say now
+work perfectly for Opera and <code>wget</code> users alike!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[I don't even know where to start with this torta.]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/03/24/i-dont-even-know-where-to-start-with-this-torta/"/>
+    <updated>2011-03-24T12:37:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/03/24/i-dont-even-know-where-to-start-with-this-torta</id>
+    <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/torta.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Outlier is pretty awesome]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/03/02/outlier-is-pretty-awesome/"/>
+    <updated>2011-03-02T10:36:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/03/02/outlier-is-pretty-awesome</id>
+    <content type="html"><![CDATA[<blockquote><p>We love our bikes not because we race them, ride trails or perform tricks<br/>with them, although sometimes we do all of that. We love our bikes mainly<br/>because they are our transportation, our freedom, our way of moving through<br/>the spaces we call our home.&#8221;</p><footer><strong>Outlier</strong><cite><a href='http://outlier.cc'>outlier.cc/&hellip;</a></cite></footer></blockquote>
+
+
+<p><img src="http://www.rohanradio.com/images/blog/outlier.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Posting JSON with jQuery]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery/"/>
+    <updated>2011-02-22T22:23:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery</id>
+    <content type="html"><![CDATA[<p>Lately, I&#8217;ve been a big fan of JSON via HTTP POST to send data to a Web service.
+It&#8217;s awesome for a bunch of reasons:</p>
+
+<ul>
+<li><p><strong>Works equally well for simple and complex data.</strong> Regular HTTP POST works great
+for simple data, but gets unwieldy for anything hierarchical. XML works for
+complex data, but is too wordy for something simple.</p></li>
+<li><p><strong>Compact and human-readable.</strong> Really, this just comes with the territory when
+you&#8217;re using JSON for anything.</p></li>
+<li><p><strong>Easy to debug using Fiddler or related tools.</strong> You just have to type in or
+modify a JSON string when you want to do some ad-hoc testing.</p></li>
+<li><p><strong>Easy to add support for to any server.</strong> In fact, support for receiving JSON
+POST is built into the latest versions of
+<a href="http://docs.cherrypy.org/dev/refman/lib/jsontools.html">CherryPy</a> and
+<a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.jsonvalueproviderfactory.aspx">ASP.NET MVC</a>.</p></li>
+</ul>
+
+
+<p>That said, JSON POST still doesn&#8217;t seem to be all that popular compared to
+an old-style URL-encoded HTTP POST. One explanation I&#8217;ve heard proposed for
+this is the lack of support in jQuery. By default, jQuery goes with the
+old-style POST. You know:</p>
+
+<pre><code>foo=bar&amp;abc=xyz&amp;x=123
+</code></pre>
+
+<p>Sure, you can pass in a complex type and jQuery will gladly serialize it
+into this format for you, but good luck trying to read that with your human
+eyes, or trying to piece it back together on the server in any sane way.</p>
+
+<p>The really sad thing is that jQuery has a great <code>getJSON()</code> function that lets
+you receive JSON output and parses it appropriately. But there is no
+built-in support for posting raw JSON.</p>
+
+<p>To that end, I threw together this little plugin that I use all over the
+place:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">postJSON</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="nx">callback</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">contentType</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">processData</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Little Trick]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/02/19/a-little-trick/"/>
+    <updated>2011-02-19T21:27:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/02/19/a-little-trick</id>
+    <content type="html"><![CDATA[<p>Here&#8217;s a little trick I use. I figured I&#8217;d share it just in case anyone else
+finds it useful.</p>
+
+<p>Whenever I need to decide whether something is good, whether I support it or I
+don&#8217;t, it all comes together in one simple question. In the ideal world that I
+want to live in — the ideal, peaceful, happy, loving, accepting world — would
+this thing be or would it not be?</p>
+
+<p>Once you start putting things into that perspective, everything becomes quite
+straightforward. Whatever the issue or thing is, all you have to do is ask that
+one simple question, and then the correct path of action often becomes quite
+clear.</p>
+
+<p>Whether the issue you are considering is one of those big values-based divides
+of our day — war, abortion, gay marriage, religion — or whether it is just a
+simple matter of your daily dealings with other people, all you have to do is
+ask yourself: is this the world I want to live in?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[4 Simple Rules for Catching .NET Exceptions]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions/"/>
+    <updated>2010-09-13T16:58:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions</id>
+    <content type="html"><![CDATA[<p>What follows has probably been expounded a thousand times in different places.
+In fact, MSDN even has a long article entitled
+<a href="http://rrs.co/aMavUs">Best Practices for Handling Exceptions</a>.</p>
+
+<p>That said, I believe the best practices when it comes to catching .NET
+exceptions can be boiled down into four basic rules:</p>
+
+<ol>
+<li><p>Do not catch an exception unless you have something specific you need to do with
+that exception in the place you are catching it. Generally, there’s two
+scenarios where it’s alright to catch an exception:</p>
+
+<ol>
+<li>When you can do something specific to respond to and recover from a specific
+exception.</li>
+<li>When you have specific logging or, in the UI, want to display a specific error
+message due to a specific exception.</li>
+</ol>
+
+
+<p>Every exception and every catch block incurs a major performance overhead. If
+you can’t do something that fits into one of these two categories, you generally
+should not catch the exception. Note that this means that catching <code>Exception</code>
+instead of a specific type of exception is almost never correct.</p></li>
+<li><p>When you want to convert an exception to a string for logging, just use
+<code>ex.ToString()</code>. Do not try to <code>ToString()</code> or do any complex operations on any of
+the exception&#8217;s other properties in a way that could fail if those properties are
+null. For example, <code>ex.SomeProperty.ToString()</code> is almost never correct since
+<code>SomeProperty</code> might be null. Even if it seems to not be null when you are
+testing, since this is by definition an exceptional case you can’t be sure what
+properties of the exception may or may not be filled.</p>
+
+<p>More generally, avoid doing things in a catch block that may cause another
+exception to be thrown. Don’t nest try-catch blocks.</p></li>
+<li><p>Never do anything that would hide an exception from bubbling up unless you have
+specific code that can recover from the exception. For example, even if you are
+logging an exception in your catch block, rethrow it so any logging code higher
+up will be able to process it as well.</p>
+
+<p>The only time you should not rethrow an
+exception is when you can recover from it and the code can keep running fine.</p>
+
+<p>That said, if you can recover from an exception and the code can keep running,
+see if it would be possible to predict the exception beforehand and avoid it. As
+an example, say you are going to try to call <code>ToUpper()</code> on a string. If the
+string is null beforehand, you already know that a null reference exception will
+be thrown, so don’t call <code>ToUpper()</code>.</p></li>
+<li><p>When you rethrow an exception, always just use <code>throw;</code>. Do not use <code>throw ex;</code>.
+The latter restarts the call stack and makes debugging much more difficult. The only
+time you would do the latter is if you want to hide internals for some reason
+like security, which is almost never needed.</p></li>
+</ol>
+
+
+<p>Comments? Concerns? Death threats?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 Database API Support in an Android WebView]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/"/>
+    <updated>2010-08-16T22:06:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview</id>
+    <content type="html"><![CDATA[<p>Here are some facts:</p>
+
+<ol>
+<li>HTML5 has a <a href="http://html5demos.com/database">Database API</a> that lets you
+store things locally and retrieve them with SQL queries.</li>
+<li>Android lets you embed a <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a>
+in your application to display web content.</li>
+<li>How to combine #1 and #2 is extremely poorly documented.</li>
+</ol>
+
+
+<p>One thing that kills me about the Android documentation is how it&#8217;s so
+hit-or-miss. Some things are so well documented that I have literally been able
+to copy code out of the docs into my code and just change it a little. Actually,
+my roommate saw me do this at one point and accused me of plagiarism. But that
+is the subject of another post entitled &#8220;Why You Shouldn&#8217;t Take Coding Advice
+From Psychology Majors&#8221;.</p>
+
+<p>But really, I think the #1 best thing you can do when releasing a platform or
+public API of any sort is include tons of samples, inline with the
+documentation. The real winners when it comes to doing this are the
+<a href="http://us.php.net/manual/en/function.levenshtein.php">PHP documentation</a> and the
+<a href="http://msdn.microsoft.com/en-us/library/hs600312.aspx">MSDN .NET Framework documentation</a>.
+Almost every single class and function in the docs for these platforms includes
+a sample of how to use the thing.</p>
+
+<p>Maybe it&#8217;s not a coincidence that PHP and .NET are so popular?</p>
+
+<p>It took me way too long to find out how to enable HTML5 Database API support for
+content displayed inside a WebView on an Android. The pieces were scattered all
+over the Intertubes, though I finally found the last piece of the puzzle on
+<a href="http://blogs.nitobi.com/joe/2009/11/05/how-to-implement-html5-storage-on-a-webview-with-android-2-0/">Joe Bowser&#8217;s blog</a>.
+Here&#8217;s the entire thing put together:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">WebSettings</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">myWebView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabaseEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">String</span> <span class="n">databasePath</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">().</span><span class="na">getDir</span><span class="o">(</span><span class="s">&quot;database&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">Context</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">).</span><span class="na">getPath</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabasePath</span><span class="o">(</span><span class="n">databasePath</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">myWebView</span><span class="o">.</span><span class="na">setWebChromeClient</span><span class="o">(</span><span class="k">new</span> <span class="n">WebChromeClient</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onExceededDatabaseQuota</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">databaseIdentifier</span><span class="o">,</span> <span class="kt">long</span> <span class="n">currentQuota</span><span class="o">,</span> <span class="kt">long</span> <span class="n">estimatedSize</span><span class="o">,</span>
+</span><span class='line'>        <span class="kt">long</span> <span class="n">totalUsedQuota</span><span class="o">,</span> <span class="n">WebStorage</span><span class="o">.</span><span class="na">QuotaUpdater</span> <span class="n">quotaUpdater</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">quotaUpdater</span><span class="o">.</span><span class="na">updateQuota</span><span class="o">(</span><span class="n">estimatedSize</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that the <code>onExceededDatabaseQuota</code> is mandatory. I am pretty sure the default
+quota is zero, so you need to override this method and provide a quota to allow
+storage. I&#8217;m using <code>estimatedSize * 2</code> as the new quota since my app is browsing
+to a known page that only stores a small amount of data. Your scenario may be
+different.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[One Song On Repeat]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/08/12/one-song-on-repeat/"/>
+    <updated>2010-08-12T21:26:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/08/12/one-song-on-repeat</id>
+    <content type="html"><![CDATA[<p>So I&#8217;ve been listening to this one song on repeat for pretty much the entire
+day:</p>
+
+<div>
+    <embed src="http://listen.grooveshark.com/songWidget.swf" type="application/x-shockwave-flash"
+        wmode="window" width="500" height="40" flashvars="hostname=cowbell.grooveshark.com&amp;widgetID=22158641&amp;style=metal&amp;p=0">
+    </embed>
+</div>
+
+
+<p>Let me explain a bit further. I barely know anyone today who doesn&#8217;t listen to
+music while working. But I&#8217;ve been reading the classic
+<em><a href="http://rrs.co/dxohFz">Peopleware</a></em> book, and
+apparently back in the &#8217;60s this was something that researchers at Cornell
+thought was worth looking into. They took a group of computer science students
+and split them into two groups.</p>
+
+<p>The first group went into a silent room, and the second group went into a room
+where they could listen to music using headphones. There was an equal
+distribution of students who said they liked to listen to music while working
+and those who didn&#8217;t.</p>
+
+<p>Everyone was then given the same coding problem. The challenge was to implement
+a program from a pretty complicated spec, using Fortran (hey, it was the &#8217;60s
+after all). Not surprisingly, there wasn&#8217;t much difference between what went on
+in the two rooms. Both groups of students were able to do the challenge at about
+the same speed and with the same skill. No big surprise, right?</p>
+
+<p>Except for this, from Peopleware (emphasis mine):</p>
+
+<blockquote><p>The Cornell experiment, however, contained a hidden wild card. The specification
+required that an output data stream be formed through a series of manipulations
+on numbers in the input data stream &#8230; Although the specification never said
+it, the <strong>net effect of all the operations was that each output number was
+necessarily equal to its input number</strong>. Some people realized this and others did
+not. Of those who figured it out, the overwhelming majority came from the quiet
+room.</p></blockquote>
+
+<p>Think about that for a second. Here are these two groups of students who are
+given what they think is a fairly mechanical task: look at this spec that tells
+you how these numbers should be manipulated, write some code that does the
+manipulations. And all of them were able to complete the mechanical,
+mathematical portion of this task at about the same speed.</p>
+
+<p>But inside the mechanical task was something that required a creative leap:
+figuring out that the output numbers of the program would be exactly the same as
+its input. Something like that might be obvious today with our fancy interactive
+debuggers, but you have to imagine it must have taken quite the leap to figure
+it out while stamping Fortran code into punch cards. This is the kind of leap
+that could save hours upon hours of work and tens of thousands of dollars.</p>
+
+<p>To make this creative leap, you almost invariably had to be in the quiet room.</p>
+
+<p>To the crack neurologist in me, it makes sense. Music is a creative activity,
+and listening to it probably engages the creative part of your brain. Everything
+seems fine when you are working, since most of what you are doing is
+mathematical, analytical, or mechanical. What you don&#8217;t realize is that your
+creative areas are too engaged with the music to be engaged with the problem at
+hand.</p>
+
+<p>Maybe that&#8217;s alright sometimes when you&#8217;re just powering through something
+you&#8217;ve done a million times, but how sustainable is that approach? Unless our
+basic neurology has changed since the 1960&#8217;s, it seems clear that to make the
+creative leaps in software design &#8211; and probably anything else &#8211; you have to
+turn the music off at some point.</p>
+
+<p>The thing that kills me about this is that I like music. It&#8217;s awesome. I love
+listening to music, and I do it almost exclusively when I work and no time else.
+I think I&#8217;ve developed the habit of sometimes listening to just one song on
+repeat as a type of defense strategy. The music gives you a rhythm and a beat to
+work to, but when it&#8217;s just the same song a million times over, you can start to
+tune it out. Maybe that lets the creative part of your brain re-engage with your
+work?</p>
+
+<p>Then again, maybe I have no idea what I&#8217;m talking about.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Disappointing Regex Challenge]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/08/12/disappointing-regex-challenge/"/>
+    <updated>2010-08-12T13:40:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/08/12/disappointing-regex-challenge</id>
+    <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/disappointing-regex-challenge.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[import teachPython]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/08/11/import-teachpython/"/>
+    <updated>2010-08-11T15:47:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/08/11/import-teachpython</id>
+    <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/import-teachPython.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Aaron's Hucklebear]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/07/27/aarons-hucklebear/"/>
+    <updated>2010-07-27T21:32:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/07/27/aarons-hucklebear</id>
+    <content type="html"><![CDATA[<p>Relaxing at the cabin in Idaho, Aaron has had some time to do some doodling.
+Here&#8217;s his take on Amy Winehouse&#8217;s song &#8220;Rehab&#8221;:</p>
+
+<p><img src="http://www.rohanradio.com/images/blog/aarons-hucklebear.jpg"></p>
+
+<p>Now that&#8217;s comedy. And of course, for reference, the song itself:</p>
+
+<p><a href="http://open.spotify.com/track/1EXAqr4fceDPYlL6XeMi2g">&#8220;Rehab&#8221; by Amy Winehouse on Spotify</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Now that is a sunset.]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset/"/>
+    <updated>2010-07-27T20:40:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset</id>
+    <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/priest-lake-sunset.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Laying on the boat...]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/07/26/laying-on-the-boat/"/>
+    <updated>2010-07-26T15:44:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/07/26/laying-on-the-boat</id>
+    <content type="html"><![CDATA[<p>Laying on the boat, reading a book drinking a beer. This is what it&#8217;s about.</p>
+
+<p><img src="http://www.rohanradio.com/images/blog/priest-lake.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ConfigurationProperty Code Snippet (C#)]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp/"/>
+    <updated>2010-07-21T16:52:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp</id>
+    <content type="html"><![CDATA[<p>If you&#8217;ve ever wanted to create a <a href="http://msdn.microsoft.com/en-us/library/2tw134k3.aspx">custom configuration section for a .NET
+app</a>,
+you know how tedious it is to type this out:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">namespace</span> <span class="nn">Samples.AspNet</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">class</span> <span class="nc">PageAppearanceSection</span> <span class="p">:</span> <span class="n">ConfigurationSection</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Create a &quot;remoteOnly&quot; attribute.</span>
+</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;remoteOnly&quot;, DefaultValue = &quot;false&quot;, IsRequired = false)]</span>
+</span><span class='line'>        <span class="k">public</span> <span class="n">Boolean</span> <span class="n">RemoteOnly</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">get</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">Boolean</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">];</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="k">set</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Create a &quot;font&quot; element.</span>
+</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;font&quot;)]</span>
+</span><span class='line'>        <span class="k">public</span> <span class="n">FontElement</span> <span class="n">Font</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">get</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">FontElement</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">];</span> <span class="p">}</span>
+</span><span class='line'>            <span class="k">set</span>
+</span><span class='line'>            <span class="p">{</span> <span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&#8217;s a much faster way to create normal properties. If you&#8217;ve ever <a href="http://www.onesoft.dk/post/The-prop-snippet-and-Visual-Studio-2008.aspx">used the
+prop code snippet to create a property</a>,
+you already know this. You can just type &#8220;prop&#8221; and hit tab to have an entir
+property filled out for you:</p>
+
+<p><img src="http://www.rohanradio.com/images/blog/prop-snippet.png"></p>
+
+<p>Faced with the daunting task of creating some custom configuration elements, I
+threw together a code snippet that lets you do the same for a
+configuration-backed property. I can now just type &#8220;propc&#8221; and hit tab to get
+this:</p>
+
+<p><img src="http://www.rohanradio.com/images/blog/config-prop-snippet.png"></p>
+
+<p>Then I just fill out the name and type and call it good. If you&#8217;d like to join
+in on the propc goodness here&#8217;s the source of the snippet file. Just download
+and save it as a <strong>.snippet</strong> file and import it through <strong>Tools</strong> |
+<strong>Code Snippets Manager</strong> in Visual Studio:</p>
+
+<div><script src='https://gist.github.com/1410807.js?file='></script>
+<noscript><pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;
+    &lt;CodeSnippet Format=&quot;1.0.0&quot;&gt;
+        &lt;Header&gt;
+            &lt;Shortcut&gt;propc&lt;/Shortcut&gt;
+            &lt;Title&gt;propc&lt;/Title&gt;
+            &lt;Author&gt;Rohan Singh&lt;/Author&gt;
+            &lt;Description&gt;
+                Code snippet for a configuration-backed property
+            &lt;/Description&gt;
+            &lt;SnippetTypes&gt;
+                &lt;SnippetType&gt;Expansion&lt;/SnippetType&gt;
+            &lt;/SnippetTypes&gt;
+        &lt;/Header&gt;
+        &lt;Snippet&gt;
+            &lt;Declarations&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;type&lt;/ID&gt;
+                    &lt;ToolTip&gt;Property type&lt;/ToolTip&gt;
+                    &lt;Default&gt;string&lt;/Default&gt;
+                &lt;/Literal&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;configurationProperty&lt;/ID&gt;
+                    &lt;ToolTip&gt;Configuration property name&lt;/ToolTip&gt;
+                    &lt;Default&gt;myProperty&lt;/Default&gt;
+                &lt;/Literal&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;isRequired&lt;/ID&gt;
+                    &lt;ToolTip&gt;Specifies whether the property is required&lt;/ToolTip&gt;
+                    &lt;Default&gt;true&lt;/Default&gt;
+                    &lt;Type&gt;System.Boolean&lt;/Type&gt;
+                &lt;/Literal&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;property&lt;/ID&gt;
+                    &lt;ToolTip&gt;Property name&lt;/ToolTip&gt;
+                    &lt;Default&gt;MyProperty&lt;/Default&gt;
+                &lt;/Literal&gt;
+                &lt;Literal Editable=&quot;false&quot;&gt;
+                    &lt;ID&gt;SystemConfigurationConfigurationProperty&lt;/ID&gt;
+                    &lt;Function&gt;SimpleTypeName(global::System.Configuration.ConfigurationProperty)&lt;/Function&gt;
+                &lt;/Literal&gt;
+            &lt;/Declarations&gt;
+            &lt;Code Language=&quot;CSharp&quot;&gt;&lt;![CDATA[[$SystemConfigurationConfigurationProperty$(&quot;$configurationProperty$&quot;, IsRequired = $isRequired$)]
+    public $type$ $property$
+    {
+        get
+        {
+            return ($type$)this[&quot;$configurationProperty$&quot;];
+        }
+        set
+        {
+            this[&quot;$configurationProperty$&quot;] = value;
+        }
+    }
+    $end$]]&gt;
+            &lt;/Code&gt;
+        &lt;/Snippet&gt;
+    &lt;/CodeSnippet&gt;
+&lt;/CodeSnippets&gt;</code></pre></noscript></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[This parking is very discriminatory.]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/07/20/this-parking-is-very-discriminatory/"/>
+    <updated>2010-07-20T11:54:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/07/20/this-parking-is-very-discriminatory</id>
+    <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/discriminatory-parking.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Browser Compatibility Testing]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/07/19/browser-compatibility-testing/"/>
+    <updated>2010-07-19T15:52:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/07/19/browser-compatibility-testing</id>
+    <content type="html"><![CDATA[<p>Got to make sure <a href="http://www.starbucks.com">our website</a> runs in
+everybody&#8217;s browser! My personal favorite:</p>
+
+<p><img src="http://www.rohanradio.com/images/blog/lynx.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jon Stewart Just Went Down A Few Points]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/07/18/jon-stewart-just-went-down-a-few-points/"/>
+    <updated>2010-07-18T14:32:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/07/18/jon-stewart-just-went-down-a-few-points</id>
+    <content type="html"><![CDATA[<p>Jon Stewart just went down a couple points in my book when I saw this clip:</p>
+
+<div>
+        <embed src="http://media.mtvnservices.com/mgid:cms:item:comedycentral.com:340734"
+            width="540" height="439" type="application/x-shockwave-flash"
+            allowFullScreen="true" allowScriptAccess="always" base="." flashVars="">
+        </embed>
+</div>
+
+
+<p>What he says in that clip is that, at their core, science and religion are very
+similar because he thinks they both require you to take things on faith. Jon
+says religion asks you to believe in a supernatural being that you can&#8217;t see,
+and that you should just believe he is there. Similarly, Jon thinks science asks
+you to believe that the universe is composed largely of a type of matter that
+you can&#8217;t see, and you should just believe it&#8217;s there.</p>
+
+<p>The difference, of course, is that dark matter can actually be measured even
+though you can&#8217;t see it. For example, you might not be able to see the bottom of
+a deep well, but you can measure it by dropping a rock down there. In the same
+way, dark matter can be measured through its gravitational influence on other
+matter.</p>
+
+<p>I&#8217;ve always thought of Jon as a very smart guy and continue to think that, but
+this was kind of painful to watch. Looks like
+<a href="http://www.huffingtonpost.com/2010/07/09/marilynne-robinson-on-jon_n_640577.html#comments">some other people agree as well</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rethinking The Gas Tax]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/04/22/rethinking-the-gas-tax/"/>
+    <updated>2010-04-22T14:17:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/04/22/rethinking-the-gas-tax</id>
+    <content type="html"><![CDATA[<p>Here&#8217;s my idea for the day: a variable gas tax based on local density and
+transit availability. This could help the state raise revenue and encourage
+people to park their cars where possible. But at the same time, it would make
+sure those who absolutely need to drive aren&#8217;t put in an impossible position.</p>
+
+<p>For an example, consider Seattle. Most of the city has medium-to-high density
+and transit is widely available. Residents can get to work and school using the
+bus, light rail, or bicycles. Walkable neighborhoods mean that you can stroll
+to your destination as well. If we can reduce the number of cars on the street
+while encouraging healthier, more sustainable lifestyles and helping the city
+build better neighborhoods, it makes sense for gas to cost as much as $5
+per gallon.</p>
+
+<p>A counterexample would be a town like Ellensburg, WA. Though it is
+technically a college town, density is low and mass transit is virtually
+nonexistent. This is a place you really couldn&#8217;t survive without a car.
+This is a place where you wouldn&#8217;t raise gas taxes, but also a place that
+would benefit from the increased gas tax revenues elsewhere.</p>
+
+<p>An additional feature would be to only apply this variable gas tax to
+individual consumers at that point of sale. It would not apply to small
+businesses or freight, so the price of food or other goods would not be
+affected.</p>
+
+<p>Just an idea I thought up on the ride home so there could be some major
+hole I&#8217;m missing. But I think it&#8217;s important to consider alternative tax
+structures that could help everyone.</p>
+
+<p>Thoughts?</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Optimism"
+date: 2011-07-25 17:03
+comments: true
+categories: 
+---
+
+Software engineers are some of the most optimistic people I know.
+
+Case in point:
+
+{% img /images/blog/clint-optimism.png %}

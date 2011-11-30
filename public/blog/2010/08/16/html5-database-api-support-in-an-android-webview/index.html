@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>HTML5 Database API Support in an Android WebView - rohan's soapbox</title>
+  <meta name="author" content="Rohan Singh">
+
+  
+  <meta name="description" content="Here are some facts: HTML5 has a Database API that lets you
+store things locally and retrieve them with SQL queries.
+Android lets you embed a WebView &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="rohan's soapbox" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17515286-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">rohan's soapbox</a></h1>
+  
+    <h2>I am Rohan Singh. I am a software developer.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.rohanradio.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/contact/">Contact</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://media.rohanradio.com/">Media</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">HTML5 Database API Support in an Android WebView</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-16T22:06:00-07:00" pubdate data-updated="true">Aug 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Here are some facts:</p>
+
+<ol>
+<li>HTML5 has a <a href="http://html5demos.com/database">Database API</a> that lets you
+store things locally and retrieve them with SQL queries.</li>
+<li>Android lets you embed a <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a>
+in your application to display web content.</li>
+<li>How to combine #1 and #2 is extremely poorly documented.</li>
+</ol>
+
+
+<p>One thing that kills me about the Android documentation is how it&#8217;s so
+hit-or-miss. Some things are so well documented that I have literally been able
+to copy code out of the docs into my code and just change it a little. Actually,
+my roommate saw me do this at one point and accused me of plagiarism. But that
+is the subject of another post entitled &#8220;Why You Shouldn&#8217;t Take Coding Advice
+From Psychology Majors&#8221;.</p>
+
+<p>But really, I think the #1 best thing you can do when releasing a platform or
+public API of any sort is include tons of samples, inline with the
+documentation. The real winners when it comes to doing this are the
+<a href="http://us.php.net/manual/en/function.levenshtein.php">PHP documentation</a> and the
+<a href="http://msdn.microsoft.com/en-us/library/hs600312.aspx">MSDN .NET Framework documentation</a>.
+Almost every single class and function in the docs for these platforms includes
+a sample of how to use the thing.</p>
+
+<p>Maybe it&#8217;s not a coincidence that PHP and .NET are so popular?</p>
+
+<p>It took me way too long to find out how to enable HTML5 Database API support for
+content displayed inside a WebView on an Android. The pieces were scattered all
+over the Intertubes, though I finally found the last piece of the puzzle on
+<a href="http://blogs.nitobi.com/joe/2009/11/05/how-to-implement-html5-storage-on-a-webview-with-android-2-0/">Joe Bowser&#8217;s blog</a>.
+Here&#8217;s the entire thing put together:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">WebSettings</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">myWebView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabaseEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">String</span> <span class="n">databasePath</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">().</span><span class="na">getDir</span><span class="o">(</span><span class="s">&quot;database&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">Context</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">).</span><span class="na">getPath</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabasePath</span><span class="o">(</span><span class="n">databasePath</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">myWebView</span><span class="o">.</span><span class="na">setWebChromeClient</span><span class="o">(</span><span class="k">new</span> <span class="n">WebChromeClient</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onExceededDatabaseQuota</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">databaseIdentifier</span><span class="o">,</span> <span class="kt">long</span> <span class="n">currentQuota</span><span class="o">,</span> <span class="kt">long</span> <span class="n">estimatedSize</span><span class="o">,</span>
+</span><span class='line'>        <span class="kt">long</span> <span class="n">totalUsedQuota</span><span class="o">,</span> <span class="n">WebStorage</span><span class="o">.</span><span class="na">QuotaUpdater</span> <span class="n">quotaUpdater</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">quotaUpdater</span><span class="o">.</span><span class="na">updateQuota</span><span class="o">(</span><span class="n">estimatedSize</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that the <code>onExceededDatabaseQuota</code> is mandatory. I am pretty sure the default
+quota is zero, so you need to override this method and provide a quota to allow
+storage. I&#8217;m using <code>estimatedSize * 2</code> as the new quota since my app is browsing
+to a known page that only stores a small amount of data. Your scenario may be
+different.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rohan Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-16T22:06:00-07:00" pubdate data-updated="true">Aug 16<span>th</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/" data-via="rohansingh" data-counturl="http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/08/12/one-song-on-repeat/" title="Previous Post: One Song On Repeat">&laquo; One Song On Repeat</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions/" title="next Post: 4 Simple Rules for Catching .NET Exceptions">4 Simple Rules for Catching .NET Exceptions &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/07/25/optimism/">Optimism</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/24/dont-break-the-back-button/">Don't Break the Back Button</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/">Getting ASP.NET to play nice with Opera &amp; wget</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/03/24/i-dont-even-know-where-to-start-with-this-torta/">I don't even know where to start with this torta.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/03/02/outlier-is-pretty-awesome/">Outlier is pretty awesome</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("rohansingh", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/rohansingh" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @rohansingh</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2011 - Rohan Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'rohanradio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/';
+        var disqus_url = 'http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
