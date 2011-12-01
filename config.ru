@@ -6,6 +6,10 @@ $root = ::File.dirname(__FILE__)
 
 class SinatraStaticServer < Sinatra::Base  
 
+  before do
+    redirect request.url.sub(/rohanradio\.com/, 'www.rohanradio.com'), 301 if request.host =~ /^rohanradio.com/
+  end
+
   get '/optimism' do
     redirect '/blog/2011/07/25/optimism/', 301
   end
