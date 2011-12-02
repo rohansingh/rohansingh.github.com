@@ -9,7 +9,10 @@
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="Software engineers are some of the most optimistic people I know. Case in point: ">
+  <meta name="description" content="pgmagick is a Python wrapper for
+for ImageMagick (or
+GraphicsMagick). I needed it for something I was
+trying to run yesterday, but the instructions &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +82,75 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing Pgmagick on OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T08:18:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://pypi.python.org/pypi/pgmagick/">pgmagick</a> is a Python wrapper for
+for <a href="http://imagemagick.org/">ImageMagick</a> (or
+<a href="http://graphicsmagick.org/">GraphicsMagick</a>). I needed it for something I was
+trying to run yesterday, but the instructions for OS X seem to have gotten lost
+in the depths of the Internet.</p>
+
+<p>I&#8217;m assuming you have a working <a href="http://mxcl.github.com/homebrew/">Homebrew</a>,
+Python, and <a href="http://pypi.python.org/pypi/pip"><code>pip</code></a>. You&#8217;ll also need
+<a href="https://github.com/rohansingh/homebrew/blob/master/Library/Formula/boost.rb">my Homebrew formula for Boost</a>.</p>
+
+<p>Once you&#8217;ve got that, it&#8217;s pretty straightforward:</p>
+
+<pre><code>$ brew install imagemagick --with-magick-plus-plus
+$ brew install boost --with-thread-unsafe
+$ pip install pgmagick
+</code></pre>
+
+<p>Try it out and it should work:</p>
+
+<pre><code>$ python
+Python 2.7.2 (default, Oct 20 2011, 17:33:50) 
+[GCC 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.1.00)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import pgmagick
+&gt;&gt;&gt; pgmagick.gminfo.library + ' ' + pgmagick.gminfo.version
+'ImageMagick 6.x.x'
+</code></pre>
+
+<p>For extra credit, you should also be able to install the
+<a href="http://www.pythonware.com/products/pil/">Python Imaging Library (PIL)</a>
+as well:</p>
+
+<pre><code>$ pip install -f http://effbot.org/downloads Imaging==1.1.7
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -802,116 +874,6 @@ different.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/12/one-song-on-repeat/">One Song on Repeat</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-12T21:26:00-07:00" pubdate data-updated="true">Aug 12<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So I&#8217;ve been listening to this one song on repeat for pretty much the entire
-day:</p>
-
-<div>
-    <embed src="http://listen.grooveshark.com/songWidget.swf" type="application/x-shockwave-flash"
-        wmode="window" width="500" height="40" flashvars="hostname=cowbell.grooveshark.com&amp;widgetID=22158641&amp;style=metal&amp;p=0">
-    </embed>
-</div>
-
-
-<p>Let me explain a bit further. I barely know anyone today who doesn&#8217;t listen to
-music while working. But I&#8217;ve been reading the classic
-<em><a href="http://rrs.co/dxohFz">Peopleware</a></em> book, and
-apparently back in the &#8217;60s this was something that researchers at Cornell
-thought was worth looking into. They took a group of computer science students
-and split them into two groups.</p>
-
-<p>The first group went into a silent room, and the second group went into a room
-where they could listen to music using headphones. There was an equal
-distribution of students who said they liked to listen to music while working
-and those who didn&#8217;t.</p>
-
-<p>Everyone was then given the same coding problem. The challenge was to implement
-a program from a pretty complicated spec, using Fortran (hey, it was the &#8217;60s
-after all). Not surprisingly, there wasn&#8217;t much difference between what went on
-in the two rooms. Both groups of students were able to do the challenge at about
-the same speed and with the same skill. No big surprise, right?</p>
-
-<p>Except for this, from Peopleware (emphasis mine):</p>
-
-<blockquote><p>The Cornell experiment, however, contained a hidden wild card. The specification
-required that an output data stream be formed through a series of manipulations
-on numbers in the input data stream &#8230; Although the specification never said
-it, the <strong>net effect of all the operations was that each output number was
-necessarily equal to its input number</strong>. Some people realized this and others did
-not. Of those who figured it out, the overwhelming majority came from the quiet
-room.</p></blockquote>
-
-<p>Think about that for a second. Here are these two groups of students who are
-given what they think is a fairly mechanical task: look at this spec that tells
-you how these numbers should be manipulated, write some code that does the
-manipulations. And all of them were able to complete the mechanical,
-mathematical portion of this task at about the same speed.</p>
-
-<p>But inside the mechanical task was something that required a creative leap:
-figuring out that the output numbers of the program would be exactly the same as
-its input. Something like that might be obvious today with our fancy interactive
-debuggers, but you have to imagine it must have taken quite the leap to figure
-it out while stamping Fortran code into punch cards. This is the kind of leap
-that could save hours upon hours of work and tens of thousands of dollars.</p>
-
-<p>To make this creative leap, you almost invariably had to be in the quiet room.</p>
-
-<p>To the crack neurologist in me, it makes sense. Music is a creative activity,
-and listening to it probably engages the creative part of your brain. Everything
-seems fine when you are working, since most of what you are doing is
-mathematical, analytical, or mechanical. What you don&#8217;t realize is that your
-creative areas are too engaged with the music to be engaged with the problem at
-hand.</p>
-
-<p>Maybe that&#8217;s alright sometimes when you&#8217;re just powering through something
-you&#8217;ve done a million times, but how sustainable is that approach? Unless our
-basic neurology has changed since the 1960&#8217;s, it seems clear that to make the
-creative leaps in software design &#8211; and probably anything else &#8211; you have to
-turn the music off at some point.</p>
-
-<p>The thing that kills me about this is that I like music. It&#8217;s awesome. I love
-listening to music, and I do it almost exclusively when I work and no time else.
-I think I&#8217;ve developed the habit of sometimes listening to just one song on
-repeat as a type of defense strategy. The music gives you a rhythm and a beat to
-work to, but when it&#8217;s just the same song a million times over, you can start to
-tune it out. Maybe that lets the creative part of your brain re-engage with your
-work?</p>
-
-<p>Then again, maybe I have no idea what I&#8217;m talking about.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -927,6 +889,10 @@ work?</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing pgmagick on OS X</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/07/25/optimism/">Optimism</a>
       </li>
     
@@ -940,10 +906,6 @@ work?</p>
     
       <li class="post">
         <a href="/blog/2011/03/24/i-dont-even-know-where-to-start-with-this-torta/">I don&#8217;t even know where to start with this torta.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/03/02/outlier-is-pretty-awesome/">Outlier is pretty awesome</a>
       </li>
     
   </ul>

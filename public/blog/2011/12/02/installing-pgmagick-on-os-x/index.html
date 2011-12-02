@@ -5,12 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Rethinking The Gas Tax - rohan's soapbox</title>
+  <title>Installing pgmagick on OS X - rohan's soapbox</title>
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="Here&#8217;s my idea for the day: a variable gas tax based on local density and
-transit availability. This could help the state raise revenue and &hellip;">
+  <meta name="description" content="pgmagick is a Python wrapper for
+for ImageMagick (or
+GraphicsMagick). I needed it for something I was
+trying to run yesterday, but the instructions &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +21,7 @@ transit availability. This could help the state raise revenue and &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.rohanradio.com/blog/2010/04/22/rethinking-the-gas-tax">
+  <link rel="canonical" href="http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -83,7 +85,7 @@ transit availability. This could help the state raise revenue and &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Rethinking the Gas Tax</h1>
+      <h1 class="entry-title">Installing Pgmagick on OS X</h1>
     
     
       <p class="meta">
@@ -99,42 +101,47 @@ transit availability. This could help the state raise revenue and &hellip;">
   
 
 
-<time datetime="2010-04-22T14:17:00-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2010</time>
+<time datetime="2011-12-02T08:18:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Here&#8217;s my idea for the day: a variable gas tax based on local density and
-transit availability. This could help the state raise revenue and encourage
-people to park their cars where possible. But at the same time, it would make
-sure those who absolutely need to drive aren&#8217;t put in an impossible position.</p>
+<div class="entry-content"><p><a href="http://pypi.python.org/pypi/pgmagick/">pgmagick</a> is a Python wrapper for
+for <a href="http://imagemagick.org/">ImageMagick</a> (or
+<a href="http://graphicsmagick.org/">GraphicsMagick</a>). I needed it for something I was
+trying to run yesterday, but the instructions for OS X seem to have gotten lost
+in the depths of the Internet.</p>
 
-<p>For an example, consider Seattle. Most of the city has medium-to-high density
-and transit is widely available. Residents can get to work and school using the
-bus, light rail, or bicycles. Walkable neighborhoods mean that you can stroll
-to your destination as well. If we can reduce the number of cars on the street
-while encouraging healthier, more sustainable lifestyles and helping the city
-build better neighborhoods, it makes sense for gas to cost as much as $5
-per gallon.</p>
+<p>I&#8217;m assuming you have a working <a href="http://mxcl.github.com/homebrew/">Homebrew</a>,
+Python, and <a href="http://pypi.python.org/pypi/pip"><code>pip</code></a>. You&#8217;ll also need
+<a href="https://github.com/rohansingh/homebrew/blob/master/Library/Formula/boost.rb">my Homebrew formula for Boost</a>.</p>
 
-<p>A counterexample would be a town like Ellensburg, WA. Though it is
-technically a college town, density is low and mass transit is virtually
-nonexistent. This is a place you really couldn&#8217;t survive without a car.
-This is a place where you wouldn&#8217;t raise gas taxes, but also a place that
-would benefit from the increased gas tax revenues elsewhere.</p>
+<p>Once you&#8217;ve got that, it&#8217;s pretty straightforward:</p>
 
-<p>An additional feature would be to only apply this variable gas tax to
-individual consumers at that point of sale. It would not apply to small
-businesses or freight, so the price of food or other goods would not be
-affected.</p>
+<pre><code>$ brew install imagemagick --with-magick-plus-plus
+$ brew install boost --with-thread-unsafe
+$ pip install pgmagick
+</code></pre>
 
-<p>Just an idea I thought up on the ride home so there could be some major
-hole I&#8217;m missing. But I think it&#8217;s important to consider alternative tax
-structures that could help everyone.</p>
+<p>Try it out and it should work:</p>
 
-<p>Thoughts?</p>
+<pre><code>$ python
+Python 2.7.2 (default, Oct 20 2011, 17:33:50) 
+[GCC 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.1.00)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import pgmagick
+&gt;&gt;&gt; pgmagick.gminfo.library + ' ' + pgmagick.gminfo.version
+'ImageMagick 6.x.x'
+</code></pre>
+
+<p>For extra credit, you should also be able to install the
+<a href="http://www.pythonware.com/products/pil/">Python Imaging Library (PIL)</a>
+as well:</p>
+
+<pre><code>$ pip install -f http://effbot.org/downloads Imaging==1.1.7
+</code></pre>
 </div>
 
 
@@ -157,7 +164,7 @@ structures that could help everyone.</p>
   
 
 
-<time datetime="2010-04-22T14:17:00-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2010</time>
+<time datetime="2011-12-02T08:18:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
       
 
 
@@ -165,7 +172,7 @@ structures that could help everyone.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.rohanradio.com/blog/2010/04/22/rethinking-the-gas-tax/" data-via="rohansingh" data-counturl="http://www.rohanradio.com/blog/2010/04/22/rethinking-the-gas-tax/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x/" data-via="rohansingh" data-counturl="http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x/" >Tweet</a>
   
   
   
@@ -176,10 +183,8 @@ structures that could help everyone.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/01/07/oops/" title="Previous Post: Oops">&laquo; Oops</a>
+        <a class="basic-alignment left" href="/blog/2011/07/25/optimism/" title="Previous Post: Optimism">&laquo; Optimism</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2010/07/18/jon-stewart-just-went-down-a-few-points/" title="next Post: Jon Stewart Just Went Down A Few Points">Jon Stewart Just Went Down A Few Points &raquo;</a>
       
     </p>
   </footer>
@@ -262,8 +267,8 @@ structures that could help everyone.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.rohanradio.com/blog/2010/04/22/rethinking-the-gas-tax/';
-        var disqus_url = 'http://www.rohanradio.com/blog/2010/04/22/rethinking-the-gas-tax/';
+        var disqus_identifier = 'http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x/';
+        var disqus_url = 'http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x/';
         var disqus_script = 'embed.js';
       
     (function () {
