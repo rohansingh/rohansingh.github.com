@@ -39,4 +39,5 @@ as well:
 
     $ pip install -f http://effbot.org/downloads Imaging==1.1.7
 
-This all worked for me OS X 10.7 (Lion). Your mileage may vary on other versions.
+This all worked for me on OS X 10.7 (Lion). Your mileage may vary on other
+versions.
