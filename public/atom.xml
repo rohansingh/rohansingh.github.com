@@ -4,7 +4,7 @@
   <title><![CDATA[rohan's soapbox]]></title>
   <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2011-12-02T08:33:06-08:00</updated>
+  <updated>2011-12-02T08:39:19-08:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -35,7 +35,8 @@ $ brew install boost --with-thread-unsafe
 $ pip install pgmagick
 </code></pre>
 
-<p>Try it out and it should work:</p>
+<p>Building Boost takes a long time so don&#8217;t fret if you don&#8217;t see anything for a
+while. Try it out and it should work:</p>
 
 <pre><code>$ python
 Python 2.7.2 (default, Oct 20 2011, 17:33:50) 
