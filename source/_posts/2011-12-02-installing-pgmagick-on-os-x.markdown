@@ -22,7 +22,8 @@ Once you've got that, it's pretty straightforward:
     $ brew install boost --with-thread-unsafe
     $ pip install pgmagick
 
-Try it out and it should work:
+Building Boost takes a long time so don't fret if you don't see anything for a
+while. Try it out and it should work:
 
     $ python
     Python 2.7.2 (default, Oct 20 2011, 17:33:50) 
