@@ -4,6 +4,8 @@ title: "4 Simple Rules for Catching .NET Exceptions"
 date: 2010-09-13 16:58
 comments: true
 categories: 
+- Code
+- .NET
 ---
 
 What follows has probably been expounded a thousand times in different places.

@@ -4,6 +4,8 @@ title: "Don't Break the Back Button"
 date: 2011-06-24 21:42
 comments: true
 categories: 
+- Usability
+- Android
 ---
 
 Recently, I've worked on/with or used a few Android applications that "disable"

@@ -4,6 +4,7 @@ title: "Outlier is pretty awesome"
 date: 2011-03-02 10:36
 comments: true
 categories: 
+- Bikes
 ---
 
 {% blockquote Outlier http://outlier.cc %}

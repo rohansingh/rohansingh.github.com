@@ -4,6 +4,8 @@ title: "Getting ASP.NET to play nice with Opera &amp; wget"
 date: 2011-03-28 15:43
 comments: true
 categories: 
+- Code
+- ASP.NET
 ---
 
 A few weeks ago we noticed an issue with some crawlers and search engines being

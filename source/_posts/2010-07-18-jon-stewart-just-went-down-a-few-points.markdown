@@ -4,6 +4,7 @@ title: "Jon Stewart Just Went Down A Few Points"
 date: 2010-07-18 14:32
 comments: true
 categories: 
+- Thinking
 ---
 
 Jon Stewart just went down a couple points in my book when I saw this clip:

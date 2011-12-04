@@ -4,6 +4,7 @@ title: "Aaron's Hucklebear"
 date: 2010-07-27 21:32
 comments: true
 categories: 
+- Photos
 ---
 
 Relaxing at the cabin in Idaho, Aaron has had some time to do some doodling.

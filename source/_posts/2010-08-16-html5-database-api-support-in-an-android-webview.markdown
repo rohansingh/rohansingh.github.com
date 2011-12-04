@@ -4,6 +4,9 @@ title: "HTML5 Database API Support in an Android WebView"
 date: 2010-08-16 22:06
 comments: true
 categories: 
+- Code
+- Android
+- HTML5
 ---
 
 Here are some facts:

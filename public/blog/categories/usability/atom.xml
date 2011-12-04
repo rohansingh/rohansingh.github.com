@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Usability | rohan's soapbox]]></title>
+  <link href="http://www.rohanradio.com/blog/categories/usability/atom.xml" rel="self"/>
+  <link href="http://www.rohanradio.com/"/>
+  <updated>2011-12-04T14:36:46-08:00</updated>
+  <id>http://www.rohanradio.com/</id>
+  <author>
+    <name><![CDATA[Rohan Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Don't Break the Back Button]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button/"/>
+    <updated>2011-06-24T21:42:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button</id>
+    <content type="html"><![CDATA[<p>Recently, I've worked on/with or used a few Android applications that "disable"
+the back button in some cases.</p>
+
+<p>If you haven't used Android, the back button is a prominent feature. Nearly
+every Android device has a hardware back button. The system maintains a stack of
+all the activities the user has navigated to, and when the user presses the back
+button, <a href="http://developer.android.com/guide/practices/ui_guidelines/activity_task_design.html#taking_over_back_key">it takes the user to the previous activity</a>.</p>
+
+<p>This works both inside individual apps and also across process boundaries. For
+example, when I'm reading an email and push the back button, I end up back at my
+inbox. If I push the back button again, I'll end up at whatever app I was in
+before I opened Gmail.</p>
+
+<p>This functionality is all provided by the OS, so all you have to do to get it
+right is to not break anything.</p>
+
+<p>Nonetheless, many developers have taken it upon themselves to intercept the back
+button and swallow it. Here's what this is like when you intercept the back
+button on the web:</p>
+
+<p><img src="/images/blog/broken-back-button.png"></p>
+
+<p>In other words, it's completely obnoxious and unacceptable. Unfortunately, it
+seems that which we know to be obviously true in web development, is quickly
+forgotten when it comes to a mobile device.</p>
+
+<p>I remember reading about
+<a href="http://www.mendeley.com/research/portable-eyetracking-a-study-of-natural-eye-movements/">a study at the Rochester Institute of
+Technology</a>
+a few years ago, wherein researchers mounted eye-tracking devices on subjects
+who were washing their hands. A very simple task: washing your hands.</p>
+
+<p>What the study found was a new type of eye movement, the "planful" movement. In
+short, before interacting with any object, we build a model of that interaction
+in our minds and look at the object, without being consciously aware that we are
+doing so. For example, your eyes and your brain are glancing at and scouting out
+the paper towel dispenser while you are still rinsing your hands.</p>
+
+<p>The same concept that applies to navigating your bathroom sink applies to
+navigating a mobile operating system. Your app may only be displaying one
+specific activity on the screen, but you can be sure that the user has
+constructed a mental model of how they are going to navigate through your app,
+through their device, to accomplish whatever they need to accomplish today.</p>
+
+<p>Most of the time, these mental models aren't fully conscious or completely
+articulated. Ask someone how they would get from Angry Birds to Gmail, and
+you'll hear something along the lines of, "I'll save and back out of the game
+and then open up Gmail." Their mental machinery has abstracted away the minutiae
+of what they would specifically push or click on.</p>
+
+<p>Instead, users just rely on their intuitive experience of how to navigate a
+system. That intuitive experience makes certain assumptions regarding how this
+virtual world is structured. These assumptions are often as strong as your
+assumptions regarding the physical world — up is up, down is down, and if you
+retrace the way you came, you'll always end up where you started.</p>
+
+<p>When you break these unconscious and conscious assumptions regarding how things
+work, you are basically giving your users a <a href="http://xkcd.com/371/">mental segfault</a>:</p>
+
+<p><img src="http://imgs.xkcd.com/comics/compiler_complaint.png" title="'XKCD comic #371'" ></p>
+
+<p>Don't break the back button.</p>
+]]></content>
+  </entry>
+  
+</feed>

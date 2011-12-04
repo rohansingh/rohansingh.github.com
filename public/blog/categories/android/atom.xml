@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | rohan's soapbox]]></title>
+  <link href="http://www.rohanradio.com/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://www.rohanradio.com/"/>
+  <updated>2011-12-04T14:36:46-08:00</updated>
+  <id>http://www.rohanradio.com/</id>
+  <author>
+    <name><![CDATA[Rohan Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Don't Break the Back Button]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button/"/>
+    <updated>2011-06-24T21:42:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button</id>
+    <content type="html"><![CDATA[<p>Recently, I've worked on/with or used a few Android applications that "disable"
+the back button in some cases.</p>
+
+<p>If you haven't used Android, the back button is a prominent feature. Nearly
+every Android device has a hardware back button. The system maintains a stack of
+all the activities the user has navigated to, and when the user presses the back
+button, <a href="http://developer.android.com/guide/practices/ui_guidelines/activity_task_design.html#taking_over_back_key">it takes the user to the previous activity</a>.</p>
+
+<p>This works both inside individual apps and also across process boundaries. For
+example, when I'm reading an email and push the back button, I end up back at my
+inbox. If I push the back button again, I'll end up at whatever app I was in
+before I opened Gmail.</p>
+
+<p>This functionality is all provided by the OS, so all you have to do to get it
+right is to not break anything.</p>
+
+<p>Nonetheless, many developers have taken it upon themselves to intercept the back
+button and swallow it. Here's what this is like when you intercept the back
+button on the web:</p>
+
+<p><img src="/images/blog/broken-back-button.png"></p>
+
+<p>In other words, it's completely obnoxious and unacceptable. Unfortunately, it
+seems that which we know to be obviously true in web development, is quickly
+forgotten when it comes to a mobile device.</p>
+
+<p>I remember reading about
+<a href="http://www.mendeley.com/research/portable-eyetracking-a-study-of-natural-eye-movements/">a study at the Rochester Institute of
+Technology</a>
+a few years ago, wherein researchers mounted eye-tracking devices on subjects
+who were washing their hands. A very simple task: washing your hands.</p>
+
+<p>What the study found was a new type of eye movement, the "planful" movement. In
+short, before interacting with any object, we build a model of that interaction
+in our minds and look at the object, without being consciously aware that we are
+doing so. For example, your eyes and your brain are glancing at and scouting out
+the paper towel dispenser while you are still rinsing your hands.</p>
+
+<p>The same concept that applies to navigating your bathroom sink applies to
+navigating a mobile operating system. Your app may only be displaying one
+specific activity on the screen, but you can be sure that the user has
+constructed a mental model of how they are going to navigate through your app,
+through their device, to accomplish whatever they need to accomplish today.</p>
+
+<p>Most of the time, these mental models aren't fully conscious or completely
+articulated. Ask someone how they would get from Angry Birds to Gmail, and
+you'll hear something along the lines of, "I'll save and back out of the game
+and then open up Gmail." Their mental machinery has abstracted away the minutiae
+of what they would specifically push or click on.</p>
+
+<p>Instead, users just rely on their intuitive experience of how to navigate a
+system. That intuitive experience makes certain assumptions regarding how this
+virtual world is structured. These assumptions are often as strong as your
+assumptions regarding the physical world — up is up, down is down, and if you
+retrace the way you came, you'll always end up where you started.</p>
+
+<p>When you break these unconscious and conscious assumptions regarding how things
+work, you are basically giving your users a <a href="http://xkcd.com/371/">mental segfault</a>:</p>
+
+<p><img src="http://imgs.xkcd.com/comics/compiler_complaint.png" title="'XKCD comic #371'" ></p>
+
+<p>Don't break the back button.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 Database API Support in an Android WebView]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/"/>
+    <updated>2010-08-16T22:06:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview</id>
+    <content type="html"><![CDATA[<p>Here are some facts:</p>
+
+<ol>
+<li>HTML5 has a <a href="http://html5demos.com/database">Database API</a> that lets you
+store things locally and retrieve them with SQL queries.</li>
+<li>Android lets you embed a <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a>
+in your application to display web content.</li>
+<li>How to combine #1 and #2 is extremely poorly documented.</li>
+</ol>
+
+
+<p>One thing that kills me about the Android documentation is how it's so
+hit-or-miss. Some things are so well documented that I have literally been able
+to copy code out of the docs into my code and just change it a little. Actually,
+my roommate saw me do this at one point and accused me of plagiarism. But that
+is the subject of another post entitled "Why You Shouldn't Take Coding Advice
+From Psychology Majors".</p>
+
+<p>But really, I think the #1 best thing you can do when releasing a platform or
+public API of any sort is include tons of samples, inline with the
+documentation. The real winners when it comes to doing this are the
+<a href="http://us.php.net/manual/en/function.levenshtein.php">PHP documentation</a> and the
+<a href="http://msdn.microsoft.com/en-us/library/hs600312.aspx">MSDN .NET Framework documentation</a>.
+Almost every single class and function in the docs for these platforms includes
+a sample of how to use the thing.</p>
+
+<p>Maybe it's not a coincidence that PHP and .NET are so popular?</p>
+
+<p>It took me way too long to find out how to enable HTML5 Database API support for
+content displayed inside a WebView on an Android. The pieces were scattered all
+over the Intertubes, though I finally found the last piece of the puzzle on
+<a href="http://blogs.nitobi.com/joe/2009/11/05/how-to-implement-html5-storage-on-a-webview-with-android-2-0/">Joe Bowser's blog</a>.
+Here's the entire thing put together:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">WebSettings</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">myWebView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabaseEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">String</span> <span class="n">databasePath</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">().</span><span class="na">getDir</span><span class="o">(</span><span class="s">&quot;database&quot;</span><span class="o">,&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">Context</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">).</span><span class="na">getPath</span><span class="o">();</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">settings</span><span class="o">.</span><span class="na">setDatabasePath</span><span class="o">(</span><span class="n">databasePath</span><span class="o">);&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">myWebView</span><span class="o">.</span><span class="na">setWebChromeClient</span><span class="o">(</span><span class="k">new</span> <span class="n">WebChromeClient</span><span class="o">()</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onExceededDatabaseQuota</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">databaseIdentifier</span><span class="o">,</span> <span class="kt">long</span> <span class="n">currentQuota</span><span class="o">,</span> <span class="kt">long</span> <span class="n">estimatedSize</span><span class="o">,</span>
+</span><span class='line'>    <span class="kt">long</span> <span class="n">totalUsedQuota</span><span class="o">,</span> <span class="n">WebStorage</span><span class="o">.</span><span class="na">QuotaUpdater</span> <span class="n">quotaUpdater</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">quotaUpdater</span><span class="o">.</span><span class="na">updateQuota</span><span class="o">(</span><span class="n">estimatedSize</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Note that the <code>onExceededDatabaseQuota</code> is mandatory. I am pretty sure the default
+quota is zero, so you need to override this method and provide a quota to allow
+storage. I'm using <code>estimatedSize * 2</code> as the new quota since my app is browsing
+to a known page that only stores a small amount of data. Your scenario may be
+different.</p>
+]]></content>
+  </entry>
+  
+</feed>

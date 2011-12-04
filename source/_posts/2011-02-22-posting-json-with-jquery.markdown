@@ -4,6 +4,9 @@ title: "Posting JSON with jQuery"
 date: 2011-02-22 22:23
 comments: true
 categories: 
+- Code
+- jQuery
+- JavaScript
 ---
 
 Lately, I've been a big fan of JSON via HTTP POST to send data to a Web service.

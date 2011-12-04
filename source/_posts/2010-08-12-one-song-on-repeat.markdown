@@ -4,6 +4,8 @@ title: "One Song On Repeat"
 date: 2010-08-12 21:26
 comments: true
 categories: 
+- Thinking
+- Work
 ---
 
 So I've been listening to this one song on repeat for pretty much the entire

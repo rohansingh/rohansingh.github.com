@@ -4,6 +4,8 @@ title: "Installing pgmagick on OS X"
 date: 2011-12-02 08:18
 comments: true
 categories: 
+- Python
+- OS X
 ---
 
 [pgmagick](http://pypi.python.org/pypi/pgmagick/) is a Python wrapper for

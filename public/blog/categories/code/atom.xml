@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Code | rohan's soapbox]]></title>
+  <link href="http://www.rohanradio.com/blog/categories/code/atom.xml" rel="self"/>
+  <link href="http://www.rohanradio.com/"/>
+  <updated>2011-12-04T14:36:46-08:00</updated>
+  <id>http://www.rohanradio.com/</id>
+  <author>
+    <name><![CDATA[Rohan Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Getting ASP.NET to play nice with Opera &amp; wget]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/"/>
+    <updated>2011-03-28T15:43:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget</id>
+    <content type="html"><![CDATA[<p>A few weeks ago we noticed an issue with some crawlers and search engines being
+unable to crawl <a href="http://www.starbucks.com">Starbucks.com</a>. Around the same time,
+<a href="http://my.opera.com/karlcow/">Karl Dubost</a> from Opera discovered that
+<a href="http://my.opera.com/karlcow/blog/2011/03/03/wrong-to-be-right-with-xhtml">visitors using Opera were getting a parse error</a>.
+In fact, a number of high-profile ASP.NET sites seem to be impacted by the latter issue.</p>
+
+<p>If you're just looking for the quick fix, skip ahead to the bottom of this post.</p>
+
+<p>To sum up the issue, our server was responding with a <code>Content-Type</code> header of
+<code>application/xhtml+xml</code> to both Opera and <code>wget</code>. In Opera, this triggers an XML
+parser, which would fail since our content is actually <code>text/html</code>.</p>
+
+<p>Of course, nowhere in our code were explicitly setting the <code>Content-Type</code> header
+to anything other than <code>text/html</code>, so the behavior was puzzling. Additionally,
+the server was responding with an <code>application/xhtml+xml</code> type even when the
+Accept header from the browser specified <code>*/*</code>. This made no sense at all, since
+if the browser was willing to accept anything, we should be sending the content
+in its default <code>text/html</code>.</p>
+
+<h2>ASP.NET Browser Detection</h2>
+
+<p>As it turns out, ASP.NET has a somewhat questionable
+<a href="http://msdn.microsoft.com/en-us/library/3yekbd5b.aspx">feature that allows you detect browser types and capabilities</a>,
+largely based on the browser's request headers. This is mediated through a
+<a href="http://msdn.microsoft.com/en-us/library/ms228122.aspx">browser definition file</a>
+(*.browser), which is just a bunch of XML that matches up request header
+patterns to browser types and know capabilities. This file lives in your
+ASP.NET applicaiton's App_Browsers folder.</p>
+
+<p>The known capabilities for the current user agent are all available through the
+<code>HttpContext.Request.Browser</code> object.</p>
+
+<p>As I said, all very questionable. The idea of having a giant database of
+browsers and what they are like just rubs me wrong and strikes me as
+unmaintainable. In fact, we only tried out the whole browser definition file as
+part of a proof-of-concept for some mobile pages. The feature never quite worked
+correctly, so we abandoned it and thought that was the end of that.</p>
+
+<h2>The insidious preferredRenderingMime</h2>
+
+<p>Of course, that wasn't the end of that. For each browser definition in a browser
+definition file, you can define a <code>preferredRenderingMime</code> value for a browser.
+For example:</p>
+
+<pre><code>&lt;capabilities&gt;
+  &lt;capability name="preferredRenderingMime" value="application/xhtml+xml" /&gt;
+&lt;/capabilities&gt;
+</code></pre>
+
+<p>Most of the larger *.browser file compilations floating around the Web have
+Opera set to preferring a MIME type of <code>application/xhtml+xml</code>. A lot of files
+will default to a preferred type of <code>application/xhtml+xml</code> for all browsers that
+pass an Accept: <em>/</em> request header.</p>
+
+<p>And even though we use ASP.NET MVC and no longer are using any of the browser
+detection stuff at all, the System.Web.UI.Page class has this fun code that runs
+when the page is processed:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">SetIntrinsics</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">allowAsync</span><span class="p">)</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;...</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">HttpCapabilitiesBase</span> <span class="n">browser</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">_request</span><span class="p">.</span><span class="n">Browser</span><span class="p">;</span>
+</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="n">_response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">PreferredRenderingMime</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Brilliant, right? Since Opera prefers XHTML, this code does you the favor of
+automatically setting your response content type to <code>application/xhtml+xml</code>. Of
+course, since your actual content is still HTML, this causes an XML parse error
+and all your Opera visitors are hosed.</p>
+
+<p>This might make sense if you are doing the classic ASP.NET Web Forms thing with
+server controls that adapt their rendering based on the browser's preferred
+MIME. But even if you are using ASP.NET MVC, your .aspx views are still
+essentially pages, and this old code will still run.</p>
+
+<h2>Broken <code>wget</code></h2>
+
+<p>Unfortunately, this <code>SetIntrinsics</code> code has another nasty side effect. If your
+application has already sent out response headers or content, it will just throw
+an exception since <code>Response.ContentType</code> can't be set after response headers have
+already been sent.</p>
+
+<p>In the case of Starbucks.com, this meant that issue wasn't just that Opera
+visitors experienced a parse error, but that an exception would be thrown for
+any browser for which ASP.NET tried to switch the <code>Response.ContentType</code>. This
+would result in absolutely no content being served, resulting in a blank page
+for Opera visitors.</p>
+
+<p>Furthermore, a large percentage of crawlers and search engines use <code>wget</code> to
+grab pages. <code>wget</code> sends an <code>Accept</code> header of <code>*/*</code>, and runs into the same
+no-content issue. A fine mess all around.</p>
+
+<h2>The fix</h2>
+
+<p>The simplest fix, of course, is to get rid of any *.browser files you may be
+using in your application. I understand redirecting to a mobile version of your
+site for mobile browsers or the like, but basing any major functionality on
+guesses about the user's browser is a great path to future pain.</p>
+
+<p>If, however, you want to keep your browser definition files around, consider
+removing any uses of the <code>preferrendRenderingMime</code> capability. Here's a regex that
+should be able to find those instances for you:</p>
+
+<pre><code>^.+"preferredRenderingMime".+$
+</code></pre>
+
+<p>Just do a find &amp; replace on that and you should be good to go. This is what we
+ended up doing for <a href="http://www.starbucks.com">Starbucks.com</a> and
+<a href="http://starbucks.co.uk">Starbucks.co.uk</a>, which I'm happy to say now
+work perfectly for Opera and <code>wget</code> users alike!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Posting JSON with jQuery]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery/"/>
+    <updated>2011-02-22T22:23:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery</id>
+    <content type="html"><![CDATA[<p>Lately, I've been a big fan of JSON via HTTP POST to send data to a Web service.
+It's awesome for a bunch of reasons:</p>
+
+<ul>
+<li><p><strong>Works equally well for simple and complex data.</strong> Regular HTTP POST works great
+for simple data, but gets unwieldy for anything hierarchical. XML works for
+complex data, but is too wordy for something simple.</p></li>
+<li><p><strong>Compact and human-readable.</strong> Really, this just comes with the territory when
+you're using JSON for anything.</p></li>
+<li><p><strong>Easy to debug using Fiddler or related tools.</strong> You just have to type in or
+modify a JSON string when you want to do some ad-hoc testing.</p></li>
+<li><p><strong>Easy to add support for to any server.</strong> In fact, support for receiving JSON
+POST is built into the latest versions of
+<a href="http://docs.cherrypy.org/dev/refman/lib/jsontools.html">CherryPy</a> and
+<a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.jsonvalueproviderfactory.aspx">ASP.NET MVC</a>.</p></li>
+</ul>
+
+
+<p>That said, JSON POST still doesn't seem to be all that popular compared to
+an old-style URL-encoded HTTP POST. One explanation I've heard proposed for
+this is the lack of support in jQuery. By default, jQuery goes with the
+old-style POST. You know:</p>
+
+<pre><code>foo=bar&amp;abc=xyz&amp;x=123
+</code></pre>
+
+<p>Sure, you can pass in a complex type and jQuery will gladly serialize it
+into this format for you, but good luck trying to read that with your human
+eyes, or trying to piece it back together on the server in any sane way.</p>
+
+<p>The really sad thing is that jQuery has a great <code>getJSON()</code> function that lets
+you receive JSON output and parses it appropriately. But there is no
+built-in support for posting raw JSON.</p>
+
+<p>To that end, I threw together this little plugin that I use all over the
+place:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">postJSON</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+</span><span class='line'>    <span class="nx">success</span><span class="o">:</span> <span class="nx">callback</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">contentType</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">processData</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[4 Simple Rules for Catching .NET Exceptions]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions/"/>
+    <updated>2010-09-13T16:58:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions</id>
+    <content type="html"><![CDATA[<p>What follows has probably been expounded a thousand times in different places.
+In fact, MSDN even has a long article entitled
+<a href="http://rrs.co/aMavUs">Best Practices for Handling Exceptions</a>.</p>
+
+<p>That said, I believe the best practices when it comes to catching .NET
+exceptions can be boiled down into four basic rules:</p>
+
+<ol>
+<li><p>Do not catch an exception unless you have something specific you need to do with
+that exception in the place you are catching it. Generally, there’s two
+scenarios where it’s alright to catch an exception:</p>
+
+<ol>
+<li>When you can do something specific to respond to and recover from a specific
+exception.</li>
+<li>When you have specific logging or, in the UI, want to display a specific error
+message due to a specific exception.</li>
+</ol>
+
+
+<p>Every exception and every catch block incurs a major performance overhead. If
+you can’t do something that fits into one of these two categories, you generally
+should not catch the exception. Note that this means that catching <code>Exception</code>
+instead of a specific type of exception is almost never correct.</p></li>
+<li><p>When you want to convert an exception to a string for logging, just use
+<code>ex.ToString()</code>. Do not try to <code>ToString()</code> or do any complex operations on any of
+the exception's other properties in a way that could fail if those properties are
+null. For example, <code>ex.SomeProperty.ToString()</code> is almost never correct since
+<code>SomeProperty</code> might be null. Even if it seems to not be null when you are
+testing, since this is by definition an exceptional case you can’t be sure what
+properties of the exception may or may not be filled.</p>
+
+<p>More generally, avoid doing things in a catch block that may cause another
+exception to be thrown. Don’t nest try-catch blocks.</p></li>
+<li><p>Never do anything that would hide an exception from bubbling up unless you have
+specific code that can recover from the exception. For example, even if you are
+logging an exception in your catch block, rethrow it so any logging code higher
+up will be able to process it as well.</p>
+
+<p>The only time you should not rethrow an
+exception is when you can recover from it and the code can keep running fine.</p>
+
+<p>That said, if you can recover from an exception and the code can keep running,
+see if it would be possible to predict the exception beforehand and avoid it. As
+an example, say you are going to try to call <code>ToUpper()</code> on a string. If the
+string is null beforehand, you already know that a null reference exception will
+be thrown, so don’t call <code>ToUpper()</code>.</p></li>
+<li><p>When you rethrow an exception, always just use <code>throw;</code>. Do not use <code>throw ex;</code>.
+The latter restarts the call stack and makes debugging much more difficult. The only
+time you would do the latter is if you want to hide internals for some reason
+like security, which is almost never needed.</p></li>
+</ol>
+
+
+<p>Comments? Concerns? Death threats?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 Database API Support in an Android WebView]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/"/>
+    <updated>2010-08-16T22:06:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview</id>
+    <content type="html"><![CDATA[<p>Here are some facts:</p>
+
+<ol>
+<li>HTML5 has a <a href="http://html5demos.com/database">Database API</a> that lets you
+store things locally and retrieve them with SQL queries.</li>
+<li>Android lets you embed a <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a>
+in your application to display web content.</li>
+<li>How to combine #1 and #2 is extremely poorly documented.</li>
+</ol>
+
+
+<p>One thing that kills me about the Android documentation is how it's so
+hit-or-miss. Some things are so well documented that I have literally been able
+to copy code out of the docs into my code and just change it a little. Actually,
+my roommate saw me do this at one point and accused me of plagiarism. But that
+is the subject of another post entitled "Why You Shouldn't Take Coding Advice
+From Psychology Majors".</p>
+
+<p>But really, I think the #1 best thing you can do when releasing a platform or
+public API of any sort is include tons of samples, inline with the
+documentation. The real winners when it comes to doing this are the
+<a href="http://us.php.net/manual/en/function.levenshtein.php">PHP documentation</a> and the
+<a href="http://msdn.microsoft.com/en-us/library/hs600312.aspx">MSDN .NET Framework documentation</a>.
+Almost every single class and function in the docs for these platforms includes
+a sample of how to use the thing.</p>
+
+<p>Maybe it's not a coincidence that PHP and .NET are so popular?</p>
+
+<p>It took me way too long to find out how to enable HTML5 Database API support for
+content displayed inside a WebView on an Android. The pieces were scattered all
+over the Intertubes, though I finally found the last piece of the puzzle on
+<a href="http://blogs.nitobi.com/joe/2009/11/05/how-to-implement-html5-storage-on-a-webview-with-android-2-0/">Joe Bowser's blog</a>.
+Here's the entire thing put together:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">WebSettings</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">myWebView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabaseEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">String</span> <span class="n">databasePath</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">().</span><span class="na">getDir</span><span class="o">(</span><span class="s">&quot;database&quot;</span><span class="o">,&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">Context</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">).</span><span class="na">getPath</span><span class="o">();</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">settings</span><span class="o">.</span><span class="na">setDatabasePath</span><span class="o">(</span><span class="n">databasePath</span><span class="o">);&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">myWebView</span><span class="o">.</span><span class="na">setWebChromeClient</span><span class="o">(</span><span class="k">new</span> <span class="n">WebChromeClient</span><span class="o">()</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onExceededDatabaseQuota</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">databaseIdentifier</span><span class="o">,</span> <span class="kt">long</span> <span class="n">currentQuota</span><span class="o">,</span> <span class="kt">long</span> <span class="n">estimatedSize</span><span class="o">,</span>
+</span><span class='line'>    <span class="kt">long</span> <span class="n">totalUsedQuota</span><span class="o">,</span> <span class="n">WebStorage</span><span class="o">.</span><span class="na">QuotaUpdater</span> <span class="n">quotaUpdater</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">quotaUpdater</span><span class="o">.</span><span class="na">updateQuota</span><span class="o">(</span><span class="n">estimatedSize</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Note that the <code>onExceededDatabaseQuota</code> is mandatory. I am pretty sure the default
+quota is zero, so you need to override this method and provide a quota to allow
+storage. I'm using <code>estimatedSize * 2</code> as the new quota since my app is browsing
+to a known page that only stores a small amount of data. Your scenario may be
+different.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[import teachPython]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/08/11/import-teachpython/"/>
+    <updated>2010-08-11T15:47:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/08/11/import-teachpython</id>
+    <content type="html"><![CDATA[<p><img src="/images/blog/import-teachPython.png"></p>
+]]></content>
+  </entry>
+  
+</feed>

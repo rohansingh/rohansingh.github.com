@@ -4,6 +4,7 @@ title: "Goodbye Couch"
 date: 2008-10-28 18:36
 comments: true
 categories: 
+- Photos
 ---
 
 About three years ago, I was living in a condo in the Sand Point area

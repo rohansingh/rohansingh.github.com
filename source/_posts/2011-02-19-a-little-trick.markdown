@@ -4,6 +4,7 @@ title: "A Little Trick"
 date: 2011-02-19 21:27
 comments: true
 categories: 
+- Thinking
 ---
 
 Here's a little trick I use. I figured I'd share it just in case anyone else

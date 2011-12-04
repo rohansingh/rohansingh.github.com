@@ -4,6 +4,8 @@ title: "ConfigurationProperty Code Snippet (C#)"
 date: 2010-07-21 16:52
 comments: true
 categories: 
+- Code
+- C#
 ---
 
 If you've ever wanted to create a [custom configuration section for a .NET
