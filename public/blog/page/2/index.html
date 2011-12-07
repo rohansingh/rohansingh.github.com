@@ -9,8 +9,9 @@
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="So I&#8217;ve been listening to this one song on repeat for pretty much the entire
-day: <embed src="http://listen.grooveshark.com/songWidget.swf" &hellip;">
+  <meta name="description" content="Here are some facts: HTML5 has a Database API that lets you
+store things locally and retrieve them with SQL queries.
+Android lets you embed a WebView &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,6 +30,21 @@ day: <embed src="http://listen.grooveshark.com/songWidget.swf" &hellip;">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/slides.min.jquery.js"></script>
+
+<style type="text/css" media="screen">
+  .slides_container {
+    width:470px;
+    height:170px;
+  }
+  .slides_container div {
+    width:470px;
+    height:170px;
+    display:block;
+  }
+</style>
 
   
   <script type="text/javascript">
@@ -77,6 +93,113 @@ day: <embed src="http://listen.grooveshark.com/songWidget.swf" &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/16/html5-database-api-support-in-an-android-webview/">HTML5 Database API Support in an Android WebView</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-16T22:06:00-07:00" pubdate data-updated="true">Aug 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here are some facts:</p>
+
+<ol>
+<li>HTML5 has a <a href="http://html5demos.com/database">Database API</a> that lets you
+store things locally and retrieve them with SQL queries.</li>
+<li>Android lets you embed a <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a>
+in your application to display web content.</li>
+<li>How to combine #1 and #2 is extremely poorly documented.</li>
+</ol>
+
+
+<p>One thing that kills me about the Android documentation is how it&#8217;s so
+hit-or-miss. Some things are so well documented that I have literally been able
+to copy code out of the docs into my code and just change it a little. Actually,
+my roommate saw me do this at one point and accused me of plagiarism. But that
+is the subject of another post entitled &#8220;Why You Shouldn&#8217;t Take Coding Advice
+From Psychology Majors&#8221;.</p>
+
+<p>But really, I think the #1 best thing you can do when releasing a platform or
+public API of any sort is include tons of samples, inline with the
+documentation. The real winners when it comes to doing this are the
+<a href="http://us.php.net/manual/en/function.levenshtein.php">PHP documentation</a> and the
+<a href="http://msdn.microsoft.com/en-us/library/hs600312.aspx">MSDN .NET Framework documentation</a>.
+Almost every single class and function in the docs for these platforms includes
+a sample of how to use the thing.</p>
+
+<p>Maybe it&#8217;s not a coincidence that PHP and .NET are so popular?</p>
+
+<p>It took me way too long to find out how to enable HTML5 Database API support for
+content displayed inside a WebView on an Android. The pieces were scattered all
+over the Intertubes, though I finally found the last piece of the puzzle on
+<a href="http://blogs.nitobi.com/joe/2009/11/05/how-to-implement-html5-storage-on-a-webview-with-android-2-0/">Joe Bowser&#8217;s blog</a>.
+Here&#8217;s the entire thing put together:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">WebSettings</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">myWebView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabaseEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">String</span> <span class="n">databasePath</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">().</span><span class="na">getDir</span><span class="o">(</span><span class="s">&quot;database&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">Context</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">).</span><span class="na">getPath</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabasePath</span><span class="o">(</span><span class="n">databasePath</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">myWebView</span><span class="o">.</span><span class="na">setWebChromeClient</span><span class="o">(</span><span class="k">new</span> <span class="n">WebChromeClient</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onExceededDatabaseQuota</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">databaseIdentifier</span><span class="o">,</span> <span class="kt">long</span> <span class="n">currentQuota</span><span class="o">,</span> <span class="kt">long</span> <span class="n">estimatedSize</span><span class="o">,</span>
+</span><span class='line'>        <span class="kt">long</span> <span class="n">totalUsedQuota</span><span class="o">,</span> <span class="n">WebStorage</span><span class="o">.</span><span class="na">QuotaUpdater</span> <span class="n">quotaUpdater</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">quotaUpdater</span><span class="o">.</span><span class="na">updateQuota</span><span class="o">(</span><span class="n">estimatedSize</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that the <code>onExceededDatabaseQuota</code> is mandatory. I am pretty sure the default
+quota is zero, so you need to override this method and provide a quota to allow
+storage. I&#8217;m using <code>estimatedSize * 2</code> as the new quota since my app is browsing
+to a known page that only stores a small amount of data. Your scenario may be
+different.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -637,67 +760,6 @@ everybody&#8217;s browser! My personal favorite:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/18/jon-stewart-just-went-down-a-few-points/">Jon Stewart Just Went Down a Few Points</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-18T14:32:00-07:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Jon Stewart just went down a couple points in my book when I saw this clip:</p>
-
-<div>
-        <embed src="http://media.mtvnservices.com/mgid:cms:item:comedycentral.com:340734"
-            width="540" height="439" type="application/x-shockwave-flash"
-            allowFullScreen="true" allowScriptAccess="always" base="." flashVars="">
-        </embed>
-</div>
-
-
-<p>What he says in that clip is that, at their core, science and religion are very
-similar because he thinks they both require you to take things on faith. Jon
-says religion asks you to believe in a supernatural being that you can&#8217;t see,
-and that you should just believe he is there. Similarly, Jon thinks science asks
-you to believe that the universe is composed largely of a type of matter that
-you can&#8217;t see, and you should just believe it&#8217;s there.</p>
-
-<p>The difference, of course, is that dark matter can actually be measured even
-though you can&#8217;t see it. For example, you might not be able to see the bottom of
-a deep well, but you can measure it by dropping a rock down there. In the same
-way, dark matter can be measured through its gravitational influence on other
-matter.</p>
-
-<p>I&#8217;ve always thought of Jon as a very smart guy and continue to think that, but
-this was kind of painful to watch. Looks like
-<a href="http://www.huffingtonpost.com/2010/07/09/marilynne-robinson-on-jon_n_640577.html#comments">some other people agree as well</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -727,6 +789,10 @@ this was kind of painful to watch. Looks like
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2011/12/06/thoughts-on-home-walls-setting/">Thoughts on Home Walls & Setting</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing pgmagick on OS X</a>
       </li>
     
@@ -740,10 +806,6 @@ this was kind of painful to watch. Looks like
     
       <li class="post">
         <a href="/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/">Getting ASP.NET to play nice with Opera &amp; wget</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/03/24/i-dont-even-know-where-to-start-with-this-torta/">I don&#8217;t even know where to start with this torta.</a>
       </li>
     
   </ul>
