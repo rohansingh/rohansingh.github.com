@@ -8,10 +8,7 @@ categories:
 ---
 
 {% blockquote Outlier http://outlier.cc %}
-We love our bikes not because we race them, ride trails or perform tricks
-with them, although sometimes we do all of that. We love our bikes mainly
-because they are our transportation, our freedom, our way of moving through
-the spaces we call our home."
+We love our bikes not because we race them, ride trails or perform tricks with them, although sometimes we do all of that. We love our bikes mainly because they are our transportation, our freedom, our way of moving through the spaces we call our home.
 {% endblockquote %}
 
 {% img /images/blog/outlier.png %}
