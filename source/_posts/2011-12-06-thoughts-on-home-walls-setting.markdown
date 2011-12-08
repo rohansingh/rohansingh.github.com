@@ -31,7 +31,7 @@ Everyone always changes their mind on that after a good workout on the wall.
 
 Chris and a friend handled most of the construction of the structure, which took
 about 40 hours in total. I think the most time-consuming part of the process —
-aside from waiting forthe deck paint to dry – was drilling each of the dozens upon
+aside from waiting for the deck paint to dry – was drilling each of the dozens upon
 dozens of holes and installing a t-nut in each.
 
 As I mentioned earlier, the incline is adjustable. Originally we had a 15°
