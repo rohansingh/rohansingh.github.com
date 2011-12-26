@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Posting JSON with jQuery - rohan singh</title>
+  <meta name="author" content="Rohan Singh">
+
+  
+  <meta name="description" content="Lately, I&#8217;ve been a big fan of JSON via HTTP POST to send data to a Web service.
+It&#8217;s awesome for a bunch of reasons: Works equally well &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="rohan singh" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17515286-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">rohan singh</a></h1>
+  
+    <h2>software engineer. bicyclist. rock climber.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.rohanradio.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://twitter.com/rohansingh">Twitter</a></li>
+  <li><a href="http://facebook.com/rohanrsingh">Facebook</a></li>
+  <li><a href="http://www.linkedin.com/in/rohans">LinkedIn</a></li>
+  <li><a href="https://github.com/rohansingh">GitHub</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Posting JSON With jQuery</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-22T22:23:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Lately, I&#8217;ve been a big fan of JSON via HTTP POST to send data to a Web service.
+It&#8217;s awesome for a bunch of reasons:</p>
+
+<ul>
+<li><p><strong>Works equally well for simple and complex data.</strong> Regular HTTP POST works great
+for simple data, but gets unwieldy for anything hierarchical. XML works for
+complex data, but is too wordy for something simple.</p></li>
+<li><p><strong>Compact and human-readable.</strong> Really, this just comes with the territory when
+you&#8217;re using JSON for anything.</p></li>
+<li><p><strong>Easy to debug using Fiddler or related tools.</strong> You just have to type in or
+modify a JSON string when you want to do some ad-hoc testing.</p></li>
+<li><p><strong>Easy to add support for to any server.</strong> In fact, support for receiving JSON
+POST is built into the latest versions of
+<a href="http://docs.cherrypy.org/dev/refman/lib/jsontools.html">CherryPy</a> and
+<a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.jsonvalueproviderfactory.aspx">ASP.NET MVC</a>.</p></li>
+</ul>
+
+
+<p>That said, JSON POST still doesn&#8217;t seem to be all that popular compared to
+an old-style URL-encoded HTTP POST. One explanation I&#8217;ve heard proposed for
+this is the lack of support in jQuery. By default, jQuery goes with the
+old-style POST. You know:</p>
+
+<pre><code>foo=bar&amp;abc=xyz&amp;x=123
+</code></pre>
+
+<p>Sure, you can pass in a complex type and jQuery will gladly serialize it
+into this format for you, but good luck trying to read that with your human
+eyes, or trying to piece it back together on the server in any sane way.</p>
+
+<p>The really sad thing is that jQuery has a great <code>getJSON()</code> function that lets
+you receive JSON output and parses it appropriately. But there is no
+built-in support for posting raw JSON.</p>
+
+<p>To that end, I threw together this little plugin that I use all over the
+place:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">postJSON</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="nx">callback</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">contentType</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">processData</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rohan Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-22T22:23:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/code/'>Code</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery/" data-via="rohansingh" data-counturl="http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/02/19/a-little-trick/" title="Previous Post: A Little Trick">&laquo; A Little Trick</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/03/02/outlier-is-pretty-awesome/" title="next Post: Outlier is pretty awesome">Outlier is pretty awesome &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <div style="margin: 15px 0">
+        <img src="http://www.gravatar.com/avatar/3b8af424ab9b8963a6d3d9b8082894cd.png?s=150"
+            style="margin-left: auto; margin-right: auto; display: block"
+            alt="Rohan Singh" title="Rohan Singh" height="150" width="150" />
+    </div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/12/06/thoughts-on-home-walls-setting/">Thoughts on Home Walls & Setting</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing pgmagick on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/25/optimism/">Optimism</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/24/dont-break-the-back-button/">Don't Break the Back Button</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/">Getting ASP.NET to play nice with Opera &amp; wget</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("rohansingh", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/rohansingh" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @rohansingh</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2011 - Rohan Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'rohanradio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery/';
+        var disqus_url = 'http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

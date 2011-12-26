@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jQuery | rohan singh]]></title>
+  <link href="http://www.rohanradio.com/blog/categories/jquery/atom.xml" rel="self"/>
+  <link href="http://www.rohanradio.com/"/>
+  <updated>2011-12-09T13:01:47-08:00</updated>
+  <id>http://www.rohanradio.com/</id>
+  <author>
+    <name><![CDATA[Rohan Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Posting JSON with jQuery]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery/"/>
+    <updated>2011-02-22T22:23:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery</id>
+    <content type="html"><![CDATA[<p>Lately, I've been a big fan of JSON via HTTP POST to send data to a Web service.
+It's awesome for a bunch of reasons:</p>
+
+<ul>
+<li><p><strong>Works equally well for simple and complex data.</strong> Regular HTTP POST works great
+for simple data, but gets unwieldy for anything hierarchical. XML works for
+complex data, but is too wordy for something simple.</p></li>
+<li><p><strong>Compact and human-readable.</strong> Really, this just comes with the territory when
+you're using JSON for anything.</p></li>
+<li><p><strong>Easy to debug using Fiddler or related tools.</strong> You just have to type in or
+modify a JSON string when you want to do some ad-hoc testing.</p></li>
+<li><p><strong>Easy to add support for to any server.</strong> In fact, support for receiving JSON
+POST is built into the latest versions of
+<a href="http://docs.cherrypy.org/dev/refman/lib/jsontools.html">CherryPy</a> and
+<a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.jsonvalueproviderfactory.aspx">ASP.NET MVC</a>.</p></li>
+</ul>
+
+
+<p>That said, JSON POST still doesn't seem to be all that popular compared to
+an old-style URL-encoded HTTP POST. One explanation I've heard proposed for
+this is the lack of support in jQuery. By default, jQuery goes with the
+old-style POST. You know:</p>
+
+<pre><code>foo=bar&amp;abc=xyz&amp;x=123
+</code></pre>
+
+<p>Sure, you can pass in a complex type and jQuery will gladly serialize it
+into this format for you, but good luck trying to read that with your human
+eyes, or trying to piece it back together on the server in any sane way.</p>
+
+<p>The really sad thing is that jQuery has a great <code>getJSON()</code> function that lets
+you receive JSON output and parses it appropriately. But there is no
+built-in support for posting raw JSON.</p>
+
+<p>To that end, I threw together this little plugin that I use all over the
+place:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">postJSON</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+</span><span class='line'>    <span class="nx">success</span><span class="o">:</span> <span class="nx">callback</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">contentType</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">processData</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>

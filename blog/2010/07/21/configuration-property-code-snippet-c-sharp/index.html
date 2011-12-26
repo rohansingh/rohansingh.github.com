@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ConfigurationProperty Code Snippet (C#) - rohan singh</title>
+  <meta name="author" content="Rohan Singh">
+
+  
+  <meta name="description" content="If you&#8217;ve ever wanted to create a custom configuration section for a .NET
+app,
+you know how tedious it is to type this out: 1
+2
+3
+4
+5
+6
+7
+8
+9 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="rohan singh" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17515286-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">rohan singh</a></h1>
+  
+    <h2>software engineer. bicyclist. rock climber.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.rohanradio.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://twitter.com/rohansingh">Twitter</a></li>
+  <li><a href="http://facebook.com/rohanrsingh">Facebook</a></li>
+  <li><a href="http://www.linkedin.com/in/rohans">LinkedIn</a></li>
+  <li><a href="https://github.com/rohansingh">GitHub</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ConfigurationProperty Code Snippet (C#)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-21T16:52:00-07:00" pubdate data-updated="true">Jul 21<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>If you&#8217;ve ever wanted to create a <a href="http://msdn.microsoft.com/en-us/library/2tw134k3.aspx">custom configuration section for a .NET
+app</a>,
+you know how tedious it is to type this out:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">namespace</span> <span class="nn">Samples.AspNet</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">class</span> <span class="nc">PageAppearanceSection</span> <span class="p">:</span> <span class="n">ConfigurationSection</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Create a &quot;remoteOnly&quot; attribute.</span>
+</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;remoteOnly&quot;, DefaultValue = &quot;false&quot;, IsRequired = false)]</span>
+</span><span class='line'>        <span class="k">public</span> <span class="n">Boolean</span> <span class="n">RemoteOnly</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">get</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">Boolean</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">];</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="k">set</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Create a &quot;font&quot; element.</span>
+</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;font&quot;)]</span>
+</span><span class='line'>        <span class="k">public</span> <span class="n">FontElement</span> <span class="n">Font</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">get</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">FontElement</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">];</span> <span class="p">}</span>
+</span><span class='line'>            <span class="k">set</span>
+</span><span class='line'>            <span class="p">{</span> <span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&#8217;s a much faster way to create normal properties. If you&#8217;ve ever <a href="http://www.onesoft.dk/post/The-prop-snippet-and-Visual-Studio-2008.aspx">used the
+prop code snippet to create a property</a>,
+you already know this. You can just type &#8220;prop&#8221; and hit tab to have an entir
+property filled out for you:</p>
+
+<p><img src="/images/blog/prop-snippet.png"></p>
+
+<p>Faced with the daunting task of creating some custom configuration elements, I
+threw together a code snippet that lets you do the same for a
+configuration-backed property. I can now just type &#8220;propc&#8221; and hit tab to get
+this:</p>
+
+<p><img src="/images/blog/config-prop-snippet.png"></p>
+
+<p>Then I just fill out the name and type and call it good. If you&#8217;d like to join
+in on the propc goodness here&#8217;s the source of the snippet file. Just download
+and save it as a <strong>.snippet</strong> file and import it through <strong>Tools</strong> |
+<strong>Code Snippets Manager</strong> in Visual Studio:</p>
+
+<div><script src='https://gist.github.com/1410807.js?file='></script>
+<noscript><pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;
+    &lt;CodeSnippet Format=&quot;1.0.0&quot;&gt;
+        &lt;Header&gt;
+            &lt;Shortcut&gt;propc&lt;/Shortcut&gt;
+            &lt;Title&gt;propc&lt;/Title&gt;
+            &lt;Author&gt;Rohan Singh&lt;/Author&gt;
+            &lt;Description&gt;
+                Code snippet for a configuration-backed property
+            &lt;/Description&gt;
+            &lt;SnippetTypes&gt;
+                &lt;SnippetType&gt;Expansion&lt;/SnippetType&gt;
+            &lt;/SnippetTypes&gt;
+        &lt;/Header&gt;
+        &lt;Snippet&gt;
+            &lt;Declarations&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;type&lt;/ID&gt;
+                    &lt;ToolTip&gt;Property type&lt;/ToolTip&gt;
+                    &lt;Default&gt;string&lt;/Default&gt;
+                &lt;/Literal&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;configurationProperty&lt;/ID&gt;
+                    &lt;ToolTip&gt;Configuration property name&lt;/ToolTip&gt;
+                    &lt;Default&gt;myProperty&lt;/Default&gt;
+                &lt;/Literal&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;isRequired&lt;/ID&gt;
+                    &lt;ToolTip&gt;Specifies whether the property is required&lt;/ToolTip&gt;
+                    &lt;Default&gt;true&lt;/Default&gt;
+                    &lt;Type&gt;System.Boolean&lt;/Type&gt;
+                &lt;/Literal&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;property&lt;/ID&gt;
+                    &lt;ToolTip&gt;Property name&lt;/ToolTip&gt;
+                    &lt;Default&gt;MyProperty&lt;/Default&gt;
+                &lt;/Literal&gt;
+                &lt;Literal Editable=&quot;false&quot;&gt;
+                    &lt;ID&gt;SystemConfigurationConfigurationProperty&lt;/ID&gt;
+                    &lt;Function&gt;SimpleTypeName(global::System.Configuration.ConfigurationProperty)&lt;/Function&gt;
+                &lt;/Literal&gt;
+            &lt;/Declarations&gt;
+            &lt;Code Language=&quot;CSharp&quot;&gt;&lt;![CDATA[[$SystemConfigurationConfigurationProperty$(&quot;$configurationProperty$&quot;, IsRequired = $isRequired$)]
+    public $type$ $property$
+    {
+        get
+        {
+            return ($type$)this[&quot;$configurationProperty$&quot;];
+        }
+        set
+        {
+            this[&quot;$configurationProperty$&quot;] = value;
+        }
+    }
+    $end$]]&gt;
+            &lt;/Code&gt;
+        &lt;/Snippet&gt;
+    &lt;/CodeSnippet&gt;
+&lt;/CodeSnippets&gt;</code></pre></noscript></div>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rohan Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-21T16:52:00-07:00" pubdate data-updated="true">Jul 21<span>st</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-/'>C#</a>, <a class='category' href='/blog/categories/code/'>Code</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp/" data-via="rohansingh" data-counturl="http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/07/20/this-parking-is-very-discriminatory/" title="Previous Post: This parking is very discriminatory.">&laquo; This parking is very discriminatory.</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/07/26/laying-on-the-boat/" title="next Post: Laying on the boat...">Laying on the boat... &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <div style="margin: 15px 0">
+        <img src="http://www.gravatar.com/avatar/3b8af424ab9b8963a6d3d9b8082894cd.png?s=150"
+            style="margin-left: auto; margin-right: auto; display: block"
+            alt="Rohan Singh" title="Rohan Singh" height="150" width="150" />
+    </div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/12/06/thoughts-on-home-walls-setting/">Thoughts on Home Walls & Setting</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing pgmagick on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/25/optimism/">Optimism</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/24/dont-break-the-back-button/">Don't Break the Back Button</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/">Getting ASP.NET to play nice with Opera &amp; wget</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("rohansingh", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/rohansingh" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @rohansingh</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2011 - Rohan Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'rohanradio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp/';
+        var disqus_url = 'http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

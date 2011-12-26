@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Thinking | rohan singh]]></title>
+  <link href="http://www.rohanradio.com/blog/categories/thinking/atom.xml" rel="self"/>
+  <link href="http://www.rohanradio.com/"/>
+  <updated>2011-12-09T13:01:47-08:00</updated>
+  <id>http://www.rohanradio.com/</id>
+  <author>
+    <name><![CDATA[Rohan Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A Little Trick]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/02/19/a-little-trick/"/>
+    <updated>2011-02-19T21:27:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/02/19/a-little-trick</id>
+    <content type="html"><![CDATA[<p>Here's a little trick I use. I figured I'd share it just in case anyone else
+finds it useful.</p>
+
+<p>Whenever I need to decide whether something is good, whether I support it or I
+don't, it all comes together in one simple question. In the ideal world that I
+want to live in — the ideal, peaceful, happy, loving, accepting world — would
+this thing be or would it not be?</p>
+
+<p>Once you start putting things into that perspective, everything becomes quite
+straightforward. Whatever the issue or thing is, all you have to do is ask that
+one simple question, and then the correct path of action often becomes quite
+clear.</p>
+
+<p>Whether the issue you are considering is one of those big values-based divides
+of our day — war, abortion, gay marriage, religion — or whether it is just a
+simple matter of your daily dealings with other people, all you have to do is
+ask yourself: is this the world I want to live in?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[One Song On Repeat]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/08/12/one-song-on-repeat/"/>
+    <updated>2010-08-12T21:26:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/08/12/one-song-on-repeat</id>
+    <content type="html"><![CDATA[<p>So I've been listening to this one song on repeat for pretty much the entire
+day:</p>
+
+<div>
+    <embed src="http://listen.grooveshark.com/songWidget.swf" type="application/x-shockwave-flash"
+        wmode="window" width="500" height="40" flashvars="hostname=cowbell.grooveshark.com&amp;widgetID=22158641&amp;style=metal&amp;p=0">
+    </embed>
+</div>
+
+
+<p>Let me explain a bit further. I barely know anyone today who doesn't listen to
+music while working. But I've been reading the classic
+<em><a href="http://rrs.co/dxohFz">Peopleware</a></em> book, and
+apparently back in the '60s this was something that researchers at Cornell
+thought was worth looking into. They took a group of computer science students
+and split them into two groups.</p>
+
+<p>The first group went into a silent room, and the second group went into a room
+where they could listen to music using headphones. There was an equal
+distribution of students who said they liked to listen to music while working
+and those who didn't.</p>
+
+<p>Everyone was then given the same coding problem. The challenge was to implement
+a program from a pretty complicated spec, using Fortran (hey, it was the '60s
+after all). Not surprisingly, there wasn't much difference between what went on
+in the two rooms. Both groups of students were able to do the challenge at about
+the same speed and with the same skill. No big surprise, right?</p>
+
+<p>Except for this, from Peopleware (emphasis mine):</p>
+
+<blockquote><p>The Cornell experiment, however, contained a hidden wild card. The specification
+required that an output data stream be formed through a series of manipulations
+on numbers in the input data stream ... Although the specification never said
+it, the <strong>net effect of all the operations was that each output number was
+necessarily equal to its input number</strong>. Some people realized this and others did
+not. Of those who figured it out, the overwhelming majority came from the quiet
+room.</p></blockquote>
+
+<p>Think about that for a second. Here are these two groups of students who are
+given what they think is a fairly mechanical task: look at this spec that tells
+you how these numbers should be manipulated, write some code that does the
+manipulations. And all of them were able to complete the mechanical,
+mathematical portion of this task at about the same speed.</p>
+
+<p>But inside the mechanical task was something that required a creative leap:
+figuring out that the output numbers of the program would be exactly the same as
+its input. Something like that might be obvious today with our fancy interactive
+debuggers, but you have to imagine it must have taken quite the leap to figure
+it out while stamping Fortran code into punch cards. This is the kind of leap
+that could save hours upon hours of work and tens of thousands of dollars.</p>
+
+<p>To make this creative leap, you almost invariably had to be in the quiet room.</p>
+
+<p>To the crack neurologist in me, it makes sense. Music is a creative activity,
+and listening to it probably engages the creative part of your brain. Everything
+seems fine when you are working, since most of what you are doing is
+mathematical, analytical, or mechanical. What you don't realize is that your
+creative areas are too engaged with the music to be engaged with the problem at
+hand.</p>
+
+<p>Maybe that's alright sometimes when you're just powering through something
+you've done a million times, but how sustainable is that approach? Unless our
+basic neurology has changed since the 1960's, it seems clear that to make the
+creative leaps in software design -- and probably anything else -- you have to
+turn the music off at some point.</p>
+
+<p>The thing that kills me about this is that I like music. It's awesome. I love
+listening to music, and I do it almost exclusively when I work and no time else.
+I think I've developed the habit of sometimes listening to just one song on
+repeat as a type of defense strategy. The music gives you a rhythm and a beat to
+work to, but when it's just the same song a million times over, you can start to
+tune it out. Maybe that lets the creative part of your brain re-engage with your
+work?</p>
+
+<p>Then again, maybe I have no idea what I'm talking about.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jon Stewart Just Went Down A Few Points]]></title>
+    <link href="http://www.rohanradio.com/blog/2010/07/18/jon-stewart-just-went-down-a-few-points/"/>
+    <updated>2010-07-18T14:32:00-07:00</updated>
+    <id>http://www.rohanradio.com/blog/2010/07/18/jon-stewart-just-went-down-a-few-points</id>
+    <content type="html"><![CDATA[<p>Jon Stewart just went down a couple points in my book when I saw this clip:</p>
+
+<div>
+        <embed src="http://media.mtvnservices.com/mgid:cms:item:comedycentral.com:340734"
+            width="540" height="439" type="application/x-shockwave-flash"
+            allowFullScreen="true" allowScriptAccess="always" base="." flashVars="">
+        </embed>
+</div>
+
+
+<p>What he says in that clip is that, at their core, science and religion are very
+similar because he thinks they both require you to take things on faith. Jon
+says religion asks you to believe in a supernatural being that you can't see,
+and that you should just believe he is there. Similarly, Jon thinks science asks
+you to believe that the universe is composed largely of a type of matter that
+you can't see, and you should just believe it's there.</p>
+
+<p>The difference, of course, is that dark matter can actually be measured even
+though you can't see it. For example, you might not be able to see the bottom of
+a deep well, but you can measure it by dropping a rock down there. In the same
+way, dark matter can be measured through its gravitational influence on other
+matter.</p>
+
+<p>I've always thought of Jon as a very smart guy and continue to think that, but
+this was kind of painful to watch. Looks like
+<a href="http://www.huffingtonpost.com/2010/07/09/marilynne-robinson-on-jon_n_640577.html#comments">some other people agree as well</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

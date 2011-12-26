@@ -1,0 +1,873 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>rohan singh</title>
+  <meta name="author" content="Rohan Singh">
+
+  
+  <meta name="description" content="Here are some facts: HTML5 has a Database API that lets you
+store things locally and retrieve them with SQL queries.
+Android lets you embed a WebView &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.rohanradio.com/blog/page/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="rohan singh" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17515286-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">rohan singh</a></h1>
+  
+    <h2>software engineer. bicyclist. rock climber.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.rohanradio.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://twitter.com/rohansingh">Twitter</a></li>
+  <li><a href="http://facebook.com/rohanrsingh">Facebook</a></li>
+  <li><a href="http://www.linkedin.com/in/rohans">LinkedIn</a></li>
+  <li><a href="https://github.com/rohansingh">GitHub</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/16/html5-database-api-support-in-an-android-webview/">HTML5 Database API Support in an Android WebView</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-16T22:06:00-07:00" pubdate data-updated="true">Aug 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here are some facts:</p>
+
+<ol>
+<li>HTML5 has a <a href="http://html5demos.com/database">Database API</a> that lets you
+store things locally and retrieve them with SQL queries.</li>
+<li>Android lets you embed a <a href="http://developer.android.com/reference/android/webkit/WebView.html">WebView</a>
+in your application to display web content.</li>
+<li>How to combine #1 and #2 is extremely poorly documented.</li>
+</ol>
+
+
+<p>One thing that kills me about the Android documentation is how it&#8217;s so
+hit-or-miss. Some things are so well documented that I have literally been able
+to copy code out of the docs into my code and just change it a little. Actually,
+my roommate saw me do this at one point and accused me of plagiarism. But that
+is the subject of another post entitled &#8220;Why You Shouldn&#8217;t Take Coding Advice
+From Psychology Majors&#8221;.</p>
+
+<p>But really, I think the #1 best thing you can do when releasing a platform or
+public API of any sort is include tons of samples, inline with the
+documentation. The real winners when it comes to doing this are the
+<a href="http://us.php.net/manual/en/function.levenshtein.php">PHP documentation</a> and the
+<a href="http://msdn.microsoft.com/en-us/library/hs600312.aspx">MSDN .NET Framework documentation</a>.
+Almost every single class and function in the docs for these platforms includes
+a sample of how to use the thing.</p>
+
+<p>Maybe it&#8217;s not a coincidence that PHP and .NET are so popular?</p>
+
+<p>It took me way too long to find out how to enable HTML5 Database API support for
+content displayed inside a WebView on an Android. The pieces were scattered all
+over the Intertubes, though I finally found the last piece of the puzzle on
+<a href="http://blogs.nitobi.com/joe/2009/11/05/how-to-implement-html5-storage-on-a-webview-with-android-2-0/">Joe Bowser&#8217;s blog</a>.
+Here&#8217;s the entire thing put together:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">WebSettings</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">myWebView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabaseEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">String</span> <span class="n">databasePath</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">().</span><span class="na">getDir</span><span class="o">(</span><span class="s">&quot;database&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">Context</span><span class="o">.</span><span class="na">MODE_PRIVATE</span><span class="o">).</span><span class="na">getPath</span><span class="o">();</span>
+</span><span class='line'><span class="n">settings</span><span class="o">.</span><span class="na">setDatabasePath</span><span class="o">(</span><span class="n">databasePath</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">myWebView</span><span class="o">.</span><span class="na">setWebChromeClient</span><span class="o">(</span><span class="k">new</span> <span class="n">WebChromeClient</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onExceededDatabaseQuota</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">databaseIdentifier</span><span class="o">,</span> <span class="kt">long</span> <span class="n">currentQuota</span><span class="o">,</span> <span class="kt">long</span> <span class="n">estimatedSize</span><span class="o">,</span>
+</span><span class='line'>        <span class="kt">long</span> <span class="n">totalUsedQuota</span><span class="o">,</span> <span class="n">WebStorage</span><span class="o">.</span><span class="na">QuotaUpdater</span> <span class="n">quotaUpdater</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">quotaUpdater</span><span class="o">.</span><span class="na">updateQuota</span><span class="o">(</span><span class="n">estimatedSize</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that the <code>onExceededDatabaseQuota</code> is mandatory. I am pretty sure the default
+quota is zero, so you need to override this method and provide a quota to allow
+storage. I&#8217;m using <code>estimatedSize * 2</code> as the new quota since my app is browsing
+to a known page that only stores a small amount of data. Your scenario may be
+different.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/12/one-song-on-repeat/">One Song on Repeat</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-12T21:26:00-07:00" pubdate data-updated="true">Aug 12<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So I&#8217;ve been listening to this one song on repeat for pretty much the entire
+day:</p>
+
+<div>
+    <embed src="http://listen.grooveshark.com/songWidget.swf" type="application/x-shockwave-flash"
+        wmode="window" width="500" height="40" flashvars="hostname=cowbell.grooveshark.com&amp;widgetID=22158641&amp;style=metal&amp;p=0">
+    </embed>
+</div>
+
+
+<p>Let me explain a bit further. I barely know anyone today who doesn&#8217;t listen to
+music while working. But I&#8217;ve been reading the classic
+<em><a href="http://rrs.co/dxohFz">Peopleware</a></em> book, and
+apparently back in the &#8217;60s this was something that researchers at Cornell
+thought was worth looking into. They took a group of computer science students
+and split them into two groups.</p>
+
+<p>The first group went into a silent room, and the second group went into a room
+where they could listen to music using headphones. There was an equal
+distribution of students who said they liked to listen to music while working
+and those who didn&#8217;t.</p>
+
+<p>Everyone was then given the same coding problem. The challenge was to implement
+a program from a pretty complicated spec, using Fortran (hey, it was the &#8217;60s
+after all). Not surprisingly, there wasn&#8217;t much difference between what went on
+in the two rooms. Both groups of students were able to do the challenge at about
+the same speed and with the same skill. No big surprise, right?</p>
+
+<p>Except for this, from Peopleware (emphasis mine):</p>
+
+<blockquote><p>The Cornell experiment, however, contained a hidden wild card. The specification
+required that an output data stream be formed through a series of manipulations
+on numbers in the input data stream &#8230; Although the specification never said
+it, the <strong>net effect of all the operations was that each output number was
+necessarily equal to its input number</strong>. Some people realized this and others did
+not. Of those who figured it out, the overwhelming majority came from the quiet
+room.</p></blockquote>
+
+<p>Think about that for a second. Here are these two groups of students who are
+given what they think is a fairly mechanical task: look at this spec that tells
+you how these numbers should be manipulated, write some code that does the
+manipulations. And all of them were able to complete the mechanical,
+mathematical portion of this task at about the same speed.</p>
+
+<p>But inside the mechanical task was something that required a creative leap:
+figuring out that the output numbers of the program would be exactly the same as
+its input. Something like that might be obvious today with our fancy interactive
+debuggers, but you have to imagine it must have taken quite the leap to figure
+it out while stamping Fortran code into punch cards. This is the kind of leap
+that could save hours upon hours of work and tens of thousands of dollars.</p>
+
+<p>To make this creative leap, you almost invariably had to be in the quiet room.</p>
+
+<p>To the crack neurologist in me, it makes sense. Music is a creative activity,
+and listening to it probably engages the creative part of your brain. Everything
+seems fine when you are working, since most of what you are doing is
+mathematical, analytical, or mechanical. What you don&#8217;t realize is that your
+creative areas are too engaged with the music to be engaged with the problem at
+hand.</p>
+
+<p>Maybe that&#8217;s alright sometimes when you&#8217;re just powering through something
+you&#8217;ve done a million times, but how sustainable is that approach? Unless our
+basic neurology has changed since the 1960&#8217;s, it seems clear that to make the
+creative leaps in software design &#8211; and probably anything else &#8211; you have to
+turn the music off at some point.</p>
+
+<p>The thing that kills me about this is that I like music. It&#8217;s awesome. I love
+listening to music, and I do it almost exclusively when I work and no time else.
+I think I&#8217;ve developed the habit of sometimes listening to just one song on
+repeat as a type of defense strategy. The music gives you a rhythm and a beat to
+work to, but when it&#8217;s just the same song a million times over, you can start to
+tune it out. Maybe that lets the creative part of your brain re-engage with your
+work?</p>
+
+<p>Then again, maybe I have no idea what I&#8217;m talking about.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/12/disappointing-regex-challenge/">Disappointing Regex Challenge</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-12T13:40:00-07:00" pubdate data-updated="true">Aug 12<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/blog/disappointing-regex-challenge.png"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/11/import-teachpython/">Import teachPython</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-11T15:47:00-07:00" pubdate data-updated="true">Aug 11<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/blog/import-teachPython.png"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/27/aarons-hucklebear/">Aaron&#8217;s Hucklebear</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T21:32:00-07:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Relaxing at the cabin in Idaho, Aaron has had some time to do some doodling.
+Here&#8217;s his take on Amy Winehouse&#8217;s song &#8220;Rehab&#8221;:</p>
+
+<p><img src="/images/blog/aarons-hucklebear.jpg"></p>
+
+<p>Now that&#8217;s comedy. And of course, for reference, the song itself:</p>
+
+<p><a href="http://open.spotify.com/track/1EXAqr4fceDPYlL6XeMi2g">&#8220;Rehab&#8221; by Amy Winehouse on Spotify</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/27/now-that-is-a-sunset/">Now That Is a Sunset.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T20:40:00-07:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/blog/priest-lake-sunset.jpg"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/26/laying-on-the-boat/">Laying on the Boat&#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-26T15:44:00-07:00" pubdate data-updated="true">Jul 26<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Laying on the boat, reading a book drinking a beer. This is what it&#8217;s about.</p>
+
+<p><img src="/images/blog/priest-lake.jpg"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/21/configuration-property-code-snippet-c-sharp/">ConfigurationProperty Code Snippet (C#)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-21T16:52:00-07:00" pubdate data-updated="true">Jul 21<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you&#8217;ve ever wanted to create a <a href="http://msdn.microsoft.com/en-us/library/2tw134k3.aspx">custom configuration section for a .NET
+app</a>,
+you know how tedious it is to type this out:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">namespace</span> <span class="nn">Samples.AspNet</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">class</span> <span class="nc">PageAppearanceSection</span> <span class="p">:</span> <span class="n">ConfigurationSection</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Create a &quot;remoteOnly&quot; attribute.</span>
+</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;remoteOnly&quot;, DefaultValue = &quot;false&quot;, IsRequired = false)]</span>
+</span><span class='line'>        <span class="k">public</span> <span class="n">Boolean</span> <span class="n">RemoteOnly</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">get</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">Boolean</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">];</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="k">set</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Create a &quot;font&quot; element.</span>
+</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;font&quot;)]</span>
+</span><span class='line'>        <span class="k">public</span> <span class="n">FontElement</span> <span class="n">Font</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">get</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">FontElement</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">];</span> <span class="p">}</span>
+</span><span class='line'>            <span class="k">set</span>
+</span><span class='line'>            <span class="p">{</span> <span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&#8217;s a much faster way to create normal properties. If you&#8217;ve ever <a href="http://www.onesoft.dk/post/The-prop-snippet-and-Visual-Studio-2008.aspx">used the
+prop code snippet to create a property</a>,
+you already know this. You can just type &#8220;prop&#8221; and hit tab to have an entir
+property filled out for you:</p>
+
+<p><img src="/images/blog/prop-snippet.png"></p>
+
+<p>Faced with the daunting task of creating some custom configuration elements, I
+threw together a code snippet that lets you do the same for a
+configuration-backed property. I can now just type &#8220;propc&#8221; and hit tab to get
+this:</p>
+
+<p><img src="/images/blog/config-prop-snippet.png"></p>
+
+<p>Then I just fill out the name and type and call it good. If you&#8217;d like to join
+in on the propc goodness here&#8217;s the source of the snippet file. Just download
+and save it as a <strong>.snippet</strong> file and import it through <strong>Tools</strong> |
+<strong>Code Snippets Manager</strong> in Visual Studio:</p>
+
+<div><script src='https://gist.github.com/1410807.js?file='></script>
+<noscript><pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;
+    &lt;CodeSnippet Format=&quot;1.0.0&quot;&gt;
+        &lt;Header&gt;
+            &lt;Shortcut&gt;propc&lt;/Shortcut&gt;
+            &lt;Title&gt;propc&lt;/Title&gt;
+            &lt;Author&gt;Rohan Singh&lt;/Author&gt;
+            &lt;Description&gt;
+                Code snippet for a configuration-backed property
+            &lt;/Description&gt;
+            &lt;SnippetTypes&gt;
+                &lt;SnippetType&gt;Expansion&lt;/SnippetType&gt;
+            &lt;/SnippetTypes&gt;
+        &lt;/Header&gt;
+        &lt;Snippet&gt;
+            &lt;Declarations&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;type&lt;/ID&gt;
+                    &lt;ToolTip&gt;Property type&lt;/ToolTip&gt;
+                    &lt;Default&gt;string&lt;/Default&gt;
+                &lt;/Literal&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;configurationProperty&lt;/ID&gt;
+                    &lt;ToolTip&gt;Configuration property name&lt;/ToolTip&gt;
+                    &lt;Default&gt;myProperty&lt;/Default&gt;
+                &lt;/Literal&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;isRequired&lt;/ID&gt;
+                    &lt;ToolTip&gt;Specifies whether the property is required&lt;/ToolTip&gt;
+                    &lt;Default&gt;true&lt;/Default&gt;
+                    &lt;Type&gt;System.Boolean&lt;/Type&gt;
+                &lt;/Literal&gt;
+                &lt;Literal&gt;
+                    &lt;ID&gt;property&lt;/ID&gt;
+                    &lt;ToolTip&gt;Property name&lt;/ToolTip&gt;
+                    &lt;Default&gt;MyProperty&lt;/Default&gt;
+                &lt;/Literal&gt;
+                &lt;Literal Editable=&quot;false&quot;&gt;
+                    &lt;ID&gt;SystemConfigurationConfigurationProperty&lt;/ID&gt;
+                    &lt;Function&gt;SimpleTypeName(global::System.Configuration.ConfigurationProperty)&lt;/Function&gt;
+                &lt;/Literal&gt;
+            &lt;/Declarations&gt;
+            &lt;Code Language=&quot;CSharp&quot;&gt;&lt;![CDATA[[$SystemConfigurationConfigurationProperty$(&quot;$configurationProperty$&quot;, IsRequired = $isRequired$)]
+    public $type$ $property$
+    {
+        get
+        {
+            return ($type$)this[&quot;$configurationProperty$&quot;];
+        }
+        set
+        {
+            this[&quot;$configurationProperty$&quot;] = value;
+        }
+    }
+    $end$]]&gt;
+            &lt;/Code&gt;
+        &lt;/Snippet&gt;
+    &lt;/CodeSnippet&gt;
+&lt;/CodeSnippets&gt;</code></pre></noscript></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/20/this-parking-is-very-discriminatory/">This Parking Is Very Discriminatory.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-20T11:54:00-07:00" pubdate data-updated="true">Jul 20<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/blog/discriminatory-parking.jpg"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/19/browser-compatibility-testing/">Browser Compatibility Testing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-19T15:52:00-07:00" pubdate data-updated="true">Jul 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Got to make sure <a href="http://www.starbucks.com">our website</a> runs in
+everybody&#8217;s browser! My personal favorite:</p>
+
+<p><img src="/images/blog/lynx.png"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <div style="margin: 15px 0">
+        <img src="http://www.gravatar.com/avatar/3b8af424ab9b8963a6d3d9b8082894cd.png?s=150"
+            style="margin-left: auto; margin-right: auto; display: block"
+            alt="Rohan Singh" title="Rohan Singh" height="150" width="150" />
+    </div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/12/06/thoughts-on-home-walls-setting/">Thoughts on Home Walls & Setting</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing pgmagick on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/25/optimism/">Optimism</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/24/dont-break-the-back-button/">Don&#8217;t Break the Back Button</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/">Getting ASP.NET to play nice with Opera &amp; wget</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("rohansingh", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/rohansingh" class="twitter-follow-button" data-width="208px" data-show-count="true">Follow @rohansingh</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2011 - Rohan Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'rohanradio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
