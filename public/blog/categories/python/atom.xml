@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2011-12-26T15:15:51-08:00</updated>
+  <updated>2011-12-26T15:20:58-08:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -26,7 +26,7 @@ in the depths of the Internet.</p>
 
 <p>I'm assuming you have a working <a href="http://mxcl.github.com/homebrew/">Homebrew</a>,
 Python, and <a href="http://pypi.python.org/pypi/pip"><code>pip</code></a>. You'll also need
-<a href="https://github.com/rohansingh/homebrew/blob/master/Library/Formula/boost.rb">my Homebrew formula for Boost</a>.</p>
+<a href="https://github.com/mxcl/homebrew/pull/8928">my Homebrew formula for Boost</a>.</p>
 
 <p>Once you've got that, it's pretty straightforward:</p>
 
