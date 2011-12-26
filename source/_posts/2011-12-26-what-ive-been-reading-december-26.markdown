@@ -7,12 +7,12 @@ categories:
 - Reading
 ---
 
-What follows are some of the most insightful, interesting, or otherwise
+What follows are the most insightful, interesting, or otherwise
 noteworthy articles I've stumbled across over the past couple weeks.
 
 * __[Democracy is not a truth machine](http://www.readability.com/articles/hvn0le5e)__.
   One of the best articles I've read all week. In it, a bearded philosopher
-  eloquently demonstrates why democractic processes can't be trusted to find
+  eloquently demonstrates why democratic processes can't be trusted to find
   the truth about objective facts about reality. For example, while a democratic
   process can be used to decide what we *should do* about climate change, the
   underlying scientific reality is not up for debate.
