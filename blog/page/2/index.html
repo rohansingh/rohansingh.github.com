@@ -9,9 +9,9 @@
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="Here are some facts: HTML5 has a Database API that lets you
-store things locally and retrieve them with SQL queries.
-Android lets you embed a WebView &hellip;">
+  <meta name="description" content="What follows has probably been expounded a thousand times in different places.
+In fact, MSDN even has a long article entitled
+Best Practices for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,96 @@ Android lets you embed a WebView &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions/">4 Simple Rules for Catching .NET Exceptions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-13T16:58:00-07:00" pubdate data-updated="true">Sep 13<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>What follows has probably been expounded a thousand times in different places.
+In fact, MSDN even has a long article entitled
+<a href="http://rrs.co/aMavUs">Best Practices for Handling Exceptions</a>.</p>
+
+<p>That said, I believe the best practices when it comes to catching .NET
+exceptions can be boiled down into four basic rules:</p>
+
+<ol>
+<li><p>Do not catch an exception unless you have something specific you need to do with
+that exception in the place you are catching it. Generally, there’s two
+scenarios where it’s alright to catch an exception:</p>
+
+<ol>
+<li>When you can do something specific to respond to and recover from a specific
+exception.</li>
+<li>When you have specific logging or, in the UI, want to display a specific error
+message due to a specific exception.</li>
+</ol>
+
+
+<p>Every exception and every catch block incurs a major performance overhead. If
+you can’t do something that fits into one of these two categories, you generally
+should not catch the exception. Note that this means that catching <code>Exception</code>
+instead of a specific type of exception is almost never correct.</p></li>
+<li><p>When you want to convert an exception to a string for logging, just use
+<code>ex.ToString()</code>. Do not try to <code>ToString()</code> or do any complex operations on any of
+the exception&#8217;s other properties in a way that could fail if those properties are
+null. For example, <code>ex.SomeProperty.ToString()</code> is almost never correct since
+<code>SomeProperty</code> might be null. Even if it seems to not be null when you are
+testing, since this is by definition an exceptional case you can’t be sure what
+properties of the exception may or may not be filled.</p>
+
+<p>More generally, avoid doing things in a catch block that may cause another
+exception to be thrown. Don’t nest try-catch blocks.</p></li>
+<li><p>Never do anything that would hide an exception from bubbling up unless you have
+specific code that can recover from the exception. For example, even if you are
+logging an exception in your catch block, rethrow it so any logging code higher
+up will be able to process it as well.</p>
+
+<p>The only time you should not rethrow an
+exception is when you can recover from it and the code can keep running fine.</p>
+
+<p>That said, if you can recover from an exception and the code can keep running,
+see if it would be possible to predict the exception beforehand and avoid it. As
+an example, say you are going to try to call <code>ToUpper()</code> on a string. If the
+string is null beforehand, you already know that a null reference exception will
+be thrown, so don’t call <code>ToUpper()</code>.</p></li>
+<li><p>When you rethrow an exception, always just use <code>throw;</code>. Do not use <code>throw ex;</code>.
+The latter restarts the call stack and makes debugging much more difficult. The only
+time you would do the latter is if you want to hide internals for some reason
+like security, which is almost never needed.</p></li>
+</ol>
+
+
+<p>Comments? Concerns? Death threats?</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -708,45 +798,6 @@ and save it as a <strong>.snippet</strong> file and import it through <strong>To
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/19/browser-compatibility-testing/">Browser Compatibility Testing</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-19T15:52:00-07:00" pubdate data-updated="true">Jul 19<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Got to make sure <a href="http://www.starbucks.com">our website</a> runs in
-everybody&#8217;s browser! My personal favorite:</p>
-
-<p><img src="/images/blog/lynx.png"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -771,6 +822,10 @@ everybody&#8217;s browser! My personal favorite:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2011/12/26/what-ive-been-reading-december-26/">What I&#8217;ve Been Reading (Dec. 26, 2011)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/12/06/thoughts-on-home-walls-setting/">Thoughts on Home Walls & Setting</a>
       </li>
     
@@ -784,10 +839,6 @@ everybody&#8217;s browser! My personal favorite:</p>
     
       <li class="post">
         <a href="/blog/2011/06/24/dont-break-the-back-button/">Don&#8217;t Break the Back Button</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/">Getting ASP.NET to play nice with Opera &amp; wget</a>
       </li>
     
   </ul>

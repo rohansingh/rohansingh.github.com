@@ -9,9 +9,8 @@
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="I think of all the things I love about where I live,
-having a climbing wall in our studio is definitely in my top three. We had a couple
-of &hellip;">
+  <meta name="description" content="What follows are some of the most insightful, interesting, or otherwise
+noteworthy articles I&#8217;ve stumbled across over the past couple weeks. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,90 @@ of &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/26/what-ive-been-reading-december-26/">What I&#8217;ve Been Reading (Dec. 26, 2011)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-26T14:12:00-08:00" pubdate data-updated="true">Dec 26<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>What follows are some of the most insightful, interesting, or otherwise
+noteworthy articles I&#8217;ve stumbled across over the past couple weeks.</p>
+
+<ul>
+<li><p><strong><a href="http://www.readability.com/articles/hvn0le5e">Democracy is not a truth machine</a></strong>.
+One of the best articles I&#8217;ve read all week. In it, a bearded philosopher
+eloquently demonstrates why democractic processes can&#8217;t be trusted to find
+the truth about objective facts about reality. For example, while a democratic
+process can be used to decide what we <em>should do</em> about climate change, the
+underlying scientific reality is not up for debate.</p></li>
+<li><p><strong><a href="http://www.salon.com/2011/12/03/the_evolution_of_monsters/singleton/">Why we invented monsters</a></strong>.
+Paul Carr start with the idea that monsters grew into the human
+consciousness in the image of predators, such as felines and
+snakes. Eventually, as protohumans transformed from a prey species into
+predators, our imaginations transformed as well.</p></li>
+<li><p><strong><a href="http://www.bbc.co.uk/news/magazine-16037798">The scandal of the Alabama poor cut off from water</a></strong>.
+It really kills me that we need a foreign news source to report about the fact
+that America&#8217;s infrastructure is failing and the promises of citizenship
+aren&#8217;t panning out for some of those who have the greatest need.
+Reading this article, others like it, and watching the documentary
+<em><a href="http://en.wikipedia.org/wiki/Waiting_for_%22Superman%22">Waiting for &#8220;Superman&#8221;</a></em>
+over the weekend has left me with a lot of questions in a place where there
+are few good answers.</p></li>
+<li><p><strong><a href="http://www.theatlantic.com/international/archive/2011/12/why-americas-death-penalty-just-got-us-sanctioned-by-europe/250324/">Why America&#8217;s Death Penalty Just Got Us Sanctioned by Europe</a></strong>.
+The European Union has decided that it will have no part in the barbarism
+involved in the methodical killing of human beings by their peers. I
+completely agree with Ford Vox&#8217;s characterization of the situation:</p>
+
+<blockquote><p>The death penalty is a blind spot in our democracy, our own peculiar
+national <a href="http://en.wikipedia.org/wiki/Anosognosia">anosognosia</a>.
+It probably will take the rest of the world shouting
+us down in order to recognize our impairment.</p></blockquote></li>
+<li><p><strong><a href="http://www.remappingdebate.org/article/tale-two-systems">A tale of two systems</a></strong>.
+The folks at <a href="http://www.remappingdebate.org/">Remapping Debate</a> contrast a
+failing labor system in America with a robust, unionized system in Germany.</p></li>
+<li><p><strong><a href="http://www.samharris.org/blog/item/hitch/">Hitch</a></strong>. Sam Harris, eloquent
+as always, on Christopher Hitchens&#8217; death:</p>
+
+<blockquote><p>Needless to say, he was effortlessly lucid and witty—and taking no prisoners.
+There should be a name for the peculiar cocktail of emotion I then enjoyed:
+one part astonishment, one part relief, two parts envy; stir. It would not be
+the last time I drank it in his honor.</p></blockquote></li>
+<li><p><strong><a href="http://rrs.co/tlMGyE">Freakonomics: What Went Wrong?</a></strong>. Andrew Gelman and
+Kaiser Fung examine many of the conclusions in <em>Freakonomics</em> and
+<em>Superfreakonomics</em> which have worked themselves into the cultural
+consciousness and which are now taken for granted. Specifically, they show
+that many of these conclusions are just plain wrong.</p></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -823,96 +906,6 @@ ask yourself: is this the world I want to live in?</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions/">4 Simple Rules for Catching .NET Exceptions</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-13T16:58:00-07:00" pubdate data-updated="true">Sep 13<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>What follows has probably been expounded a thousand times in different places.
-In fact, MSDN even has a long article entitled
-<a href="http://rrs.co/aMavUs">Best Practices for Handling Exceptions</a>.</p>
-
-<p>That said, I believe the best practices when it comes to catching .NET
-exceptions can be boiled down into four basic rules:</p>
-
-<ol>
-<li><p>Do not catch an exception unless you have something specific you need to do with
-that exception in the place you are catching it. Generally, there’s two
-scenarios where it’s alright to catch an exception:</p>
-
-<ol>
-<li>When you can do something specific to respond to and recover from a specific
-exception.</li>
-<li>When you have specific logging or, in the UI, want to display a specific error
-message due to a specific exception.</li>
-</ol>
-
-
-<p>Every exception and every catch block incurs a major performance overhead. If
-you can’t do something that fits into one of these two categories, you generally
-should not catch the exception. Note that this means that catching <code>Exception</code>
-instead of a specific type of exception is almost never correct.</p></li>
-<li><p>When you want to convert an exception to a string for logging, just use
-<code>ex.ToString()</code>. Do not try to <code>ToString()</code> or do any complex operations on any of
-the exception&#8217;s other properties in a way that could fail if those properties are
-null. For example, <code>ex.SomeProperty.ToString()</code> is almost never correct since
-<code>SomeProperty</code> might be null. Even if it seems to not be null when you are
-testing, since this is by definition an exceptional case you can’t be sure what
-properties of the exception may or may not be filled.</p>
-
-<p>More generally, avoid doing things in a catch block that may cause another
-exception to be thrown. Don’t nest try-catch blocks.</p></li>
-<li><p>Never do anything that would hide an exception from bubbling up unless you have
-specific code that can recover from the exception. For example, even if you are
-logging an exception in your catch block, rethrow it so any logging code higher
-up will be able to process it as well.</p>
-
-<p>The only time you should not rethrow an
-exception is when you can recover from it and the code can keep running fine.</p>
-
-<p>That said, if you can recover from an exception and the code can keep running,
-see if it would be possible to predict the exception beforehand and avoid it. As
-an example, say you are going to try to call <code>ToUpper()</code> on a string. If the
-string is null beforehand, you already know that a null reference exception will
-be thrown, so don’t call <code>ToUpper()</code>.</p></li>
-<li><p>When you rethrow an exception, always just use <code>throw;</code>. Do not use <code>throw ex;</code>.
-The latter restarts the call stack and makes debugging much more difficult. The only
-time you would do the latter is if you want to hide internals for some reason
-like security, which is almost never needed.</p></li>
-</ol>
-
-
-<p>Comments? Concerns? Death threats?</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -935,6 +928,10 @@ like security, which is almost never needed.</p></li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2011/12/26/what-ive-been-reading-december-26/">What I&#8217;ve Been Reading (Dec. 26, 2011)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/12/06/thoughts-on-home-walls-setting/">Thoughts on Home Walls & Setting</a>
       </li>
     
@@ -948,10 +945,6 @@ like security, which is almost never needed.</p></li>
     
       <li class="post">
         <a href="/blog/2011/06/24/dont-break-the-back-button/">Don&#8217;t Break the Back Button</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/">Getting ASP.NET to play nice with Opera &amp; wget</a>
       </li>
     
   </ul>
