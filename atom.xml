@@ -4,7 +4,7 @@
   <title><![CDATA[rohan singh]]></title>
   <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2011-12-27T00:17:35-08:00</updated>
+  <updated>2012-01-01T10:44:40-08:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -12,6 +12,72 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Actually Dreaming in Code]]></title>
+    <link href="http://www.rohanradio.com/blog/2011/12/31/actually-dreaming-in-code/"/>
+    <updated>2011-12-31T17:49:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2011/12/31/actually-dreaming-in-code</id>
+    <content type="html"><![CDATA[<p>Before I begin, here are a few great, relevant xkcd&#8217;s:
+<a href="http://xkcd.com/719/">#719</a>
+<a href="http://xkcd.com/430/">#430</a>
+<a href="http://xkcd.com/203/">#203</a></p>
+
+<p>Anyhow, say what you will about Scott Rosenberg&#8217;s book, <em><a href="http://www.amazon.com/gp/product/1400082463?tag=rohanradiocom-20">Dreaming in Code</a></em>
+— but the fact is, it makes Googling for experiences of <em>actually dreaming in code</em>
+<a href="http://google.com/search?q=dreaming+in+code">fairly impossible</a>.</p>
+
+<p>Personally though, I find dreaming in code to be very real.
+My dreams have always quite vividly blended reality and the imaginary, often
+leaving me confused as to which is which, and leaving me with a somewhat tenuous
+connection to the former. Code dreams are no different, and I&#8217;ve found that mine
+fit into three major types:</p>
+
+<ol>
+<li><p><strong>The Text Editor</strong>. This is your fairly standard code dream. In my case,
+white background, plain text and some code appearing or being written.
+Sometimes, it might make sense and actually relate to a project I&#8217;ve been
+working on or code I&#8217;ve being writing, but quite often this code doesn&#8217;t make
+any sense whatsoever.</p>
+
+<p>Often, there is no background or text, but just the lines and constructs of
+code floating in a place where there is no physical reality. I wonder if
+mathematicians have dreams similar to these, but with mathematical constructs?</p></li>
+<li><p><strong>The Inspiration</strong>. These dreams are comparatively rare, and don&#8217;t actually
+seem to involve any coding whatsoever. However, they very specifically relate
+to something I am working on, and when I wake up I know how to structure some
+code that I have been struggling with.</p>
+
+<p>This seems to be a pretty straightforward case of the brain working on a
+waking-world concern while asleep. Too bad the hours aren&#8217;t billable.</p></li>
+<li><p><strong>Code Blends With Reality</strong>. This is the strangest type of dream and the
+most difficult to relate, but in many ways my favorite. In these dreams,
+physical reality seems to blend and mix with the reality of code. While there
+is a normal dream of the physical world underlying everything here, in these
+dreams I interact with that world with code instead of in the normal physical
+manner.</p>
+
+<p>For example, I might find myself writing a script to light a campfire.
+Or instead of traveling from place to place by walking or in a car, I might
+just fiddle with the parameters that define my location. People may speak in code
+or in concepts rather than words.</p></li>
+</ol>
+
+
+<p>Overall, I find #3 to be the most common type of code dream I have, as well as
+the most interesting. It lets the world become a playground that is strangely
+close to the real world. It is almost as if, in these dreams, magic is real, and
+code is magic.</p>
+
+<p>While it&#8217;s probably not the most important thing in the world, I&#8217;m really
+curious to hear whether lots of other people out there dream in code, and how
+everyone else&#8217;s code dreams differ from mine.</p>
+
+<p>After all, we spend an amazing amount of time asleep throughout the course of
+our lives. Who knows, maybe if talk about dreaming code enough, clients will
+agree that those hours asleep should be billable after all, eh?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Stone Sublimely Self-Righteous]]></title>
@@ -878,164 +944,6 @@ Here&#8217;s his take on Amy Winehouse&#8217;s song &#8220;Rehab&#8221;:</p>
     <content type="html"><![CDATA[<p>Laying on the boat, reading a book drinking a beer. This is what it&#8217;s about.</p>
 
 <p><img src="http://www.rohanradio.com/images/blog/priest-lake.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ConfigurationProperty Code Snippet (C#)]]></title>
-    <link href="http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp/"/>
-    <updated>2010-07-21T16:52:00-07:00</updated>
-    <id>http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp</id>
-    <content type="html"><![CDATA[<p>If you&#8217;ve ever wanted to create a <a href="http://msdn.microsoft.com/en-us/library/2tw134k3.aspx">custom configuration section for a .NET
-app</a>,
-you know how tedious it is to type this out:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">namespace</span> <span class="nn">Samples.AspNet</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">class</span> <span class="nc">PageAppearanceSection</span> <span class="p">:</span> <span class="n">ConfigurationSection</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// Create a &quot;remoteOnly&quot; attribute.</span>
-</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;remoteOnly&quot;, DefaultValue = &quot;false&quot;, IsRequired = false)]</span>
-</span><span class='line'>        <span class="k">public</span> <span class="n">Boolean</span> <span class="n">RemoteOnly</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">get</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">Boolean</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">];</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>            <span class="k">set</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="c1">// Create a &quot;font&quot; element.</span>
-</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;font&quot;)]</span>
-</span><span class='line'>        <span class="k">public</span> <span class="n">FontElement</span> <span class="n">Font</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">get</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">FontElement</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">];</span> <span class="p">}</span>
-</span><span class='line'>            <span class="k">set</span>
-</span><span class='line'>            <span class="p">{</span> <span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">...</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There&#8217;s a much faster way to create normal properties. If you&#8217;ve ever <a href="http://www.onesoft.dk/post/The-prop-snippet-and-Visual-Studio-2008.aspx">used the
-prop code snippet to create a property</a>,
-you already know this. You can just type &#8220;prop&#8221; and hit tab to have an entir
-property filled out for you:</p>
-
-<p><img src="http://www.rohanradio.com/images/blog/prop-snippet.png"></p>
-
-<p>Faced with the daunting task of creating some custom configuration elements, I
-threw together a code snippet that lets you do the same for a
-configuration-backed property. I can now just type &#8220;propc&#8221; and hit tab to get
-this:</p>
-
-<p><img src="http://www.rohanradio.com/images/blog/config-prop-snippet.png"></p>
-
-<p>Then I just fill out the name and type and call it good. If you&#8217;d like to join
-in on the propc goodness here&#8217;s the source of the snippet file. Just download
-and save it as a <strong>.snippet</strong> file and import it through <strong>Tools</strong> |
-<strong>Code Snippets Manager</strong> in Visual Studio:</p>
-
-<div><script src='https://gist.github.com/1410807.js?file='></script>
-<noscript><pre><code>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;
-    &lt;CodeSnippet Format=&quot;1.0.0&quot;&gt;
-        &lt;Header&gt;
-            &lt;Shortcut&gt;propc&lt;/Shortcut&gt;
-            &lt;Title&gt;propc&lt;/Title&gt;
-            &lt;Author&gt;Rohan Singh&lt;/Author&gt;
-            &lt;Description&gt;
-                Code snippet for a configuration-backed property
-            &lt;/Description&gt;
-            &lt;SnippetTypes&gt;
-                &lt;SnippetType&gt;Expansion&lt;/SnippetType&gt;
-            &lt;/SnippetTypes&gt;
-        &lt;/Header&gt;
-        &lt;Snippet&gt;
-            &lt;Declarations&gt;
-                &lt;Literal&gt;
-                    &lt;ID&gt;type&lt;/ID&gt;
-                    &lt;ToolTip&gt;Property type&lt;/ToolTip&gt;
-                    &lt;Default&gt;string&lt;/Default&gt;
-                &lt;/Literal&gt;
-                &lt;Literal&gt;
-                    &lt;ID&gt;configurationProperty&lt;/ID&gt;
-                    &lt;ToolTip&gt;Configuration property name&lt;/ToolTip&gt;
-                    &lt;Default&gt;myProperty&lt;/Default&gt;
-                &lt;/Literal&gt;
-                &lt;Literal&gt;
-                    &lt;ID&gt;isRequired&lt;/ID&gt;
-                    &lt;ToolTip&gt;Specifies whether the property is required&lt;/ToolTip&gt;
-                    &lt;Default&gt;true&lt;/Default&gt;
-                    &lt;Type&gt;System.Boolean&lt;/Type&gt;
-                &lt;/Literal&gt;
-                &lt;Literal&gt;
-                    &lt;ID&gt;property&lt;/ID&gt;
-                    &lt;ToolTip&gt;Property name&lt;/ToolTip&gt;
-                    &lt;Default&gt;MyProperty&lt;/Default&gt;
-                &lt;/Literal&gt;
-                &lt;Literal Editable=&quot;false&quot;&gt;
-                    &lt;ID&gt;SystemConfigurationConfigurationProperty&lt;/ID&gt;
-                    &lt;Function&gt;SimpleTypeName(global::System.Configuration.ConfigurationProperty)&lt;/Function&gt;
-                &lt;/Literal&gt;
-            &lt;/Declarations&gt;
-            &lt;Code Language=&quot;CSharp&quot;&gt;&lt;![CDATA[[$SystemConfigurationConfigurationProperty$(&quot;$configurationProperty$&quot;, IsRequired = $isRequired$)]
-    public $type$ $property$
-    {
-        get
-        {
-            return ($type$)this[&quot;$configurationProperty$&quot;];
-        }
-        set
-        {
-            this[&quot;$configurationProperty$&quot;] = value;
-        }
-    }
-    $end$]]&gt;
-            &lt;/Code&gt;
-        &lt;/Snippet&gt;
-    &lt;/CodeSnippet&gt;
-&lt;/CodeSnippets&gt;</code></pre></noscript></div>
-
-
-
 ]]></content>
   </entry>
   

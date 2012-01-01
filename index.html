@@ -9,8 +9,10 @@
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="Every winter for the past few years, I&#8217;ve spent at least a weekend in San Diego.
-Not only is the tropical sun a great respite from gloomy &hellip;">
+  <meta name="description" content="Before I begin, here are a few great, relevant xkcd&#8217;s:
+#719
+#430
+#203 Anyhow, say what you will about Scott Rosenberg&#8217;s book, Dreaming in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +81,99 @@ Not only is the tropical sun a great respite from gloomy &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/31/actually-dreaming-in-code/">Actually Dreaming in Code</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-31T17:49:00-08:00" pubdate data-updated="true">Dec 31<span>st</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Before I begin, here are a few great, relevant xkcd&#8217;s:
+<a href="http://xkcd.com/719/">#719</a>
+<a href="http://xkcd.com/430/">#430</a>
+<a href="http://xkcd.com/203/">#203</a></p>
+
+<p>Anyhow, say what you will about Scott Rosenberg&#8217;s book, <em><a href="http://www.amazon.com/gp/product/1400082463?tag=rohanradiocom-20">Dreaming in Code</a></em>
+— but the fact is, it makes Googling for experiences of <em>actually dreaming in code</em>
+<a href="http://google.com/search?q=dreaming+in+code">fairly impossible</a>.</p>
+
+<p>Personally though, I find dreaming in code to be very real.
+My dreams have always quite vividly blended reality and the imaginary, often
+leaving me confused as to which is which, and leaving me with a somewhat tenuous
+connection to the former. Code dreams are no different, and I&#8217;ve found that mine
+fit into three major types:</p>
+
+<ol>
+<li><p><strong>The Text Editor</strong>. This is your fairly standard code dream. In my case,
+white background, plain text and some code appearing or being written.
+Sometimes, it might make sense and actually relate to a project I&#8217;ve been
+working on or code I&#8217;ve being writing, but quite often this code doesn&#8217;t make
+any sense whatsoever.</p>
+
+<p>Often, there is no background or text, but just the lines and constructs of
+code floating in a place where there is no physical reality. I wonder if
+mathematicians have dreams similar to these, but with mathematical constructs?</p></li>
+<li><p><strong>The Inspiration</strong>. These dreams are comparatively rare, and don&#8217;t actually
+seem to involve any coding whatsoever. However, they very specifically relate
+to something I am working on, and when I wake up I know how to structure some
+code that I have been struggling with.</p>
+
+<p>This seems to be a pretty straightforward case of the brain working on a
+waking-world concern while asleep. Too bad the hours aren&#8217;t billable.</p></li>
+<li><p><strong>Code Blends With Reality</strong>. This is the strangest type of dream and the
+most difficult to relate, but in many ways my favorite. In these dreams,
+physical reality seems to blend and mix with the reality of code. While there
+is a normal dream of the physical world underlying everything here, in these
+dreams I interact with that world with code instead of in the normal physical
+manner.</p>
+
+<p>For example, I might find myself writing a script to light a campfire.
+Or instead of traveling from place to place by walking or in a car, I might
+just fiddle with the parameters that define my location. People may speak in code
+or in concepts rather than words.</p></li>
+</ol>
+
+
+<p>Overall, I find #3 to be the most common type of code dream I have, as well as
+the most interesting. It lets the world become a playground that is strangely
+close to the real world. It is almost as if, in these dreams, magic is real, and
+code is magic.</p>
+
+<p>While it&#8217;s probably not the most important thing in the world, I&#8217;m really
+curious to hear whether lots of other people out there dream in code, and how
+everyone else&#8217;s code dreams differ from mine.</p>
+
+<p>After all, we spend an amazing amount of time asleep throughout the course of
+our lives. Who knows, maybe if talk about dreaming code enough, clients will
+agree that those hours asleep should be billable after all, eh?</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -811,108 +906,6 @@ work perfectly for Opera and <code>wget</code> users alike!</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/22/posting-json-with-jquery/">Posting JSON With jQuery</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-22T22:23:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Lately, I&#8217;ve been a big fan of JSON via HTTP POST to send data to a Web service.
-It&#8217;s awesome for a bunch of reasons:</p>
-
-<ul>
-<li><p><strong>Works equally well for simple and complex data.</strong> Regular HTTP POST works great
-for simple data, but gets unwieldy for anything hierarchical. XML works for
-complex data, but is too wordy for something simple.</p></li>
-<li><p><strong>Compact and human-readable.</strong> Really, this just comes with the territory when
-you&#8217;re using JSON for anything.</p></li>
-<li><p><strong>Easy to debug using Fiddler or related tools.</strong> You just have to type in or
-modify a JSON string when you want to do some ad-hoc testing.</p></li>
-<li><p><strong>Easy to add support for to any server.</strong> In fact, support for receiving JSON
-POST is built into the latest versions of
-<a href="http://docs.cherrypy.org/dev/refman/lib/jsontools.html">CherryPy</a> and
-<a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.jsonvalueproviderfactory.aspx">ASP.NET MVC</a>.</p></li>
-</ul>
-
-
-<p>That said, JSON POST still doesn&#8217;t seem to be all that popular compared to
-an old-style URL-encoded HTTP POST. One explanation I&#8217;ve heard proposed for
-this is the lack of support in jQuery. By default, jQuery goes with the
-old-style POST. You know:</p>
-
-<pre><code>foo=bar&amp;abc=xyz&amp;x=123
-</code></pre>
-
-<p>Sure, you can pass in a complex type and jQuery will gladly serialize it
-into this format for you, but good luck trying to read that with your human
-eyes, or trying to piece it back together on the server in any sane way.</p>
-
-<p>The really sad thing is that jQuery has a great <code>getJSON()</code> function that lets
-you receive JSON output and parses it appropriately. But there is no
-built-in support for posting raw JSON.</p>
-
-<p>To that end, I threw together this little plugin that I use all over the
-place:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
-</span><span class='line'>    <span class="nx">postJSON</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-</span><span class='line'>        <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
-</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="nx">callback</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">contentType</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">processData</span><span class="o">:</span> <span class="kc">false</span>
-</span><span class='line'>      <span class="p">});</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -935,6 +928,10 @@ place:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2011/12/31/actually-dreaming-in-code/">Actually Dreaming in Code</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/12/26/stone-sublimely-self-righteous/">Stone Sublimely Self-Righteous</a>
       </li>
     
@@ -948,10 +945,6 @@ place:</p>
     
       <li class="post">
         <a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing pgmagick on OS X</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/25/optimism/">Optimism</a>
       </li>
     
   </ul>
@@ -984,7 +977,7 @@ place:</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2011 - Rohan Singh -
+  Copyright &copy; 2012 - Rohan Singh -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
