@@ -9,8 +9,8 @@
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="Here&#8217;s a little trick I use. I figured I&#8217;d share it just in case anyone else
-finds it useful. Whenever I need to decide whether something &hellip;">
+  <meta name="description" content="Lately, I&#8217;ve been a big fan of JSON via HTTP POST to send data to a Web service.
+It&#8217;s awesome for a bunch of reasons: Works equally well &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,108 @@ finds it useful. Whenever I need to decide whether something &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/22/posting-json-with-jquery/">Posting JSON With jQuery</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-22T22:23:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Lately, I&#8217;ve been a big fan of JSON via HTTP POST to send data to a Web service.
+It&#8217;s awesome for a bunch of reasons:</p>
+
+<ul>
+<li><p><strong>Works equally well for simple and complex data.</strong> Regular HTTP POST works great
+for simple data, but gets unwieldy for anything hierarchical. XML works for
+complex data, but is too wordy for something simple.</p></li>
+<li><p><strong>Compact and human-readable.</strong> Really, this just comes with the territory when
+you&#8217;re using JSON for anything.</p></li>
+<li><p><strong>Easy to debug using Fiddler or related tools.</strong> You just have to type in or
+modify a JSON string when you want to do some ad-hoc testing.</p></li>
+<li><p><strong>Easy to add support for to any server.</strong> In fact, support for receiving JSON
+POST is built into the latest versions of
+<a href="http://docs.cherrypy.org/dev/refman/lib/jsontools.html">CherryPy</a> and
+<a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.jsonvalueproviderfactory.aspx">ASP.NET MVC</a>.</p></li>
+</ul>
+
+
+<p>That said, JSON POST still doesn&#8217;t seem to be all that popular compared to
+an old-style URL-encoded HTTP POST. One explanation I&#8217;ve heard proposed for
+this is the lack of support in jQuery. By default, jQuery goes with the
+old-style POST. You know:</p>
+
+<pre><code>foo=bar&amp;abc=xyz&amp;x=123
+</code></pre>
+
+<p>Sure, you can pass in a complex type and jQuery will gladly serialize it
+into this format for you, but good luck trying to read that with your human
+eyes, or trying to piece it back together on the server in any sane way.</p>
+
+<p>The really sad thing is that jQuery has a great <code>getJSON()</code> function that lets
+you receive JSON output and parses it appropriately. But there is no
+built-in support for posting raw JSON.</p>
+
+<p>To that end, I threw together this little plugin that I use all over the
+place:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">postJSON</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="nx">callback</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">contentType</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">processData</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -628,191 +730,6 @@ Here&#8217;s his take on Amy Winehouse&#8217;s song &#8220;Rehab&#8221;:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/21/configuration-property-code-snippet-c-sharp/">ConfigurationProperty Code Snippet (C#)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-21T16:52:00-07:00" pubdate data-updated="true">Jul 21<span>st</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you&#8217;ve ever wanted to create a <a href="http://msdn.microsoft.com/en-us/library/2tw134k3.aspx">custom configuration section for a .NET
-app</a>,
-you know how tedious it is to type this out:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">namespace</span> <span class="nn">Samples.AspNet</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">public</span> <span class="k">class</span> <span class="nc">PageAppearanceSection</span> <span class="p">:</span> <span class="n">ConfigurationSection</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// Create a &quot;remoteOnly&quot; attribute.</span>
-</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;remoteOnly&quot;, DefaultValue = &quot;false&quot;, IsRequired = false)]</span>
-</span><span class='line'>        <span class="k">public</span> <span class="n">Boolean</span> <span class="n">RemoteOnly</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">get</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">Boolean</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">];</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>            <span class="k">set</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="k">this</span><span class="p">[</span><span class="s">&quot;remoteOnly&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="c1">// Create a &quot;font&quot; element.</span>
-</span><span class='line'><span class="na">        [ConfigurationProperty(&quot;font&quot;)]</span>
-</span><span class='line'>        <span class="k">public</span> <span class="n">FontElement</span> <span class="n">Font</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="k">get</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="k">return</span> <span class="p">(</span><span class="n">FontElement</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">];</span> <span class="p">}</span>
-</span><span class='line'>            <span class="k">set</span>
-</span><span class='line'>            <span class="p">{</span> <span class="k">this</span><span class="p">[</span><span class="s">&quot;font&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">...</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There&#8217;s a much faster way to create normal properties. If you&#8217;ve ever <a href="http://www.onesoft.dk/post/The-prop-snippet-and-Visual-Studio-2008.aspx">used the
-prop code snippet to create a property</a>,
-you already know this. You can just type &#8220;prop&#8221; and hit tab to have an entir
-property filled out for you:</p>
-
-<p><img src="/images/blog/prop-snippet.png"></p>
-
-<p>Faced with the daunting task of creating some custom configuration elements, I
-threw together a code snippet that lets you do the same for a
-configuration-backed property. I can now just type &#8220;propc&#8221; and hit tab to get
-this:</p>
-
-<p><img src="/images/blog/config-prop-snippet.png"></p>
-
-<p>Then I just fill out the name and type and call it good. If you&#8217;d like to join
-in on the propc goodness here&#8217;s the source of the snippet file. Just download
-and save it as a <strong>.snippet</strong> file and import it through <strong>Tools</strong> |
-<strong>Code Snippets Manager</strong> in Visual Studio:</p>
-
-<div><script src='https://gist.github.com/1410807.js?file='></script>
-<noscript><pre><code>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;
-    &lt;CodeSnippet Format=&quot;1.0.0&quot;&gt;
-        &lt;Header&gt;
-            &lt;Shortcut&gt;propc&lt;/Shortcut&gt;
-            &lt;Title&gt;propc&lt;/Title&gt;
-            &lt;Author&gt;Rohan Singh&lt;/Author&gt;
-            &lt;Description&gt;
-                Code snippet for a configuration-backed property
-            &lt;/Description&gt;
-            &lt;SnippetTypes&gt;
-                &lt;SnippetType&gt;Expansion&lt;/SnippetType&gt;
-            &lt;/SnippetTypes&gt;
-        &lt;/Header&gt;
-        &lt;Snippet&gt;
-            &lt;Declarations&gt;
-                &lt;Literal&gt;
-                    &lt;ID&gt;type&lt;/ID&gt;
-                    &lt;ToolTip&gt;Property type&lt;/ToolTip&gt;
-                    &lt;Default&gt;string&lt;/Default&gt;
-                &lt;/Literal&gt;
-                &lt;Literal&gt;
-                    &lt;ID&gt;configurationProperty&lt;/ID&gt;
-                    &lt;ToolTip&gt;Configuration property name&lt;/ToolTip&gt;
-                    &lt;Default&gt;myProperty&lt;/Default&gt;
-                &lt;/Literal&gt;
-                &lt;Literal&gt;
-                    &lt;ID&gt;isRequired&lt;/ID&gt;
-                    &lt;ToolTip&gt;Specifies whether the property is required&lt;/ToolTip&gt;
-                    &lt;Default&gt;true&lt;/Default&gt;
-                    &lt;Type&gt;System.Boolean&lt;/Type&gt;
-                &lt;/Literal&gt;
-                &lt;Literal&gt;
-                    &lt;ID&gt;property&lt;/ID&gt;
-                    &lt;ToolTip&gt;Property name&lt;/ToolTip&gt;
-                    &lt;Default&gt;MyProperty&lt;/Default&gt;
-                &lt;/Literal&gt;
-                &lt;Literal Editable=&quot;false&quot;&gt;
-                    &lt;ID&gt;SystemConfigurationConfigurationProperty&lt;/ID&gt;
-                    &lt;Function&gt;SimpleTypeName(global::System.Configuration.ConfigurationProperty)&lt;/Function&gt;
-                &lt;/Literal&gt;
-            &lt;/Declarations&gt;
-            &lt;Code Language=&quot;CSharp&quot;&gt;&lt;![CDATA[[$SystemConfigurationConfigurationProperty$(&quot;$configurationProperty$&quot;, IsRequired = $isRequired$)]
-    public $type$ $property$
-    {
-        get
-        {
-            return ($type$)this[&quot;$configurationProperty$&quot;];
-        }
-        set
-        {
-            this[&quot;$configurationProperty$&quot;] = value;
-        }
-    }
-    $end$]]&gt;
-            &lt;/Code&gt;
-        &lt;/Snippet&gt;
-    &lt;/CodeSnippet&gt;
-&lt;/CodeSnippets&gt;</code></pre></noscript></div>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -837,6 +754,10 @@ and save it as a <strong>.snippet</strong> file and import it through <strong>To
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2011/12/31/actually-dreaming-in-code/">Actually Dreaming in Code</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/12/26/stone-sublimely-self-righteous/">Stone Sublimely Self-Righteous</a>
       </li>
     
@@ -850,10 +771,6 @@ and save it as a <strong>.snippet</strong> file and import it through <strong>To
     
       <li class="post">
         <a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing pgmagick on OS X</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/25/optimism/">Optimism</a>
       </li>
     
   </ul>
@@ -886,7 +803,7 @@ and save it as a <strong>.snippet</strong> file and import it through <strong>To
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2011 - Rohan Singh -
+  Copyright &copy; 2012 - Rohan Singh -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
