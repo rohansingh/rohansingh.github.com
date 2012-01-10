@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Software - rohan singh</title>
+  <title>The Inner-Platform Effect - rohan singh</title>
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="Category: Software">
+  <meta name="description" content="Today someone on Hacker News
+posted a link to the Wikipedia article on the inner-platform effect,
+which is &#8220;the tendency of software architects &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.rohanradio.comblog/categories/software">
+  <link rel="canonical" href="http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -77,36 +79,114 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Software</h1>
+    
+      <h1 class="entry-title">The Inner-Platform Effect</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-09T20:45:00-08:00" pubdate data-updated="true">Jan 9<span>th</span>, 2012</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>Today <a href="http://news.ycombinator.com/item?id=3442497">someone on Hacker News</a>
+posted a link to the <a href="http://en.wikipedia.org/wiki/Inner-platform_effect">Wikipedia article on the inner-platform effect</a>,
+which is &#8220;the tendency of software architects to create a system so customizable as to become a
+replica, and often a poor replica, of the software development platform they are using.</p>
 
-  
-  <h2>2011</h2>
+<p>One of my favorite parts of the article (emphasis mine):</p>
 
-<article>
-  
-<h1><a href="/blog/2011/07/25/optimism/">Optimism</a></h1>
-<time datetime="2011-07-25T17:03:00-07:00" pubdate><span class='month'>Jul</span> <span class='day'>25</span> <span class='year'>2011</span></time>
+<blockquote><p>In the database world, developers are sometimes tempted to bypass the RDBMS, for
+example by storing everything in one big table with two columns labelled key and
+value. While this entity-attribute-value model allows the developer to break out
+from the structure imposed by an SQL database, it loses out on all the benefits,
+since all of the work that could be done efficiently by the RDBMS is forced onto
+the application instead. Queries become much more convoluted, the indexes and
+query optimizer can no longer work effectively, and data validity constraints
+are not enforced. <strong>Such designs rarely make their way into real world production
+systems, however, because performance tends to be little better than abysmal,
+due to all the extra joins required.</strong></p></blockquote>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/software/'>Software</a></span>
-</footer>
-
-
-</article>
-
+<p>Oh man, if only. I can think of at least <a href="http://www.magentocommerce.com/">one example</a> of a
+a platform with this very problem — and with the associated horrible performance profile — that is
+very widely deployed and used in production environments around the world. I&#8217;m sure you can think of
+others.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Rohan Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-09T20:45:00-08:00" pubdate data-updated="true">Jan 9<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/coding/'>Coding</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect/" data-via="rohansingh" data-counturl="http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/12/31/actually-dreaming-in-code/" title="Previous Post: Actually Dreaming in Code">&laquo; Actually Dreaming in Code</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -180,7 +260,10 @@
       var disqus_shortname = 'rohanradio';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect/';
+        var disqus_url = 'http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

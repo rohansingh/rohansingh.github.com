@@ -9,10 +9,9 @@
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="Before I begin, here are a few great, relevant xkcd&#8217;s:
-#719
-#430
-#203 Anyhow, say what you will about Scott Rosenberg&#8217;s book, Dreaming in &hellip;">
+  <meta name="description" content="Today someone on Hacker News
+posted a link to the Wikipedia article on the inner-platform effect,
+which is &#8220;the tendency of software architects &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +80,63 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/01/09/the-inner-platform-effect/">The Inner-Platform Effect</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-09T20:45:00-08:00" pubdate data-updated="true">Jan 9<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today <a href="http://news.ycombinator.com/item?id=3442497">someone on Hacker News</a>
+posted a link to the <a href="http://en.wikipedia.org/wiki/Inner-platform_effect">Wikipedia article on the inner-platform effect</a>,
+which is &#8220;the tendency of software architects to create a system so customizable as to become a
+replica, and often a poor replica, of the software development platform they are using.</p>
+
+<p>One of my favorite parts of the article (emphasis mine):</p>
+
+<blockquote><p>In the database world, developers are sometimes tempted to bypass the RDBMS, for
+example by storing everything in one big table with two columns labelled key and
+value. While this entity-attribute-value model allows the developer to break out
+from the structure imposed by an SQL database, it loses out on all the benefits,
+since all of the work that could be done efficiently by the RDBMS is forced onto
+the application instead. Queries become much more convoluted, the indexes and
+query optimizer can no longer work effectively, and data validity constraints
+are not enforced. <strong>Such designs rarely make their way into real world production
+systems, however, because performance tends to be little better than abysmal,
+due to all the extra joins required.</strong></p></blockquote>
+
+<p>Oh man, if only. I can think of at least <a href="http://www.magentocommerce.com/">one example</a> of a
+a platform with this very problem — and with the associated horrible performance profile — that is
+very widely deployed and used in production environments around the world. I&#8217;m sure you can think of
+others.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -867,45 +923,6 @@ work perfectly for Opera and <code>wget</code> users alike!</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/02/outlier-is-pretty-awesome/">Outlier Is Pretty Awesome</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-02T10:36:00-08:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>We love our bikes not because we race them, ride trails or perform tricks with them, although sometimes we do all of that. We love our bikes mainly because they are our transportation, our freedom, our way of moving through the spaces we call our home.</p><footer><strong>Outlier</strong><cite><a href='http://outlier.cc'>outlier.cc/&hellip;</a></cite></footer></blockquote>
-
-
-<p><img src="/images/blog/outlier.png"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -923,6 +940,10 @@ work perfectly for Opera and <code>wget</code> users alike!</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/09/the-inner-platform-effect/">The Inner-Platform Effect</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/12/31/actually-dreaming-in-code/">Actually Dreaming in Code</a>
       </li>
     
@@ -936,10 +957,6 @@ work perfectly for Opera and <code>wget</code> users alike!</p>
     
       <li class="post">
         <a href="/blog/2011/12/06/thoughts-on-home-walls-setting/">Thoughts on Home Walls & Setting</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing pgmagick on OS X</a>
       </li>
     
   </ul>
