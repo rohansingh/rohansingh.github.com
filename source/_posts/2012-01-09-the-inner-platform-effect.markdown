@@ -10,7 +10,7 @@ categories:
 Today [someone on Hacker News](http://news.ycombinator.com/item?id=3442497)
 posted a link to the [Wikipedia article on the inner-platform effect](http://en.wikipedia.org/wiki/Inner-platform_effect),
 which is "the tendency of software architects to create a system so customizable as to become a
-replica, and often a poor replica, of the software development platform they are using.
+replica, and often a poor replica, of the software development platform they are using."
 
 One of my favorite parts of the article (emphasis mine):
 
