@@ -4,7 +4,7 @@
   <title><![CDATA[rohan singh]]></title>
   <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-09T20:55:08-08:00</updated>
+  <updated>2012-01-09T20:57:00-08:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>Today <a href="http://news.ycombinator.com/item?id=3442497">someone on Hacker News</a>
 posted a link to the <a href="http://en.wikipedia.org/wiki/Inner-platform_effect">Wikipedia article on the inner-platform effect</a>,
 which is &#8220;the tendency of software architects to create a system so customizable as to become a
-replica, and often a poor replica, of the software development platform they are using.</p>
+replica, and often a poor replica, of the software development platform they are using.&#8221;</p>
 
 <p>One of my favorite parts of the article (emphasis mine):</p>
 
