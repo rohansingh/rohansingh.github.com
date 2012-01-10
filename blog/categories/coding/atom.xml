@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Coding | rohan singh]]></title>
+  <link href="http://www.rohanradio.com/blog/categories/coding/atom.xml" rel="self"/>
+  <link href="http://www.rohanradio.com/"/>
+  <updated>2012-01-09T20:55:08-08:00</updated>
+  <id>http://www.rohanradio.com/</id>
+  <author>
+    <name><![CDATA[Rohan Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Inner-Platform Effect]]></title>
+    <link href="http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect/"/>
+    <updated>2012-01-09T20:45:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect</id>
+    <content type="html"><![CDATA[<p>Today <a href="http://news.ycombinator.com/item?id=3442497">someone on Hacker News</a>
+posted a link to the <a href="http://en.wikipedia.org/wiki/Inner-platform_effect">Wikipedia article on the inner-platform effect</a>,
+which is "the tendency of software architects to create a system so customizable as to become a
+replica, and often a poor replica, of the software development platform they are using.</p>
+
+<p>One of my favorite parts of the article (emphasis mine):</p>
+
+<blockquote><p>In the database world, developers are sometimes tempted to bypass the RDBMS, for
+example by storing everything in one big table with two columns labelled key and
+value. While this entity-attribute-value model allows the developer to break out
+from the structure imposed by an SQL database, it loses out on all the benefits,
+since all of the work that could be done efficiently by the RDBMS is forced onto
+the application instead. Queries become much more convoluted, the indexes and
+query optimizer can no longer work effectively, and data validity constraints
+are not enforced. <strong>Such designs rarely make their way into real world production
+systems, however, because performance tends to be little better than abysmal,
+due to all the extra joins required.</strong></p></blockquote>
+
+<p>Oh man, if only. I can think of at least <a href="http://www.magentocommerce.com/">one example</a> of a
+a platform with this very problem — and with the associated horrible performance profile — that is
+very widely deployed and used in production environments around the world. I'm sure you can think of
+others.</p>
+]]></content>
+  </entry>
+  
+</feed>

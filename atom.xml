@@ -4,7 +4,7 @@
   <title><![CDATA[rohan singh]]></title>
   <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-07T14:11:56-08:00</updated>
+  <updated>2012-01-09T20:55:08-08:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Inner-Platform Effect]]></title>
+    <link href="http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect/"/>
+    <updated>2012-01-09T20:45:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect</id>
+    <content type="html"><![CDATA[<p>Today <a href="http://news.ycombinator.com/item?id=3442497">someone on Hacker News</a>
+posted a link to the <a href="http://en.wikipedia.org/wiki/Inner-platform_effect">Wikipedia article on the inner-platform effect</a>,
+which is &#8220;the tendency of software architects to create a system so customizable as to become a
+replica, and often a poor replica, of the software development platform they are using.</p>
+
+<p>One of my favorite parts of the article (emphasis mine):</p>
+
+<blockquote><p>In the database world, developers are sometimes tempted to bypass the RDBMS, for
+example by storing everything in one big table with two columns labelled key and
+value. While this entity-attribute-value model allows the developer to break out
+from the structure imposed by an SQL database, it loses out on all the benefits,
+since all of the work that could be done efficiently by the RDBMS is forced onto
+the application instead. Queries become much more convoluted, the indexes and
+query optimizer can no longer work effectively, and data validity constraints
+are not enforced. <strong>Such designs rarely make their way into real world production
+systems, however, because performance tends to be little better than abysmal,
+due to all the extra joins required.</strong></p></blockquote>
+
+<p>Oh man, if only. I can think of at least <a href="http://www.magentocommerce.com/">one example</a> of a
+a platform with this very problem — and with the associated horrible performance profile — that is
+very widely deployed and used in production environments around the world. I&#8217;m sure you can think of
+others.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Actually Dreaming in Code]]></title>
@@ -933,17 +963,6 @@ Here&#8217;s his take on Amy Winehouse&#8217;s song &#8220;Rehab&#8221;:</p>
     <updated>2010-07-27T20:40:00-07:00</updated>
     <id>http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset</id>
     <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/priest-lake-sunset.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Laying on the boat...]]></title>
-    <link href="http://www.rohanradio.com/blog/2010/07/26/laying-on-the-boat/"/>
-    <updated>2010-07-26T15:44:00-07:00</updated>
-    <id>http://www.rohanradio.com/blog/2010/07/26/laying-on-the-boat</id>
-    <content type="html"><![CDATA[<p>Laying on the boat, reading a book drinking a beer. This is what it&#8217;s about.</p>
-
-<p><img src="http://www.rohanradio.com/images/blog/priest-lake.jpg"></p>
 ]]></content>
   </entry>
   
