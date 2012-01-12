@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Coding | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/coding/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-09T20:57:00-08:00</updated>
+  <updated>2012-01-11T16:05:14-08:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Extreme Response Times]]></title>
+    <link href="http://www.rohanradio.com/blog/2012/01/11/extreme-response-times/"/>
+    <updated>2012-01-11T16:01:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2012/01/11/extreme-response-times</id>
+    <content type="html"><![CDATA[<p>Looks like I have some serious optimization to do for the new stuff that I've
+been building:</p>
+
+<p><img src="/images/blog/extreme-response-times.png"></p>
+
+<p>At least the latency seems pretty good?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Inner-Platform Effect]]></title>
