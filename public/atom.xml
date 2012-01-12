@@ -4,7 +4,7 @@
   <title><![CDATA[rohan singh]]></title>
   <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-09T20:57:00-08:00</updated>
+  <updated>2012-01-11T16:05:14-08:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Extreme Response Times]]></title>
+    <link href="http://www.rohanradio.com/blog/2012/01/11/extreme-response-times/"/>
+    <updated>2012-01-11T16:01:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2012/01/11/extreme-response-times</id>
+    <content type="html"><![CDATA[<p>Looks like I have some serious optimization to do for the new stuff that I&#8217;ve
+been building:</p>
+
+<p><img src="http://www.rohanradio.com/images/blog/extreme-response-times.png"></p>
+
+<p>At least the latency seems pretty good?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Inner-Platform Effect]]></title>
@@ -954,15 +968,6 @@ Here&#8217;s his take on Amy Winehouse&#8217;s song &#8220;Rehab&#8221;:</p>
 <p>Now that&#8217;s comedy. And of course, for reference, the song itself:</p>
 
 <p><a href="http://open.spotify.com/track/1EXAqr4fceDPYlL6XeMi2g">&#8220;Rehab&#8221; by Amy Winehouse on Spotify</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Now that is a sunset.]]></title>
-    <link href="http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset/"/>
-    <updated>2010-07-27T20:40:00-07:00</updated>
-    <id>http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset</id>
-    <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/priest-lake-sunset.jpg"></p>
 ]]></content>
   </entry>
   
