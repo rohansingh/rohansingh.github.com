@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Coding | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/coding/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-11T16:05:14-08:00</updated>
+  <updated>2012-01-19T12:33:50-08:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Isn't all coding about being too clever?]]></title>
+    <link href="http://www.rohanradio.com/blog/2012/01/19/isnt-all-coding-about-being-too-clever/"/>
+    <updated>2012-01-19T12:22:00-08:00</updated>
+    <id>http://www.rohanradio.com/blog/2012/01/19/isnt-all-coding-about-being-too-clever</id>
+    <content type="html"><![CDATA[<p>Every now and then I have a discussion or lecture with my roommate Chris, on some aspect of software
+engineer, architecture, process management, or programming in general. His specialization is
+psychology, so while this exercise can be cathartic, it's largely pointless. I've decided that it
+might be more effective to write these things down and post them.</p>
+
+<p>Today, prompted by a discussion on what I should name some new object, Chris asked:</p>
+
+<blockquote><p>Isn't all coding about being too clever?</p></blockquote>
+
+<p>I think that is a conception that many laypeople and beginning programmers have — that we should try
+to be clever. Seasoned engineers will know that being clever can be one of the worst sins.</p>
+
+<p>Here was my response, paraphrased:</p>
+
+<blockquote><p>The goal is to write the minimal code that (a) gets the job done, (b) doesn't break, and (c) is
+understandable and maintainable by other people.</p>
+
+<p>"Clever" often meets the first requirement, can sometimes meet the second, and always fails
+miserably at the third — which is actually the most important one. All things equal, I'd often
+rather have a broken system that I can understand than a rat's nest of code that happens to work.</p></blockquote>
+
+<p>That said, sometimes you do come across clever code that meets all of those requirements. These are
+small masterpieces and works of art and should be regarded as such.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Extreme Response Times]]></title>

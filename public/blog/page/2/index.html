@@ -9,8 +9,9 @@
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="A few weeks ago we noticed an issue with some crawlers and search engines being
+unable to crawl Starbucks.com. Around the same time,
+Karl Dubost from &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,165 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/">Getting ASP.NET to Play Nice With Opera &amp; Wget</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-28T15:43:00-07:00" pubdate data-updated="true">Mar 28<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A few weeks ago we noticed an issue with some crawlers and search engines being
+unable to crawl <a href="http://www.starbucks.com">Starbucks.com</a>. Around the same time,
+<a href="http://my.opera.com/karlcow/">Karl Dubost</a> from Opera discovered that
+<a href="http://my.opera.com/karlcow/blog/2011/03/03/wrong-to-be-right-with-xhtml">visitors using Opera were getting a parse error</a>.
+In fact, a number of high-profile ASP.NET sites seem to be impacted by the latter issue.</p>
+
+<p>If you&#8217;re just looking for the quick fix, skip ahead to the bottom of this post.</p>
+
+<p>To sum up the issue, our server was responding with a <code>Content-Type</code> header of
+<code>application/xhtml+xml</code> to both Opera and <code>wget</code>. In Opera, this triggers an XML
+parser, which would fail since our content is actually <code>text/html</code>.</p>
+
+<p>Of course, nowhere in our code were explicitly setting the <code>Content-Type</code> header
+to anything other than <code>text/html</code>, so the behavior was puzzling. Additionally,
+the server was responding with an <code>application/xhtml+xml</code> type even when the
+Accept header from the browser specified <code>*/*</code>. This made no sense at all, since
+if the browser was willing to accept anything, we should be sending the content
+in its default <code>text/html</code>.</p>
+
+<h2>ASP.NET Browser Detection</h2>
+
+<p>As it turns out, ASP.NET has a somewhat questionable
+<a href="http://msdn.microsoft.com/en-us/library/3yekbd5b.aspx">feature that allows you detect browser types and capabilities</a>,
+largely based on the browser&#8217;s request headers. This is mediated through a
+<a href="http://msdn.microsoft.com/en-us/library/ms228122.aspx">browser definition file</a>
+(*.browser), which is just a bunch of XML that matches up request header
+patterns to browser types and know capabilities. This file lives in your
+ASP.NET applicaiton&#8217;s App_Browsers folder.</p>
+
+<p>The known capabilities for the current user agent are all available through the
+<code>HttpContext.Request.Browser</code> object.</p>
+
+<p>As I said, all very questionable. The idea of having a giant database of
+browsers and what they are like just rubs me wrong and strikes me as
+unmaintainable. In fact, we only tried out the whole browser definition file as
+part of a proof-of-concept for some mobile pages. The feature never quite worked
+correctly, so we abandoned it and thought that was the end of that.</p>
+
+<h2>The insidious preferredRenderingMime</h2>
+
+<p>Of course, that wasn&#8217;t the end of that. For each browser definition in a browser
+definition file, you can define a <code>preferredRenderingMime</code> value for a browser.
+For example:</p>
+
+<pre><code>&lt;capabilities&gt;
+  &lt;capability name="preferredRenderingMime" value="application/xhtml+xml" /&gt;
+&lt;/capabilities&gt;
+</code></pre>
+
+<p>Most of the larger *.browser file compilations floating around the Web have
+Opera set to preferring a MIME type of <code>application/xhtml+xml</code>. A lot of files
+will default to a preferred type of <code>application/xhtml+xml</code> for all browsers that
+pass an Accept: <em>/</em> request header.</p>
+
+<p>And even though we use ASP.NET MVC and no longer are using any of the browser
+detection stuff at all, the System.Web.UI.Page class has this fun code that runs
+when the page is processed:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">SetIntrinsics</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">allowAsync</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">HttpCapabilitiesBase</span> <span class="n">browser</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">_request</span><span class="p">.</span><span class="n">Browser</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="n">_response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">PreferredRenderingMime</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Brilliant, right? Since Opera prefers XHTML, this code does you the favor of
+automatically setting your response content type to <code>application/xhtml+xml</code>. Of
+course, since your actual content is still HTML, this causes an XML parse error
+and all your Opera visitors are hosed.</p>
+
+<p>This might make sense if you are doing the classic ASP.NET Web Forms thing with
+server controls that adapt their rendering based on the browser&#8217;s preferred
+MIME. But even if you are using ASP.NET MVC, your .aspx views are still
+essentially pages, and this old code will still run.</p>
+
+<h2>Broken <code>wget</code></h2>
+
+<p>Unfortunately, this <code>SetIntrinsics</code> code has another nasty side effect. If your
+application has already sent out response headers or content, it will just throw
+an exception since <code>Response.ContentType</code> can&#8217;t be set after response headers have
+already been sent.</p>
+
+<p>In the case of Starbucks.com, this meant that issue wasn&#8217;t just that Opera
+visitors experienced a parse error, but that an exception would be thrown for
+any browser for which ASP.NET tried to switch the <code>Response.ContentType</code>. This
+would result in absolutely no content being served, resulting in a blank page
+for Opera visitors.</p>
+
+<p>Furthermore, a large percentage of crawlers and search engines use <code>wget</code> to
+grab pages. <code>wget</code> sends an <code>Accept</code> header of <code>*/*</code>, and runs into the same
+no-content issue. A fine mess all around.</p>
+
+<h2>The fix</h2>
+
+<p>The simplest fix, of course, is to get rid of any *.browser files you may be
+using in your application. I understand redirecting to a mobile version of your
+site for mobile browsers or the like, but basing any major functionality on
+guesses about the user&#8217;s browser is a great path to future pain.</p>
+
+<p>If, however, you want to keep your browser definition files around, consider
+removing any uses of the <code>preferrendRenderingMime</code> capability. Here&#8217;s a regex that
+should be able to find those instances for you:</p>
+
+<pre><code>^.+"preferredRenderingMime".+$
+</code></pre>
+
+<p>Just do a find &amp; replace on that and you should be good to go. This is what we
+ended up doing for <a href="http://www.starbucks.com">Starbucks.com</a> and
+<a href="http://starbucks.co.uk">Starbucks.co.uk</a>, which I&#8217;m happy to say now
+work perfectly for Opera and <code>wget</code> users alike!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -688,49 +848,6 @@ work?</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/27/aarons-hucklebear/">Aaron&#8217;s Hucklebear</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-27T21:32:00-07:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Relaxing at the cabin in Idaho, Aaron has had some time to do some doodling.
-Here&#8217;s his take on Amy Winehouse&#8217;s song &#8220;Rehab&#8221;:</p>
-
-<p><img src="/images/blog/aarons-hucklebear.jpg"></p>
-
-<p>Now that&#8217;s comedy. And of course, for reference, the song itself:</p>
-
-<p><a href="http://open.spotify.com/track/1EXAqr4fceDPYlL6XeMi2g">&#8220;Rehab&#8221; by Amy Winehouse on Spotify</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -750,6 +867,10 @@ Here&#8217;s his take on Amy Winehouse&#8217;s song &#8220;Rehab&#8221;:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/19/isnt-all-coding-about-being-too-clever/">Isn&#8217;t all coding about being too clever?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/01/11/extreme-response-times/">Extreme Response Times</a>
       </li>
     
@@ -763,10 +884,6 @@ Here&#8217;s his take on Amy Winehouse&#8217;s song &#8220;Rehab&#8221;:</p>
     
       <li class="post">
         <a href="/blog/2011/12/26/stone-sublimely-self-righteous/">Stone Sublimely Self-Righteous</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/12/26/what-ive-been-reading-december-26/">What I&#8217;ve Been Reading (Dec. 26, 2011)</a>
       </li>
     
   </ul>
