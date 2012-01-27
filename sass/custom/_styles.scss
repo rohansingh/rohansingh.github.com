@@ -2,3 +2,54 @@
 // Add styles here to make changes without digging in too much
 
 ul, ol { margin-left: 1.3em }
+
+html, body > header, body > nav, body > div, body > div > div
+{
+  background: none
+}
+
+body, body > header h1 a, body > header h1 a:visited, body > header h1 a:hover,
+  body > nav a, body > nav a:visited
+{
+  color: #000;
+}
+
+body > header h2 { color: #6c6c6c }
+
+body > nav
+{
+  border-top-color: #8c8c8c;
+}
+
+body > nav form .search { background: none }
+
+body > div > div {
+  // This is the border between the articles and the sidebar.
+  border-right-color: #8c8c8c;
+}
+
+.toggle-sidebar { visibility: hidden }
+
+article header p {
+  // This is the dateline on posts.
+  color: #777;
+}
+
+#content div.pagination a {
+  color: #777;
+}
+
+aside.sidebar {
+  color: #222;
+}
+
+body > footer {
+  background: none;
+  color: #777;
+  text-shadow: none;
+}
+
+#blog-archives {
+  color: #777;
+}
+

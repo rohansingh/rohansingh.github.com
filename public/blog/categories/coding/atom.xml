@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Coding | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/coding/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-19T12:33:50-08:00</updated>
+  <updated>2012-01-27T06:01:23+01:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Isn't all coding about being too clever?]]></title>
     <link href="http://www.rohanradio.com/blog/2012/01/19/isnt-all-coding-about-being-too-clever/"/>
-    <updated>2012-01-19T12:22:00-08:00</updated>
+    <updated>2012-01-19T12:22:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2012/01/19/isnt-all-coding-about-being-too-clever</id>
     <content type="html"><![CDATA[<p>Every now and then I have a discussion or lecture with my roommate Chris, on some aspect of software
 engineer, architecture, process management, or programming in general. His specialization is
@@ -47,7 +47,7 @@ small masterpieces and works of art and should be regarded as such.</p>
   <entry>
     <title type="html"><![CDATA[Extreme Response Times]]></title>
     <link href="http://www.rohanradio.com/blog/2012/01/11/extreme-response-times/"/>
-    <updated>2012-01-11T16:01:00-08:00</updated>
+    <updated>2012-01-11T16:01:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2012/01/11/extreme-response-times</id>
     <content type="html"><![CDATA[<p>Looks like I have some serious optimization to do for the new stuff that I've
 been building:</p>
@@ -61,7 +61,7 @@ been building:</p>
   <entry>
     <title type="html"><![CDATA[The Inner-Platform Effect]]></title>
     <link href="http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect/"/>
-    <updated>2012-01-09T20:45:00-08:00</updated>
+    <updated>2012-01-09T20:45:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect</id>
     <content type="html"><![CDATA[<p>Today <a href="http://news.ycombinator.com/item?id=3442497">someone on Hacker News</a>
 posted a link to the <a href="http://en.wikipedia.org/wiki/Inner-platform_effect">Wikipedia article on the inner-platform effect</a>,

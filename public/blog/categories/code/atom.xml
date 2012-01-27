@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-19T12:33:50-08:00</updated>
+  <updated>2012-01-27T06:01:23+01:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Actually Dreaming in Code]]></title>
     <link href="http://www.rohanradio.com/blog/2011/12/31/actually-dreaming-in-code/"/>
-    <updated>2011-12-31T17:49:00-08:00</updated>
+    <updated>2011-12-31T17:49:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/12/31/actually-dreaming-in-code</id>
     <content type="html"><![CDATA[<p>Before I begin, here are a few great, relevant xkcd's:
 <a href="http://xkcd.com/719/">#719</a>
@@ -82,7 +82,7 @@ agree that those hours asleep should be billable after all, eh?</p>
   <entry>
     <title type="html"><![CDATA[Getting ASP.NET to play nice with Opera &amp; wget]]></title>
     <link href="http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/"/>
-    <updated>2011-03-28T15:43:00-07:00</updated>
+    <updated>2011-03-28T15:43:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget</id>
     <content type="html"><![CDATA[<p>A few weeks ago we noticed an issue with some crawlers and search engines being
 unable to crawl <a href="http://www.starbucks.com">Starbucks.com</a>. Around the same time,
@@ -219,7 +219,7 @@ work perfectly for Opera and <code>wget</code> users alike!</p>
   <entry>
     <title type="html"><![CDATA[Posting JSON with jQuery]]></title>
     <link href="http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery/"/>
-    <updated>2011-02-22T22:23:00-08:00</updated>
+    <updated>2011-02-22T22:23:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery</id>
     <content type="html"><![CDATA[<p>Lately, I've been a big fan of JSON via HTTP POST to send data to a Web service.
 It's awesome for a bunch of reasons:</p>
@@ -297,7 +297,7 @@ place:</p>
   <entry>
     <title type="html"><![CDATA[4 Simple Rules for Catching .NET Exceptions]]></title>
     <link href="http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions/"/>
-    <updated>2010-09-13T16:58:00-07:00</updated>
+    <updated>2010-09-13T16:58:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions</id>
     <content type="html"><![CDATA[<p>What follows has probably been expounded a thousand times in different places.
 In fact, MSDN even has a long article entitled
@@ -360,7 +360,7 @@ like security, which is almost never needed.</p></li>
   <entry>
     <title type="html"><![CDATA[HTML5 Database API Support in an Android WebView]]></title>
     <link href="http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/"/>
-    <updated>2010-08-16T22:06:00-07:00</updated>
+    <updated>2010-08-16T22:06:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview</id>
     <content type="html"><![CDATA[<p>Here are some facts:</p>
 

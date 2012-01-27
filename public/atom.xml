@@ -4,7 +4,7 @@
   <title><![CDATA[rohan singh]]></title>
   <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-19T12:33:50-08:00</updated>
+  <updated>2012-01-27T06:01:23+01:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Isn't all coding about being too clever?]]></title>
     <link href="http://www.rohanradio.com/blog/2012/01/19/isnt-all-coding-about-being-too-clever/"/>
-    <updated>2012-01-19T12:22:00-08:00</updated>
+    <updated>2012-01-19T12:22:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2012/01/19/isnt-all-coding-about-being-too-clever</id>
     <content type="html"><![CDATA[<p>Every now and then I have a discussion or lecture with my roommate Chris, on some aspect of software
 engineer, architecture, process management, or programming in general. His specialization is
@@ -47,7 +47,7 @@ small masterpieces and works of art and should be regarded as such.</p>
   <entry>
     <title type="html"><![CDATA[Extreme Response Times]]></title>
     <link href="http://www.rohanradio.com/blog/2012/01/11/extreme-response-times/"/>
-    <updated>2012-01-11T16:01:00-08:00</updated>
+    <updated>2012-01-11T16:01:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2012/01/11/extreme-response-times</id>
     <content type="html"><![CDATA[<p>Looks like I have some serious optimization to do for the new stuff that I&#8217;ve
 been building:</p>
@@ -61,7 +61,7 @@ been building:</p>
   <entry>
     <title type="html"><![CDATA[The Inner-Platform Effect]]></title>
     <link href="http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect/"/>
-    <updated>2012-01-09T20:45:00-08:00</updated>
+    <updated>2012-01-09T20:45:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2012/01/09/the-inner-platform-effect</id>
     <content type="html"><![CDATA[<p>Today <a href="http://news.ycombinator.com/item?id=3442497">someone on Hacker News</a>
 posted a link to the <a href="http://en.wikipedia.org/wiki/Inner-platform_effect">Wikipedia article on the inner-platform effect</a>,
@@ -91,7 +91,7 @@ others.</p>
   <entry>
     <title type="html"><![CDATA[Actually Dreaming in Code]]></title>
     <link href="http://www.rohanradio.com/blog/2011/12/31/actually-dreaming-in-code/"/>
-    <updated>2011-12-31T17:49:00-08:00</updated>
+    <updated>2011-12-31T17:49:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/12/31/actually-dreaming-in-code</id>
     <content type="html"><![CDATA[<p>Before I begin, here are a few great, relevant xkcd&#8217;s:
 <a href="http://xkcd.com/719/">#719</a>
@@ -157,7 +157,7 @@ agree that those hours asleep should be billable after all, eh?</p>
   <entry>
     <title type="html"><![CDATA[Stone Sublimely Self-Righteous]]></title>
     <link href="http://www.rohanradio.com/blog/2011/12/26/stone-sublimely-self-righteous/"/>
-    <updated>2011-12-26T19:56:00-08:00</updated>
+    <updated>2011-12-26T19:56:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/12/26/stone-sublimely-self-righteous</id>
     <content type="html"><![CDATA[<p>Every winter for the past few years, I&#8217;ve spent at least a weekend in San Diego.
 Not only is the tropical sun a great respite from gloomy Seattle, but San Diego
@@ -189,7 +189,7 @@ on your face — or, at least, on mine.</p>
   <entry>
     <title type="html"><![CDATA[What I've Been Reading (Dec. 26, 2011)]]></title>
     <link href="http://www.rohanradio.com/blog/2011/12/26/what-ive-been-reading-december-26/"/>
-    <updated>2011-12-26T14:12:00-08:00</updated>
+    <updated>2011-12-26T14:12:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/12/26/what-ive-been-reading-december-26</id>
     <content type="html"><![CDATA[<p>What follows are the most insightful, interesting, or otherwise
 noteworthy articles I&#8217;ve stumbled across over the past couple weeks.</p>
@@ -246,7 +246,7 @@ that many of these conclusions are just plain wrong.</p></li>
   <entry>
     <title type="html"><![CDATA[Thoughts on Home Walls & Setting]]></title>
     <link href="http://www.rohanradio.com/blog/2011/12/06/thoughts-on-home-walls-setting/"/>
-    <updated>2011-12-06T23:40:00-08:00</updated>
+    <updated>2011-12-06T23:40:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/12/06/thoughts-on-home-walls-setting</id>
     <content type="html"><![CDATA[<p>I think of all the things I love about <a href="http://en.wikipedia.org/wiki/Wallingford,_Seattle">where I live</a>,
 having a climbing wall in our studio is definitely in my top three. We had a couple
@@ -363,7 +363,7 @@ below it to give it some reinforcement.</p>
   <entry>
     <title type="html"><![CDATA[Installing pgmagick on OS X]]></title>
     <link href="http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x/"/>
-    <updated>2011-12-02T08:18:00-08:00</updated>
+    <updated>2011-12-02T08:18:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x</id>
     <content type="html"><![CDATA[<p><a href="http://pypi.python.org/pypi/pgmagick/">pgmagick</a> is a Python wrapper for
 for <a href="http://imagemagick.org/">ImageMagick</a> (or
@@ -409,7 +409,7 @@ versions.</p>
   <entry>
     <title type="html"><![CDATA[Optimism]]></title>
     <link href="http://www.rohanradio.com/blog/2011/07/25/optimism/"/>
-    <updated>2011-07-25T17:03:00-07:00</updated>
+    <updated>2011-07-25T17:03:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2011/07/25/optimism</id>
     <content type="html"><![CDATA[<p>Software engineers are some of the most optimistic people I know.</p>
 
@@ -422,7 +422,7 @@ versions.</p>
   <entry>
     <title type="html"><![CDATA[Don't Break the Back Button]]></title>
     <link href="http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button/"/>
-    <updated>2011-06-24T21:42:00-07:00</updated>
+    <updated>2011-06-24T21:42:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button</id>
     <content type="html"><![CDATA[<p>Recently, I&#8217;ve worked on/with or used a few Android applications that &#8220;disable&#8221;
 the back button in some cases.</p>
@@ -492,7 +492,7 @@ work, you are basically giving your users a <a href="http://xkcd.com/371/">menta
   <entry>
     <title type="html"><![CDATA[Getting ASP.NET to play nice with Opera &amp; wget]]></title>
     <link href="http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/"/>
-    <updated>2011-03-28T15:43:00-07:00</updated>
+    <updated>2011-03-28T15:43:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget</id>
     <content type="html"><![CDATA[<p>A few weeks ago we noticed an issue with some crawlers and search engines being
 unable to crawl <a href="http://www.starbucks.com">Starbucks.com</a>. Around the same time,
@@ -624,7 +624,7 @@ work perfectly for Opera and <code>wget</code> users alike!</p>
   <entry>
     <title type="html"><![CDATA[I don't even know where to start with this torta.]]></title>
     <link href="http://www.rohanradio.com/blog/2011/03/24/i-dont-even-know-where-to-start-with-this-torta/"/>
-    <updated>2011-03-24T12:37:00-07:00</updated>
+    <updated>2011-03-24T12:37:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/03/24/i-dont-even-know-where-to-start-with-this-torta</id>
     <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/torta.jpg"></p>
 ]]></content>
@@ -633,7 +633,7 @@ work perfectly for Opera and <code>wget</code> users alike!</p>
   <entry>
     <title type="html"><![CDATA[Outlier is pretty awesome]]></title>
     <link href="http://www.rohanradio.com/blog/2011/03/02/outlier-is-pretty-awesome/"/>
-    <updated>2011-03-02T10:36:00-08:00</updated>
+    <updated>2011-03-02T10:36:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/03/02/outlier-is-pretty-awesome</id>
     <content type="html"><![CDATA[<blockquote><p>We love our bikes not because we race them, ride trails or perform tricks with them, although sometimes we do all of that. We love our bikes mainly because they are our transportation, our freedom, our way of moving through the spaces we call our home.</p><footer><strong>Outlier</strong><cite><a href='http://outlier.cc'>outlier.cc/&hellip;</a></cite></footer></blockquote>
 
@@ -645,7 +645,7 @@ work perfectly for Opera and <code>wget</code> users alike!</p>
   <entry>
     <title type="html"><![CDATA[Posting JSON with jQuery]]></title>
     <link href="http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery/"/>
-    <updated>2011-02-22T22:23:00-08:00</updated>
+    <updated>2011-02-22T22:23:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/02/22/posting-json-with-jquery</id>
     <content type="html"><![CDATA[<p>Lately, I&#8217;ve been a big fan of JSON via HTTP POST to send data to a Web service.
 It&#8217;s awesome for a bunch of reasons:</p>
@@ -720,7 +720,7 @@ place:</p>
   <entry>
     <title type="html"><![CDATA[A Little Trick]]></title>
     <link href="http://www.rohanradio.com/blog/2011/02/19/a-little-trick/"/>
-    <updated>2011-02-19T21:27:00-08:00</updated>
+    <updated>2011-02-19T21:27:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/02/19/a-little-trick</id>
     <content type="html"><![CDATA[<p>Here&#8217;s a little trick I use. I figured I&#8217;d share it just in case anyone else
 finds it useful.</p>
@@ -745,7 +745,7 @@ ask yourself: is this the world I want to live in?</p>
   <entry>
     <title type="html"><![CDATA[4 Simple Rules for Catching .NET Exceptions]]></title>
     <link href="http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions/"/>
-    <updated>2010-09-13T16:58:00-07:00</updated>
+    <updated>2010-09-13T16:58:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions</id>
     <content type="html"><![CDATA[<p>What follows has probably been expounded a thousand times in different places.
 In fact, MSDN even has a long article entitled
@@ -808,7 +808,7 @@ like security, which is almost never needed.</p></li>
   <entry>
     <title type="html"><![CDATA[HTML5 Database API Support in an Android WebView]]></title>
     <link href="http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/"/>
-    <updated>2010-08-16T22:06:00-07:00</updated>
+    <updated>2010-08-16T22:06:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview</id>
     <content type="html"><![CDATA[<p>Here are some facts:</p>
 
@@ -888,7 +888,7 @@ different.</p>
   <entry>
     <title type="html"><![CDATA[One Song On Repeat]]></title>
     <link href="http://www.rohanradio.com/blog/2010/08/12/one-song-on-repeat/"/>
-    <updated>2010-08-12T21:26:00-07:00</updated>
+    <updated>2010-08-12T21:26:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2010/08/12/one-song-on-repeat</id>
     <content type="html"><![CDATA[<p>So I&#8217;ve been listening to this one song on repeat for pretty much the entire
 day:</p>
@@ -971,7 +971,7 @@ work?</p>
   <entry>
     <title type="html"><![CDATA[Disappointing Regex Challenge]]></title>
     <link href="http://www.rohanradio.com/blog/2010/08/12/disappointing-regex-challenge/"/>
-    <updated>2010-08-12T13:40:00-07:00</updated>
+    <updated>2010-08-12T13:40:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2010/08/12/disappointing-regex-challenge</id>
     <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/disappointing-regex-challenge.png"></p>
 ]]></content>
@@ -980,7 +980,7 @@ work?</p>
   <entry>
     <title type="html"><![CDATA[import teachPython]]></title>
     <link href="http://www.rohanradio.com/blog/2010/08/11/import-teachpython/"/>
-    <updated>2010-08-11T15:47:00-07:00</updated>
+    <updated>2010-08-11T15:47:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2010/08/11/import-teachpython</id>
     <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/import-teachPython.png"></p>
 ]]></content>

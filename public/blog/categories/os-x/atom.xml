@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OS X | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/os-x/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-19T12:33:50-08:00</updated>
+  <updated>2012-01-27T06:01:23+01:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Installing pgmagick on OS X]]></title>
     <link href="http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x/"/>
-    <updated>2011-12-02T08:18:00-08:00</updated>
+    <updated>2011-12-02T08:18:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x</id>
     <content type="html"><![CDATA[<p><a href="http://pypi.python.org/pypi/pgmagick/">pgmagick</a> is a Python wrapper for
 for <a href="http://imagemagick.org/">ImageMagick</a> (or
