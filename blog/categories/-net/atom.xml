@@ -4,7 +4,7 @@
   <title><![CDATA[Category: .NET | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/-net/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-19T12:33:50-08:00</updated>
+  <updated>2012-01-27T06:01:23+01:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[4 Simple Rules for Catching .NET Exceptions]]></title>
     <link href="http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions/"/>
-    <updated>2010-09-13T16:58:00-07:00</updated>
+    <updated>2010-09-13T16:58:00+02:00</updated>
     <id>http://www.rohanradio.com/blog/2010/09/13/4-simple-rules-for-catching-net-exceptions</id>
     <content type="html"><![CDATA[<p>What follows has probably been expounded a thousand times in different places.
 In fact, MSDN even has a long article entitled
