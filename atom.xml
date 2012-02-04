@@ -4,7 +4,7 @@
   <title><![CDATA[rohan singh]]></title>
   <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-01-29T13:53:23+01:00</updated>
+  <updated>2012-02-04T13:12:16+01:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Stockholm Speaks Out on ACTA]]></title>
+    <link href="http://www.rohanradio.com/blog/2012/02/04/stockholm-speaks-out-on-acta/"/>
+    <updated>2012-02-04T13:01:00+01:00</updated>
+    <id>http://www.rohanradio.com/blog/2012/02/04/stockholm-speaks-out-on-acta</id>
+    <content type="html"><![CDATA[<p>If you haven&#8217;t heard about <a href="http://en.wikipedia.org/wiki/Anti-Counterfeiting_Trade_Agreement">ACTA</a>,
+it&#8217;s a damaging piece of legislating very similar to <a href="http://en.wikipedia.org/wiki/Stop_Online_Piracy_Act">SOPA</a>
+— the difference being that ACTA is international in scope and much closer to
+becoming reality than SOPA ever was. <a href="http://www.youtube.com/watch?v=N8Xg_C2YmG0">Here is a video explaining ACTA</a>
+which I found to be quite educational.</p>
+
+<p>Anyway, Stockholm decided to take to the streets to <a href="https://www.facebook.com/events/332489143440319/">protest ACTA today</a>.
+Here are a few photos of the fairly well-attended event that I managed to snap
+on my phone:</p>
+
+<p><img src="http://www.rohanradio.com/images/blog/stockholm-acta/stockholm-acta-1.jpg"></p>
+
+<p><img src="http://www.rohanradio.com/images/blog/stockholm-acta/stockholm-acta-2.jpg"></p>
+
+<p><img src="http://www.rohanradio.com/images/blog/stockholm-acta/stockholm-acta-3.jpg"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Crazy Color-Coded Problems]]></title>
@@ -1049,15 +1072,6 @@ tune it out. Maybe that lets the creative part of your brain re-engage with your
 work?</p>
 
 <p>Then again, maybe I have no idea what I&#8217;m talking about.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Disappointing Regex Challenge]]></title>
-    <link href="http://www.rohanradio.com/blog/2010/08/12/disappointing-regex-challenge/"/>
-    <updated>2010-08-12T13:40:00+02:00</updated>
-    <id>http://www.rohanradio.com/blog/2010/08/12/disappointing-regex-challenge</id>
-    <content type="html"><![CDATA[<p><img src="http://www.rohanradio.com/images/blog/disappointing-regex-challenge.png"></p>
 ]]></content>
   </entry>
   
