@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: OS X | rohan singh]]></title>
-  <link href="http://www.rohanradio.com/blog/categories/os-x/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Thunderbolt | rohan singh]]></title>
+  <link href="http://www.rohanradio.com/blog/categories/thunderbolt/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
   <updated>2012-02-27T13:16:29+01:00</updated>
   <id>http://www.rohanradio.com/</id>
@@ -58,52 +58,6 @@ interface.</p></li>
 
 
 <p>After all that, everything seems to be working smoothly for me.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Installing pgmagick on OS X]]></title>
-    <link href="http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x/"/>
-    <updated>2011-12-02T08:18:00+01:00</updated>
-    <id>http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x</id>
-    <content type="html"><![CDATA[<p><a href="http://pypi.python.org/pypi/pgmagick/">pgmagick</a> is a Python wrapper for
-for <a href="http://imagemagick.org/">ImageMagick</a> (or
-<a href="http://graphicsmagick.org/">GraphicsMagick</a>). I needed it for something I was
-trying to run yesterday, but the instructions for OS X seem to have gotten lost
-in the depths of the Internet.</p>
-
-<p>I'm assuming you have a working <a href="http://mxcl.github.com/homebrew/">Homebrew</a>,
-Python, and <a href="http://pypi.python.org/pypi/pip"><code>pip</code></a>. You'll also need
-<a href="https://github.com/mxcl/homebrew/pull/8928">my Homebrew formula for Boost</a>.</p>
-
-<p>Once you've got that, it's pretty straightforward:</p>
-
-<pre><code>$ brew install imagemagick --with-magick-plus-plus
-$ brew install boost --with-thread-unsafe
-$ pip install pgmagick
-</code></pre>
-
-<p>Building Boost takes a long time so don't fret if you don't see anything for a
-while. Try it out and it should work:</p>
-
-<pre><code>$ python
-Python 2.7.2 (default, Oct 20 2011, 17:33:50) 
-[GCC 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.1.00)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-&gt;&gt;&gt; import pgmagick
-&gt;&gt;&gt; pgmagick.gminfo.library + ' ' + pgmagick.gminfo.version
-'ImageMagick 6.x.x'
-</code></pre>
-
-<p>For extra credit, you should also be able to install the
-<a href="http://www.pythonware.com/products/pil/">Python Imaging Library (PIL)</a>
-as well:</p>
-
-<pre><code>$ pip install -f http://effbot.org/downloads Imaging==1.1.7
-</code></pre>
-
-<p>This all worked for me on OS X 10.7 (Lion). Your mileage may vary on other
-versions.</p>
 ]]></content>
   </entry>
   

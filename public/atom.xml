@@ -4,7 +4,7 @@
   <title><![CDATA[rohan singh]]></title>
   <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-02-15T15:40:59+01:00</updated>
+  <updated>2012-02-27T13:16:29+01:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing Thunderbolt Ethernet on the MacBook Pro]]></title>
+    <link href="http://www.rohanradio.com/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro/"/>
+    <updated>2012-02-27T12:57:00+01:00</updated>
+    <id>http://www.rohanradio.com/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro</id>
+    <content type="html"><![CDATA[<p>A few weeks ago, I had to make one of the toughest choices I&#8217;ve had in a while: a 30&#8221; Dell display,
+or a 27&#8221; Apple Thunderbolt display. I went with the Thunderbolt display, partly because the colors
+are better, but mostly for the convenience of having USB and ethernet integrated into the display.</p>
+
+<p>The way this works, you can just plug your USB peripherals and your network cord into the
+Thunderbolt display. Then, whenever you dock your MacBook Pro, you just connect the single
+Thunderbolt cable and the display, USB devices, and network all work magically.</p>
+
+<p>It&#8217;s much more convenient than doing the daily morning dance of plugging four or five things into
+your MacBook, and it&#8217;s the closest thing we have to a good MacBook Pro dock.</p>
+
+<p>Well, that&#8217;s the theory anyway. In reality, while the USB works fairly decently, the ethernet
+connection dropped out on day one, and I haven&#8217;t been able to get it back since. Until today.</p>
+
+<p>Here are the final steps that worked for me. Hopefully somebody else can save a bit of time with
+this:</p>
+
+<ol>
+<li><p>With the Thunderbolt display connected, visit the Network tab in System Preferences. If you see
+<strong>Display Ethernet</strong> and/or <strong>Display FireWire</strong> in the list of network interfaces, select each
+one and use the minus (<strong>-</strong>) button at the bottom of the list to remove it.</p>
+
+<p>For me, <strong>Display FireWire</strong> was listed, but <strong>Display Ethernet</strong> was not. I&#8217;ve heard of others
+having strange symptoms with neither or both listed.</p></li>
+<li><p>Unplug the Thunderbolt display. This will not work if you keep the display plugged in while doing
+the next few steps. Trust me, I tried it.</p></li>
+<li><p><code>sudo rm /Library/Preferences/SystemConfiguration/NetworkInterfaces.plist</code></p></li>
+<li><p>Restart your MacBook Pro and log back in. Once you&#8217;ve logged in, connect your Thunderbolt display
+again.</p></li>
+<li><p>Visit the Network tab in System Preferences again. If you see <strong>Display Ethernet</strong> and <strong>Display
+FireWire</strong> listed, you&#8217;re all good. Otherwise, click the plus (<strong>+</strong>) button at the bottom of
+the list of network interfaces.</p>
+
+<p>From the <strong>Interface</strong> dropdown, select the interface you have missing and click <strong>Create</strong>. If
+you have both interfaces missing like I did, you will have to repeat this step for the other
+interface.</p></li>
+</ol>
+
+
+<p>After all that, everything seems to be working smoothly for me.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Stockholm Speaks Out on ACTA]]></title>
@@ -989,89 +1037,6 @@ quota is zero, so you need to override this method and provide a quota to allow
 storage. I&#8217;m using <code>estimatedSize * 2</code> as the new quota since my app is browsing
 to a known page that only stores a small amount of data. Your scenario may be
 different.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[One Song On Repeat]]></title>
-    <link href="http://www.rohanradio.com/blog/2010/08/12/one-song-on-repeat/"/>
-    <updated>2010-08-12T21:26:00+02:00</updated>
-    <id>http://www.rohanradio.com/blog/2010/08/12/one-song-on-repeat</id>
-    <content type="html"><![CDATA[<p>So I&#8217;ve been listening to this one song on repeat for pretty much the entire
-day:</p>
-
-<div>
-    <embed src="http://listen.grooveshark.com/songWidget.swf" type="application/x-shockwave-flash"
-        wmode="window" width="500" height="40" flashvars="hostname=cowbell.grooveshark.com&amp;widgetID=22158641&amp;style=metal&amp;p=0">
-    </embed>
-</div>
-
-
-<p>Let me explain a bit further. I barely know anyone today who doesn&#8217;t listen to
-music while working. But I&#8217;ve been reading the classic
-<em><a href="http://rrs.co/dxohFz">Peopleware</a></em> book, and
-apparently back in the &#8217;60s this was something that researchers at Cornell
-thought was worth looking into. They took a group of computer science students
-and split them into two groups.</p>
-
-<p>The first group went into a silent room, and the second group went into a room
-where they could listen to music using headphones. There was an equal
-distribution of students who said they liked to listen to music while working
-and those who didn&#8217;t.</p>
-
-<p>Everyone was then given the same coding problem. The challenge was to implement
-a program from a pretty complicated spec, using Fortran (hey, it was the &#8217;60s
-after all). Not surprisingly, there wasn&#8217;t much difference between what went on
-in the two rooms. Both groups of students were able to do the challenge at about
-the same speed and with the same skill. No big surprise, right?</p>
-
-<p>Except for this, from Peopleware (emphasis mine):</p>
-
-<blockquote><p>The Cornell experiment, however, contained a hidden wild card. The specification
-required that an output data stream be formed through a series of manipulations
-on numbers in the input data stream &#8230; Although the specification never said
-it, the <strong>net effect of all the operations was that each output number was
-necessarily equal to its input number</strong>. Some people realized this and others did
-not. Of those who figured it out, the overwhelming majority came from the quiet
-room.</p></blockquote>
-
-<p>Think about that for a second. Here are these two groups of students who are
-given what they think is a fairly mechanical task: look at this spec that tells
-you how these numbers should be manipulated, write some code that does the
-manipulations. And all of them were able to complete the mechanical,
-mathematical portion of this task at about the same speed.</p>
-
-<p>But inside the mechanical task was something that required a creative leap:
-figuring out that the output numbers of the program would be exactly the same as
-its input. Something like that might be obvious today with our fancy interactive
-debuggers, but you have to imagine it must have taken quite the leap to figure
-it out while stamping Fortran code into punch cards. This is the kind of leap
-that could save hours upon hours of work and tens of thousands of dollars.</p>
-
-<p>To make this creative leap, you almost invariably had to be in the quiet room.</p>
-
-<p>To the crack neurologist in me, it makes sense. Music is a creative activity,
-and listening to it probably engages the creative part of your brain. Everything
-seems fine when you are working, since most of what you are doing is
-mathematical, analytical, or mechanical. What you don&#8217;t realize is that your
-creative areas are too engaged with the music to be engaged with the problem at
-hand.</p>
-
-<p>Maybe that&#8217;s alright sometimes when you&#8217;re just powering through something
-you&#8217;ve done a million times, but how sustainable is that approach? Unless our
-basic neurology has changed since the 1960&#8217;s, it seems clear that to make the
-creative leaps in software design &#8211; and probably anything else &#8211; you have to
-turn the music off at some point.</p>
-
-<p>The thing that kills me about this is that I like music. It&#8217;s awesome. I love
-listening to music, and I do it almost exclusively when I work and no time else.
-I think I&#8217;ve developed the habit of sometimes listening to just one song on
-repeat as a type of defense strategy. The music gives you a rhythm and a beat to
-work to, but when it&#8217;s just the same song a million times over, you can start to
-tune it out. Maybe that lets the creative part of your brain re-engage with your
-work?</p>
-
-<p>Then again, maybe I have no idea what I&#8217;m talking about.</p>
 ]]></content>
   </entry>
   

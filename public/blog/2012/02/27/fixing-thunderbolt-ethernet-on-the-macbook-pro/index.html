@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Now that is a sunset. - rohan singh</title>
+  <title>Fixing Thunderbolt Ethernet on the MacBook Pro - rohan singh</title>
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="A few weeks ago, I had to make one of the toughest choices I&#8217;ve had in a while: a 30&#8221; Dell display,
+or a 27&#8221; Apple Thunderbolt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset">
+  <link rel="canonical" href="http://www.rohanradio.com/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -85,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Now That Is a Sunset.</h1>
+      <h1 class="entry-title">Fixing Thunderbolt Ethernet on the MacBook Pro</h1>
     
     
       <p class="meta">
@@ -101,14 +101,53 @@
   
 
 
-<time datetime="2010-07-27T20:40:00+02:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
+<time datetime="2012-02-27T12:57:00+01:00" pubdate data-updated="true">Feb 27<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><img src="/images/blog/priest-lake-sunset.jpg"></p>
+<div class="entry-content"><p>A few weeks ago, I had to make one of the toughest choices I&#8217;ve had in a while: a 30&#8221; Dell display,
+or a 27&#8221; Apple Thunderbolt display. I went with the Thunderbolt display, partly because the colors
+are better, but mostly for the convenience of having USB and ethernet integrated into the display.</p>
+
+<p>The way this works, you can just plug your USB peripherals and your network cord into the
+Thunderbolt display. Then, whenever you dock your MacBook Pro, you just connect the single
+Thunderbolt cable and the display, USB devices, and network all work magically.</p>
+
+<p>It&#8217;s much more convenient than doing the daily morning dance of plugging four or five things into
+your MacBook, and it&#8217;s the closest thing we have to a good MacBook Pro dock.</p>
+
+<p>Well, that&#8217;s the theory anyway. In reality, while the USB works fairly decently, the ethernet
+connection dropped out on day one, and I haven&#8217;t been able to get it back since. Until today.</p>
+
+<p>Here are the final steps that worked for me. Hopefully somebody else can save a bit of time with
+this:</p>
+
+<ol>
+<li><p>With the Thunderbolt display connected, visit the Network tab in System Preferences. If you see
+<strong>Display Ethernet</strong> and/or <strong>Display FireWire</strong> in the list of network interfaces, select each
+one and use the minus (<strong>-</strong>) button at the bottom of the list to remove it.</p>
+
+<p>For me, <strong>Display FireWire</strong> was listed, but <strong>Display Ethernet</strong> was not. I&#8217;ve heard of others
+having strange symptoms with neither or both listed.</p></li>
+<li><p>Unplug the Thunderbolt display. This will not work if you keep the display plugged in while doing
+the next few steps. Trust me, I tried it.</p></li>
+<li><p><code>sudo rm /Library/Preferences/SystemConfiguration/NetworkInterfaces.plist</code></p></li>
+<li><p>Restart your MacBook Pro and log back in. Once you&#8217;ve logged in, connect your Thunderbolt display
+again.</p></li>
+<li><p>Visit the Network tab in System Preferences again. If you see <strong>Display Ethernet</strong> and <strong>Display
+FireWire</strong> listed, you&#8217;re all good. Otherwise, click the plus (<strong>+</strong>) button at the bottom of
+the list of network interfaces.</p>
+
+<p>From the <strong>Interface</strong> dropdown, select the interface you have missing and click <strong>Create</strong>. If
+you have both interfaces missing like I did, you will have to repeat this step for the other
+interface.</p></li>
+</ol>
+
+
+<p>After all that, everything seems to be working smoothly for me.</p>
 </div>
 
 
@@ -131,12 +170,12 @@
   
 
 
-<time datetime="2010-07-27T20:40:00+02:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
+<time datetime="2012-02-27T12:57:00+01:00" pubdate data-updated="true">Feb 27<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/photos/'>Photos</a>
+    <a class='category' href='/blog/categories/macbook-pro/'>MacBook Pro</a>, <a class='category' href='/blog/categories/os-x/'>OS X</a>, <a class='category' href='/blog/categories/thunderbolt/'>Thunderbolt</a>
   
 </span>
 
@@ -145,7 +184,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset/" data-via="rohansingh" data-counturl="http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.rohanradio.com/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro/" data-via="rohansingh" data-counturl="http://www.rohanradio.com/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro/" >Tweet</a>
   
   
   
@@ -156,10 +195,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2010/07/26/laying-on-the-boat/" title="Previous Post: Laying on the boat...">&laquo; Laying on the boat...</a>
+        <a class="basic-alignment left" href="/blog/2012/02/04/stockholm-speaks-out-on-acta/" title="Previous Post: Stockholm Speaks Out on ACTA">&laquo; Stockholm Speaks Out on ACTA</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2010/07/27/aarons-hucklebear/" title="next Post: Aaron's Hucklebear">Aaron's Hucklebear &raquo;</a>
       
     </p>
   </footer>
@@ -244,8 +281,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset/';
-        var disqus_url = 'http://www.rohanradio.com/blog/2010/07/27/now-that-is-a-sunset/';
+        var disqus_identifier = 'http://www.rohanradio.com/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro/';
+        var disqus_url = 'http://www.rohanradio.com/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -9,9 +9,8 @@
   <meta name="author" content="Rohan Singh">
 
   
-  <meta name="description" content="If you haven&#8217;t heard about ACTA,
-it&#8217;s a damaging piece of legislation very similar to SOPA
-— the difference being that ACTA is &hellip;">
+  <meta name="description" content="A few weeks ago, I had to make one of the toughest choices I&#8217;ve had in a while: a 30&#8221; Dell display,
+or a 27&#8221; Apple Thunderbolt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +82,81 @@ it&#8217;s a damaging piece of legislation very similar to SOPA
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro/">Fixing Thunderbolt Ethernet on the MacBook Pro</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-27T12:57:00+01:00" pubdate data-updated="true">Feb 27<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A few weeks ago, I had to make one of the toughest choices I&#8217;ve had in a while: a 30&#8221; Dell display,
+or a 27&#8221; Apple Thunderbolt display. I went with the Thunderbolt display, partly because the colors
+are better, but mostly for the convenience of having USB and ethernet integrated into the display.</p>
+
+<p>The way this works, you can just plug your USB peripherals and your network cord into the
+Thunderbolt display. Then, whenever you dock your MacBook Pro, you just connect the single
+Thunderbolt cable and the display, USB devices, and network all work magically.</p>
+
+<p>It&#8217;s much more convenient than doing the daily morning dance of plugging four or five things into
+your MacBook, and it&#8217;s the closest thing we have to a good MacBook Pro dock.</p>
+
+<p>Well, that&#8217;s the theory anyway. In reality, while the USB works fairly decently, the ethernet
+connection dropped out on day one, and I haven&#8217;t been able to get it back since. Until today.</p>
+
+<p>Here are the final steps that worked for me. Hopefully somebody else can save a bit of time with
+this:</p>
+
+<ol>
+<li><p>With the Thunderbolt display connected, visit the Network tab in System Preferences. If you see
+<strong>Display Ethernet</strong> and/or <strong>Display FireWire</strong> in the list of network interfaces, select each
+one and use the minus (<strong>-</strong>) button at the bottom of the list to remove it.</p>
+
+<p>For me, <strong>Display FireWire</strong> was listed, but <strong>Display Ethernet</strong> was not. I&#8217;ve heard of others
+having strange symptoms with neither or both listed.</p></li>
+<li><p>Unplug the Thunderbolt display. This will not work if you keep the display plugged in while doing
+the next few steps. Trust me, I tried it.</p></li>
+<li><p><code>sudo rm /Library/Preferences/SystemConfiguration/NetworkInterfaces.plist</code></p></li>
+<li><p>Restart your MacBook Pro and log back in. Once you&#8217;ve logged in, connect your Thunderbolt display
+again.</p></li>
+<li><p>Visit the Network tab in System Preferences again. If you see <strong>Display Ethernet</strong> and <strong>Display
+FireWire</strong> listed, you&#8217;re all good. Otherwise, click the plus (<strong>+</strong>) button at the bottom of
+the list of network interfaces.</p>
+
+<p>From the <strong>Interface</strong> dropdown, select the interface you have missing and click <strong>Create</strong>. If
+you have both interfaces missing like I did, you will have to repeat this step for the other
+interface.</p></li>
+</ol>
+
+
+<p>After all that, everything seems to be working smoothly for me.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -781,79 +855,6 @@ below it to give it some reinforcement.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/02/installing-pgmagick-on-os-x/">Installing Pgmagick on OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-02T08:18:00+01:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://pypi.python.org/pypi/pgmagick/">pgmagick</a> is a Python wrapper for
-for <a href="http://imagemagick.org/">ImageMagick</a> (or
-<a href="http://graphicsmagick.org/">GraphicsMagick</a>). I needed it for something I was
-trying to run yesterday, but the instructions for OS X seem to have gotten lost
-in the depths of the Internet.</p>
-
-<p>I&#8217;m assuming you have a working <a href="http://mxcl.github.com/homebrew/">Homebrew</a>,
-Python, and <a href="http://pypi.python.org/pypi/pip"><code>pip</code></a>. You&#8217;ll also need
-<a href="https://github.com/mxcl/homebrew/pull/8928">my Homebrew formula for Boost</a>.</p>
-
-<p>Once you&#8217;ve got that, it&#8217;s pretty straightforward:</p>
-
-<pre><code>$ brew install imagemagick --with-magick-plus-plus
-$ brew install boost --with-thread-unsafe
-$ pip install pgmagick
-</code></pre>
-
-<p>Building Boost takes a long time so don&#8217;t fret if you don&#8217;t see anything for a
-while. Try it out and it should work:</p>
-
-<pre><code>$ python
-Python 2.7.2 (default, Oct 20 2011, 17:33:50) 
-[GCC 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.1.00)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-&gt;&gt;&gt; import pgmagick
-&gt;&gt;&gt; pgmagick.gminfo.library + ' ' + pgmagick.gminfo.version
-'ImageMagick 6.x.x'
-</code></pre>
-
-<p>For extra credit, you should also be able to install the
-<a href="http://www.pythonware.com/products/pil/">Python Imaging Library (PIL)</a>
-as well:</p>
-
-<pre><code>$ pip install -f http://effbot.org/downloads Imaging==1.1.7
-</code></pre>
-
-<p>This all worked for me on OS X 10.7 (Lion). Your mileage may vary on other
-versions.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -871,6 +872,10 @@ versions.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro/">Fixing Thunderbolt Ethernet on the MacBook Pro</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/02/04/stockholm-speaks-out-on-acta/">Stockholm Speaks Out on ACTA</a>
       </li>
     
@@ -884,10 +889,6 @@ versions.</p>
     
       <li class="post">
         <a href="/blog/2012/01/11/extreme-response-times/">Extreme Response Times</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/09/the-inner-platform-effect/">The Inner-Platform Effect</a>
       </li>
     
   </ul>
