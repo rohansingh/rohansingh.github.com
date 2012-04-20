@@ -16,7 +16,7 @@ in the depths of the Internet.
 
 I'm assuming you have a working [Homebrew](http://mxcl.github.com/homebrew/),
 Python, and [`pip`](http://pypi.python.org/pypi/pip). You'll also need
-[my Homebrew formula for Boost](https://github.com/mxcl/homebrew/pull/8928).
+[my Homebrew formula for Boost](https://gist.github.com/2427291).
 
 Once you've got that, it's pretty straightforward:
 
