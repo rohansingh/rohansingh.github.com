@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-04-20T11:16:42+02:00</updated>
+  <updated>2012-05-02T09:11:26+02:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -12,6 +12,133 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Responsive Android Apps with Scala]]></title>
+    <link href="http://www.rohanradio.com/blog/2012/05/02/responsive-android-apps-with-scala/"/>
+    <updated>2012-05-02T08:40:00+02:00</updated>
+    <id>http://www.rohanradio.com/blog/2012/05/02/responsive-android-apps-with-scala</id>
+    <content type="html"><![CDATA[<p>When it comes to building responsive Android apps, there are two commandments:</p>
+
+<ol>
+<li>Don't block the UI thread, ever.</li>
+<li>Only access and modify the UI from the UI thread itself.</li>
+</ol>
+
+
+<p>The Android Dev Guide goes into <a href="http://developer.android.com/guide/topics/fundamentals/processes-and-threads.html#WorkerThreads">some detail about this</a>.
+The usual solutions in Java are to:</p>
+
+<ul>
+<li>Spawn a thread that does work and then invoke <a href="http://developer.android.com/reference/android/view/View.html#post%28java.lang.Runnable%29"><code>View.post</code></a>
+with a <a href="http://developer.android.com/reference/java/lang/Runnable.html"><code>Runnable</code></a>
+that manipulates the UI.</li>
+<li>Implement and run an <a href="http://developer.android.com/reference/android/os/AsyncTask.html"><code>AsyncTask</code></a>
+that does work in <code>doInBackground</code>, and then manipulates the UI in
+<code>onPostExecute</code>.</li>
+</ul>
+
+
+<p>As you can see, both these solutions — though they are the bread and butter of
+Android development — are pretty verbose and unwieldy:</p>
+
+<p><div><script src='https://gist.github.com/2574564.js?file=ThreadWithRunnable.java'></script>
+<noscript><pre><code>public void onClick(View v) {
+    new Thread(new Runnable() {
+        public void run() {
+            final Bitmap bitmap = loadImageFromNetwork(&quot;http://example.com/image.png&quot;);
+            mImageView.post(new Runnable() {
+                public void run() {
+                    mImageView.setImageBitmap(bitmap);
+                }
+            });
+        }
+    }).start();
+}</code></pre></noscript></div>
+</p>
+
+<p><div><script src='https://gist.github.com/2574564.js?file=UsingAsyncTask.java'></script>
+<noscript><pre><code>public void onClick(View v) {
+    new DownloadImageTask().execute(&quot;http://example.com/image.png&quot;);
+}
+
+private class DownloadImageTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
+    /** The system calls this to perform work in a worker thread and
+      * delivers it the parameters given to AsyncTask.execute() */
+    protected Bitmap doInBackground(String... urls) {
+        return loadImageFromNetwork(urls[0]);
+    }
+    
+    /** The system calls this to perform work in the UI thread and delivers
+      * the result from doInBackground() */
+    protected void onPostExecute(Bitmap result) {
+        mImageView.setImageBitmap(result);
+    }
+}</code></pre></noscript></div>
+</p>
+
+<p>I prefer <code>AsyncTask</code>, which has better semantics, but implementing one
+<code>AsyncTask</code> after another quickly becomes tedious. Same with writing line after
+line of <code>Runnable</code> boilerplate.</p>
+
+<p>Enter Scala, using either the <a href="https://github.com/jberkel/android-plugin">sbt Android plugin</a>
+or <a href="https://github.com/rohansingh/android-scala-test">my Maven-based solution</a>.</p>
+
+<p>The first step is to create an implicit conversion from a function to a <code>Runnable</code>,
+which can then be passed to <code>View.post</code> or <code>runOnUiThread</code>. Once we've done
+that, it's simple to use <code>spawn</code> from <a href="http://www.scala-lang.org/api/current/scala/concurrent/ops$.html"><code>scala.concurrent.ops</code></a>
+to do background work.</p>
+
+<p>Here's a fully functional example:</p>
+
+<p><div><script src='https://gist.github.com/2574564.js?file=MainActivity.scala'></script>
+<noscript><pre><code>package com.rrsllc.android
+
+import _root_.android.app.Activity
+import _root_.android.os.Bundle
+import org.apache.http.impl.client.DefaultHttpClient
+import org.apache.http.client.methods.HttpGet
+import scala.concurrent.ops._
+
+class MainActivity extends Activity with TypedActivity {
+  def textview = findView(TR.textview)
+
+  implicit def toRunnable[F](f: =&gt; F): Runnable =
+    new Runnable() { def run() = f }
+
+  override def onCreate(bundle: Bundle) {
+    super.onCreate(bundle)
+    setContentView(R.layout.main)
+
+    textview.setText(&quot;hello, world!&quot;)
+
+    spawn {
+      val client = new DefaultHttpClient()
+      val httpGet = new HttpGet(&quot;http://www.android.com&quot;)
+
+      val result = try {
+        val response = client.execute(httpGet)
+        &quot;The response status was: &quot; + response.getStatusLine.toString
+      }
+      catch {
+        case _ =&gt; &quot;Something went wrong.&quot;
+      }
+
+      runOnUiThread { textview.setText(result) }
+    }
+  }
+}</code></pre></noscript></div>
+</p>
+
+<p>This is so much nicer than the Java alternative. Instead of up to ten lines of boilerplate
+for each background task, we end up with just the <code>spawn</code> and <code>runOnUiThread</code>.</p>
+
+<p>If you're waiting for that final push to switch over to Scala for your Android development,
+I highly recommend the <a href="https://github.com/harrah/xsbt/wiki">sbt</a> plugin for Android. Take
+a look at its brilliant <a href="https://github.com/jberkel/android-plugin/wiki/getting-started">Getting Started guide</a>,
+which will have you up and running in just a few minutes.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Don't Break the Back Button]]></title>
