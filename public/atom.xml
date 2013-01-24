@@ -4,7 +4,7 @@
   <title><![CDATA[rohan singh]]></title>
   <link href="http://www.rohanradio.com/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-10-01T01:53:39+02:00</updated>
+  <updated>2013-01-24T11:42:21+01:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -999,7 +999,7 @@ work perfectly for Opera and <code>wget</code> users alike!</p>
     <link href="http://www.rohanradio.com/blog/2011/03/02/outlier-is-pretty-awesome/"/>
     <updated>2011-03-02T10:36:00+01:00</updated>
     <id>http://www.rohanradio.com/blog/2011/03/02/outlier-is-pretty-awesome</id>
-    <content type="html"><![CDATA[<blockquote><p>We love our bikes not because we race them, ride trails or perform tricks with them, although sometimes we do all of that. We love our bikes mainly because they are our transportation, our freedom, our way of moving through the spaces we call our home.</p><footer><strong>Outlier</strong><cite><a href='http://outlier.cc'>outlier.cc/&hellip;</a></cite></footer></blockquote>
+    <content type="html"><![CDATA[<blockquote><p>We love our bikes not because we race them, ride trails or perform tricks with them, although sometimes we do all of that. We love our bikes mainly because they are our transportation, our freedom, our way of moving through the spaces we call our home.</p><footer><strong>Outlier</strong> <cite><a href='http://outlier.cc'>outlier.cc/&hellip;</a></cite></footer></blockquote>
 
 
 <p><img src="http://www.rohanradio.com/images/blog/outlier.png"></p>
