@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/c-/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2012-10-01T01:53:39+02:00</updated>
+  <updated>2013-01-24T11:42:21+01:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -107,7 +107,7 @@ in on the propc goodness here's the source of the snippet file. Just download
 and save it as a <strong>.snippet</strong> file and import it through <strong>Tools</strong> |
 <strong>Code Snippets Manager</strong> in Visual Studio:</p>
 
-<p><div><script src='https://gist.github.com/1410807.js?file='></script>
+<p><div><script src='https://gist.github.com/1410807.js'></script>
 <noscript><pre><code>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;
