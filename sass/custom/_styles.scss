@@ -16,31 +16,55 @@ body, body > header h1 a, body > header h1 a:visited, body > header h1 a:hover,
 
 body > header h2 { color: #6c6c6c }
 
+body > header { text-align: center }
+
 body > nav
 {
   border-top-color: #8c8c8c;
+  text-align: center;
 }
 
-body > nav form .search { background: none }
+body > nav ul.subscription { display: none }
+
+body > nav ul {
+    float: none
+}
+
+body > nav ul li {
+    float: none;
+    display: inline-block;
+}
 
 body > div > div {
   // This is the border between the articles and the sidebar.
-  border-right-color: #8c8c8c;
+  border-right: 0;
 }
 
 .toggle-sidebar { visibility: hidden }
+
+#content div {
+  padding-top: 0;
+}
+
+#content .blog-index article, #content div article, article header {
+  padding-top: 1.5em;
+}
+
+article header {
+  margin-bottom: 1em;
+}
 
 article header p {
   // This is the dateline on posts.
   color: #777;
 }
 
-#content div.pagination a {
-  color: #777;
+article .entry-content > p {
+  text-align: justify;
 }
 
-aside.sidebar {
-  color: #222;
+#content div.pagination a {
+  color: #777;
 }
 
 body > footer {
@@ -55,4 +79,8 @@ body > footer {
 
 h1 {
   font-size: 2.2em;
+}
+
+.file-data table {
+  width: 100%;
 }
