@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OS X | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/os-x/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2013-02-08T00:00:20+01:00</updated>
+  <updated>2014-03-11T08:51:03-05:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Fixing Thunderbolt Ethernet on the MacBook Pro]]></title>
     <link href="http://www.rohanradio.com/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro/"/>
-    <updated>2012-02-27T12:57:00+01:00</updated>
+    <updated>2012-02-27T12:57:00-06:00</updated>
     <id>http://www.rohanradio.com/blog/2012/02/27/fixing-thunderbolt-ethernet-on-the-macbook-pro</id>
     <content type="html"><![CDATA[<p>A few weeks ago, I had to make one of the toughest choices I've had in a while: a 30" Dell display,
 or a 27" Apple Thunderbolt display. I went with the Thunderbolt display, partly because the colors
@@ -64,7 +64,7 @@ interface.</p></li>
   <entry>
     <title type="html"><![CDATA[Installing pgmagick on OS X]]></title>
     <link href="http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x/"/>
-    <updated>2011-12-02T08:18:00+01:00</updated>
+    <updated>2011-12-02T08:18:00-06:00</updated>
     <id>http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x</id>
     <content type="html"><![CDATA[<p><a href="http://pypi.python.org/pypi/pgmagick/">pgmagick</a> is a Python wrapper for
 for <a href="http://imagemagick.org/">ImageMagick</a> (or

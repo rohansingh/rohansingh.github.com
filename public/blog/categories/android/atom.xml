@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2013-02-08T00:00:20+01:00</updated>
+  <updated>2014-03-11T08:51:03-05:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Responsive Android Apps with Scala]]></title>
     <link href="http://www.rohanradio.com/blog/2012/05/02/responsive-android-apps-with-scala/"/>
-    <updated>2012-05-02T08:40:00+02:00</updated>
+    <updated>2012-05-02T08:40:00-05:00</updated>
     <id>http://www.rohanradio.com/blog/2012/05/02/responsive-android-apps-with-scala</id>
     <content type="html"><![CDATA[<p>When it comes to building responsive Android apps, there are two commandments:</p>
 
@@ -143,7 +143,7 @@ which will have you up and running in just a few minutes.</p>
   <entry>
     <title type="html"><![CDATA[Don't Break the Back Button]]></title>
     <link href="http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button/"/>
-    <updated>2011-06-24T21:42:00+02:00</updated>
+    <updated>2011-06-24T21:42:00-05:00</updated>
     <id>http://www.rohanradio.com/blog/2011/06/24/dont-break-the-back-button</id>
     <content type="html"><![CDATA[<p>Recently, I've worked on/with or used a few Android applications that "disable"
 the back button in some cases.</p>
@@ -213,7 +213,7 @@ work, you are basically giving your users a <a href="http://xkcd.com/371/">menta
   <entry>
     <title type="html"><![CDATA[HTML5 Database API Support in an Android WebView]]></title>
     <link href="http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview/"/>
-    <updated>2010-08-16T22:06:00+02:00</updated>
+    <updated>2010-08-16T22:06:00-05:00</updated>
     <id>http://www.rohanradio.com/blog/2010/08/16/html5-database-api-support-in-an-android-webview</id>
     <content type="html"><![CDATA[<p>Here are some facts:</p>
 
