@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/c-/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2013-02-08T00:02:07+01:00</updated>
+  <updated>2014-03-11T08:51:03-05:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[ConfigurationProperty Code Snippet (C#)]]></title>
     <link href="http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp/"/>
-    <updated>2010-07-21T16:52:00+02:00</updated>
+    <updated>2010-07-21T16:52:00-05:00</updated>
     <id>http://www.rohanradio.com/blog/2010/07/21/configuration-property-code-snippet-c-sharp</id>
     <content type="html"><![CDATA[<p>If you've ever wanted to create a <a href="http://msdn.microsoft.com/en-us/library/2tw134k3.aspx">custom configuration section for a .NET
 app</a>,
