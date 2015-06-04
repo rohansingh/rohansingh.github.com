@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2014-03-11T08:51:03-05:00</updated>
+  <updated>2015-06-04T18:01:01-04:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Installing pgmagick on OS X]]></title>
     <link href="http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x/"/>
-    <updated>2011-12-02T08:18:00-06:00</updated>
+    <updated>2011-12-02T08:18:00-05:00</updated>
     <id>http://www.rohanradio.com/blog/2011/12/02/installing-pgmagick-on-os-x</id>
     <content type="html"><![CDATA[<p><a href="http://pypi.python.org/pypi/pgmagick/">pgmagick</a> is a Python wrapper for
 for <a href="http://imagemagick.org/">ImageMagick</a> (or
@@ -62,7 +62,7 @@ versions.</p>
   <entry>
     <title type="html"><![CDATA[import teachPython]]></title>
     <link href="http://www.rohanradio.com/blog/2010/08/11/import-teachpython/"/>
-    <updated>2010-08-11T15:47:00-05:00</updated>
+    <updated>2010-08-11T15:47:00-04:00</updated>
     <id>http://www.rohanradio.com/blog/2010/08/11/import-teachpython</id>
     <content type="html"><![CDATA[<p><img src="/images/blog/import-teachPython.png"></p>
 ]]></content>
