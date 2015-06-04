@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ASP.NET | rohan singh]]></title>
   <link href="http://www.rohanradio.com/blog/categories/asp-net/atom.xml" rel="self"/>
   <link href="http://www.rohanradio.com/"/>
-  <updated>2014-03-11T08:51:03-05:00</updated>
+  <updated>2015-06-04T18:01:01-04:00</updated>
   <id>http://www.rohanradio.com/</id>
   <author>
     <name><![CDATA[Rohan Singh]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Getting ASP.NET to play nice with Opera &amp; wget]]></title>
     <link href="http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget/"/>
-    <updated>2011-03-28T15:43:00-05:00</updated>
+    <updated>2011-03-28T15:43:00-04:00</updated>
     <id>http://www.rohanradio.com/blog/2011/03/28/getting-asp-dot-net-to-play-nice-with-opera-and-wget</id>
     <content type="html"><![CDATA[<p>A few weeks ago we noticed an issue with some crawlers and search engines being
 unable to crawl <a href="http://www.starbucks.com">Starbucks.com</a>. Around the same time,
